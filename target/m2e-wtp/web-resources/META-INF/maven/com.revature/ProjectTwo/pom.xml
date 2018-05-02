@@ -6,7 +6,7 @@
 	<artifactId>ProjectTwo</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ProjectTwo Maven Webapp</name>
+	<name>ProjectOne Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,7 +15,7 @@
 	</properties>
 
 	<build>
-		<finalName>ProjectTwo</finalName>
+		<finalName>ProjectOne</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -47,6 +47,7 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
