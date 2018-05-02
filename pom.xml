@@ -6,7 +6,7 @@
 	<artifactId>ProjectTwo</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ProjectOne Maven Webapp</name>
+	<name>ProjectTwo Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,7 +15,7 @@
 	</properties>
 
 	<build>
-		<finalName>ProjectOne</finalName>
+		<finalName>ProjectTwo</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
