@@ -115,7 +115,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 
 	}
 
-	@Override
+	
 	protected void finalize() throws Throwable {
 		// TODO Auto-generated method stub
 		super.finalize();
@@ -159,7 +159,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return instance;
 	}
 
-	@Override
+	
 	public boolean create(Employee e, String password) {
 		int index = 0;
 		try {
@@ -185,7 +185,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return false;
 	}
 
-	@Override
+	
 	public boolean create(Manager m, String password) {
 		int index = 0;
 		try {
@@ -211,7 +211,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return false;
 	}
 
-	@Override
+	
 	public boolean create(ReinbursementRequest r) {
 		int index = 0;
 		try {
@@ -241,7 +241,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return false;
 	}
 
-	@Override
+	
 	public boolean update(Employee e, String newEmail) {
 		int index = 0;
 		try {
@@ -268,7 +268,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return false;
 	}
 
-	@Override
+	
 	public boolean update(Manager m, String newEmail) {
 		int index = 0;
 		try {
@@ -295,7 +295,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return false;
 	}
 
-	@Override
+	
 	public boolean update(ReinbursementRequest r) {
 		int index = 0;
 		try {
@@ -324,7 +324,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return false;
 	}
 
-	@Override
+	
 	public Employee readEmployee(String email) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -356,7 +356,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return null;
 	}
 
-	@Override
+	
 	public Manager readManager(String email) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -389,7 +389,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return null;
 	}
 
-	@Override
+	
 	public ReinbursementRequest readRR(long id) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -427,25 +427,25 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return null;
 	}
 
-	@Override
+	
 	public boolean delete(Employee e) {
 		e.setDeleted(true);
 		return update(e, e.getEmail());
 	}
 
-	@Override
+	
 	public boolean delete(Manager m) {
 		m.setDeleted(true);
 		return update(m, m.getEmail());
 	}
 
-	@Override
+	
 	public boolean delete(ReinbursementRequest r) {
 		r.setDeleted(true);
 		return update(r);
 	}
 
-	@Override
+	
 	public Employee login(Employee e, String password) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -481,7 +481,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return null;
 	}
 
-	@Override
+	
 	public Manager login(Manager e, String password) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -517,7 +517,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return null;
 	}
 
-	@Override
+	
 	public ReinbursementRequest[] getAllRRs(int page) {
 		int offset = page * RESULTS_PER_PAGE;
 		PreparedStatement statement = null;
@@ -564,7 +564,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return temp;
 	}
 
-	@Override
+	
 	public ReinbursementRequest[] getAllUnresolvedRRs(int page) {
 		int offset = page * RESULTS_PER_PAGE;
 		PreparedStatement statement = null;
@@ -612,7 +612,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return temp;
 	}
 
-	@Override
+	
 	public Employee[] getAllEmployees(int page) {
 		int offset = page * RESULTS_PER_PAGE;
 		PreparedStatement statement = null;
@@ -658,7 +658,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return temp;
 	}
 
-	@Override
+	
 	public ReinbursementRequest[] getAllRRs(int page, String email) {
 		int offset = page * RESULTS_PER_PAGE;
 		PreparedStatement statement = null;
@@ -710,7 +710,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return temp;
 	}
 
-	@Override
+	
 	public ReinbursementRequest[] getAllUnresolvedRRs(int page, String email) {
 		int offset = page * RESULTS_PER_PAGE;
 		PreparedStatement statement = null;
@@ -759,7 +759,6 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return temp;
 	}
 
-	@Override
 	public ReinbursementRequest[] getAllUnresolvedRRs(int page, String email, String search) {
 		int offset = page * RESULTS_PER_PAGE;
 		PreparedStatement statement = null;
@@ -811,7 +810,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return temp;
 	}
 
-	@Override
+	
 	public ReinbursementRequest[] getAllRRs(int page, String email, String search) {
 		int offset = page * RESULTS_PER_PAGE;
 		PreparedStatement statement = null;
@@ -863,7 +862,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return temp;
 	}
 
-	@Override
+	
 	public ReinbursementRequest[] getAllRRs(String search, int page) {
 		int offset = page * RESULTS_PER_PAGE;
 		PreparedStatement statement = null;
@@ -914,7 +913,7 @@ public class DatabaseSingletonImpl implements DatabaseSingleton {
 		return temp;
 	}
 
-	@Override
+	
 	public ReinbursementRequest[] getAllUnresolvedRRs(String search, int page) {
 		int offset = page * RESULTS_PER_PAGE;
 		PreparedStatement statement = null;
