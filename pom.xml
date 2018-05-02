@@ -85,7 +85,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc7-12.1.0.jar</artifactId>
+			<artifactId>ojdbc7-12.1.0</artifactId>
 			<version>12.1.0</version>
 		</dependency>
 	</dependencies>
