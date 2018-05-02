@@ -89,11 +89,5 @@
 			<version>12.1.0</version>
 		</dependency>
 	</dependencies>
-	<repositories>
-		<repository>
-			<id>ojdbc7</id>
-			<url>https://drive.google.com/file/d/1lnEDio8EKY8Q3NsOMYmxrNvr32yWFC-Q/view?usp=sharing</url>
-		</repository>
-	</repositories>
 
 </project>
