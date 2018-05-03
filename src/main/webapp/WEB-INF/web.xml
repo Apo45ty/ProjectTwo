@@ -13,7 +13,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FrontControllerServlet</servlet-name>
-		<url-pattern>/fc/*</url-pattern>
+		<url-pattern>fc/*</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
