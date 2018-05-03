@@ -91,8 +91,8 @@
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>ojdbc7</id>
-			<url>https://drive.google.com/file/d/1lnEDio8EKY8Q3NsOMYmxrNvr32yWFC-Q/view?usp=sharing</url>
+			<id>codelds</id>
+			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
 		</repository>
 	</repositories>
 
