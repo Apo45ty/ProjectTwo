@@ -3,12 +3,14 @@ package com.revature.selenium;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Selenium {
 	
 	WebDriver driver;
+	JavascriptExecutor jse;
 	public void invokeBrowser() {
 		System.setProperty("webdriver.chrome.driver","src\\test\\resources\\chromedriver.exe");
 		driver = new ChromeDriver();
@@ -28,7 +30,9 @@ public class Selenium {
 		driver.findElement(By.id("password")).sendKeys("");
 		driver.findElement(By.id("Login")).click();;
 		
+		jse = (JavascriptExecutor) driver;
 		
+		jse.executeScript("scroll(0,800)");
 	}
 	
 	public static void main(String[] args) {
