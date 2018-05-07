@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -39,9 +40,9 @@ public class System{
 
 	public System() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
+	@XmlElement
 	public long getId() {
 		return id;
 	}
@@ -50,6 +51,7 @@ public class System{
 		this.id = id;
 	}
 
+	@XmlElement
 	public String getCpu() {
 		return cpu;
 	}
@@ -58,6 +60,7 @@ public class System{
 		this.cpu = cpu;
 	}
 
+	@XmlElement
 	public String getOs() {
 		return os;
 	}
@@ -66,6 +69,7 @@ public class System{
 		this.os = os;
 	}
 
+	@XmlElement
 	public String getRam() {
 		return ram;
 	}
@@ -74,6 +78,7 @@ public class System{
 		this.ram = ram;
 	}
 
+	@XmlElement
 	public String getDiskDrive() {
 		return diskDrive;
 	}
