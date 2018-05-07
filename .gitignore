@@ -18,6 +18,7 @@
 *.tar.gz
 *.rar
 
+ProjectTwo/angularproject/my-app/package-lock.json
 /angularproject/my-app/node_modules
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
