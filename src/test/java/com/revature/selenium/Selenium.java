@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.revature.db.DatabaseSingletonDaoImpl;
 import com.revature.model.Test;
+import com.revature.model.TestType;
 
 public class Selenium {
 	
@@ -35,13 +36,13 @@ public class Selenium {
 
 		long totalTime = endTime - startTime;
 		
-		Test t = new Test(1, 1, "Java Time measured Running", ""+totalTime, false,0);
+		Test t = new Test(1, "Java Time measured Running", ""+totalTime, false,new TestType(),new com.revature.model.System());
 		DatabaseSingletonDaoImpl.getInstance().create(t);
 		System.out.println("Total Page Load Time: " + totalTime + " milliseconds");
 		Long loadtime = (Long)((JavascriptExecutor)driver).executeScript(
 			    "return performance.timing.loadEventEnd - performance.timing.navigationStart;");
 		System.out.println(loadtime);
-		t = new Test(1, 2, "Javascript Time measured", ""+loadtime, false,0);
+		t = new Test(2, "Javascript Time measured", ""+loadtime, false,new TestType(),new com.revature.model.System());
 		DatabaseSingletonDaoImpl.getInstance().create(t);
 		login();
 	}

@@ -8,12 +8,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.revature.model.System;
 import com.revature.model.Test;
+import com.revature.model.TestType;
 
 public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 	public static void main(String[] args) {
 		DatabaseSingletonDao db = new DatabaseSingletonDaoImpl();
-		Test t = new Test(1, 1, "Time measured", "1000", false,0);
+		Test t = new Test(1, "Time measured", "1000", false,new TestType(),new System());
 		db.create(t);
 	}
 	private static SessionFactory mysession;

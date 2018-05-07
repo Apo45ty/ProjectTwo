@@ -50,8 +50,8 @@ public class Test {
 
 
 	@XmlElement
-	public TestType getTestID() {
-		return testID;
+	public long getTestID() {
+		return testID.getId();
 	}
 
 	public void setTestID(TestType testID) {
@@ -59,8 +59,8 @@ public class Test {
 	}
 
 	@XmlElement
-	public System getSystemID() {
-		return systemID;
+	public long getSystemID() {
+		return systemID.getId();
 	}
 
 	public void setSystemID(System systemID) {
