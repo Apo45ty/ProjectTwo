@@ -24,3 +24,5 @@
 hs_err_pid*
 
 target
+target/m2e-wtp/web-resources/META-INF/maven/com.revature/ProjectTwo/pom.properties
+.settings/org.eclipse.wst.common.component
