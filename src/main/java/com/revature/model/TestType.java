@@ -21,12 +21,12 @@ public class TestType {
 	private long id;
 	@Column(name="DESCRIPTION",length=400)
 	private String description;
-	@Column(name="GROUP",length=40)
-	private String group;
+	@Column(name="GROUP_ID",length=40)
+	private long group;
 	@Column(name="IS_DELETED",length=40)
 	private boolean isDeleted = false;
 	public TestType() {}
-	public TestType(long id, String description, String group, boolean isDeleted) {
+	public TestType(long id, String description, long group, boolean isDeleted) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -48,10 +48,10 @@ public class TestType {
 		this.description = description;
 	}
 	@XmlElement
-	public String getGroup() {
+	public long getGroup() {
 		return group;
 	}
-	public void setGroup(String group) {
+	public void setGroup(long group) {
 		this.group = group;
 	}
 	@XmlElement
