@@ -21,7 +21,7 @@ public class TestModel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="groupIdSeq")
 	@SequenceGenerator(initialValue = 1, sequenceName="groupIdSeq", name="groupIdSeq")
-	@Column(name="groupId", nullable=false, unique=true)
+	@Column(name="groupID", nullable=false, unique=true)
 	private int groupID;
 	
 	@Column(name="isDeleted")
@@ -38,7 +38,7 @@ public class TestModel {
 	
 	
 	public TestModel() {
-		super();
+		
 	}
 
 	public TestModel(int groupID, int isDeleted, String name, String description) {
