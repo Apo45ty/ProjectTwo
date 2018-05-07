@@ -7,10 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -49,6 +49,7 @@ public class TestModel {
 		this.description = description;
 	}
 
+	@XmlElement
 	public int getGroupID() {
 		return groupID;
 	}
@@ -57,6 +58,7 @@ public class TestModel {
 		this.groupID = groupID;
 	}
 
+	@XmlElement
 	public int getIsDeleted() {
 		return isDeleted;
 	}
@@ -65,6 +67,7 @@ public class TestModel {
 		this.isDeleted = isDeleted;
 	}
 
+	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -73,6 +76,7 @@ public class TestModel {
 		this.name = name;
 	}
 
+	@XmlElement
 	public String getDescription() {
 		return description;
 	}
