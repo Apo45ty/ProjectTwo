@@ -12,13 +12,6 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
-<<<<<<< HEAD
-		<!-- <mapping resource="Employee.hbm.xml"></mapping>-->
-		
-		<!-- <mapping class="com.revature.model.Customer"></mapping> -->
-		<mapping class="com.revature.model.Test"></mapping>
-		
-=======
 		
 		<mapping class="com.revature.model.Test"></mapping>
 		<mapping class="com.revature.model.System"></mapping>
@@ -27,6 +20,5 @@
 
 		<!-- <mapping resource="Employee.hbm.xml"></mapping>-->
 		<!-- <mapping class="com.revature.model.Customer"></mapping> -->
->>>>>>> selenium
 	</session-factory>
 </hibernate-configuration>
