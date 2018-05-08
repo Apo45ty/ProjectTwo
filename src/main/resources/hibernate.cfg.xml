@@ -16,6 +16,8 @@
 		
 		<!-- <mapping class="com.revature.model.Customer"></mapping> -->
 		<mapping class="com.revature.model.Test"></mapping>
-		
+		<mapping class="com.revature.model.System"></mapping>
+		<mapping class="com.revature.model.TestModel"></mapping>
+		<mapping class="com.revature.model.TestType"></mapping>
 	</session-factory>
 </hibernate-configuration>

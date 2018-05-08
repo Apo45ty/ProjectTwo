@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -34,6 +36,13 @@ public class TestModel {
 	private String description;
 	
 	@OneToMany(mappedBy="TestType")
+	@JoinTable(
+	        name = "TestModel",
+	        joinColumns = @JoinColumn(
+	                name = "ttID",
+	                referencedColumnName = "ID"
+	        )
+	)
 	private List<TestType> ltt;
 	
 	
