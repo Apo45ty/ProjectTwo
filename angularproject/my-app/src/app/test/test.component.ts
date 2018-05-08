@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
 import { DatabaseGetterService } from '../database-getter.service';
-
+import {Chart} from 'chart.js';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -17,6 +17,7 @@ export class TestComponent implements OnInit {
   }
   
   ngOnInit() {
+	
 	let chartColors = {
 		red: 'rgb(255, 99, 132)',
 		orange: 'rgb(255, 159, 64)',
@@ -26,7 +27,7 @@ export class TestComponent implements OnInit {
 		purple: 'rgb(153, 102, 255)',
 		grey: 'rgb(201, 203, 207)'
 	};
-	let config = {
+	var config = {
 		type: 'line',
 		data: {
 			labels: ['1', '2', '3', '4', '5', '6', '7'],
@@ -79,11 +80,13 @@ export class TestComponent implements OnInit {
 		console.log(data);
 		let a = [];
 		for(let i=0;i<this.tests.length;i++){
+			config.data.labels[i]=''+(i+1);
 			a[this.tests.length-1-i] = this.tests[i].test.result;
 		}
-		var ctx = document.getElementById('canvas').getContext('2d');
+		var canvas : any = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
 		config.data.datasets[0].data = a;
-		window.myLine = new Chart(ctx, config);
+		let myLine = new Chart(ctx, config);
 	},
 	error => this.errorMsg = error);	
   }

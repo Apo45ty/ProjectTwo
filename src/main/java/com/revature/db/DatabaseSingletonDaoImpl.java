@@ -8,12 +8,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.revature.model.System;
 import com.revature.model.Test;
+import com.revature.model.TestType;
 
 public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 	public static void main(String[] args) {
 		DatabaseSingletonDao db = new DatabaseSingletonDaoImpl();
-		Test t = new Test(1, 1, "Time measured", "1000", false,0);
+		Test t = new Test(1, "Time measured", "1000", false,db.readTT(10),db.readS(10));
 		db.create(t);
 	}
 	private static SessionFactory mysession;
@@ -60,7 +62,39 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 		}
 		return t;
 	}
-
+	
+	@Override
+	public TestType readTT(long id) {
+		Session session = mysession.openSession();
+		Transaction t1 = null;
+		TestType t = null;
+		try {
+			t1 = session.beginTransaction();
+			t = session.get(TestType.class, id);
+		} catch (HibernateException e) {
+			if(t1 !=null)
+				t1.rollback();
+		} finally {
+			session.close();
+		}
+		return t;
+	}
+	@Override
+	public System readS(long id) {
+		Session session = mysession.openSession();
+		Transaction t1 = null;
+		System s = null;
+		try {
+			t1 = session.beginTransaction();
+			s = session.get(System.class, id);
+		} catch (HibernateException e) {
+			if(t1 !=null)
+				t1.rollback();
+		} finally {
+			session.close();
+		}
+		return s;
+	}
 	@Override
 	public boolean update(Test t) {
 		Session session = mysession.openSession();

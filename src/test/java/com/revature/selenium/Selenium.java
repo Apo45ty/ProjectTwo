@@ -9,11 +9,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.revature.db.DatabaseSingletonDao;
 import com.revature.db.DatabaseSingletonDaoImpl;
 import com.revature.model.Test;
 
 public class Selenium {
-	
+	DatabaseSingletonDao db = DatabaseSingletonDaoImpl.getInstance();
 	WebDriver driver;
 	JavascriptExecutor jse;
 	public void invokeBrowser() {
@@ -35,26 +36,27 @@ public class Selenium {
 
 		long totalTime = endTime - startTime;
 		
-		Test t = new Test(1, 1, "Java Time measured Running", ""+totalTime, false,0);
-		DatabaseSingletonDaoImpl.getInstance().create(t);
+		Test t = new Test(1, "Java Time measured Running", ""+totalTime, false,db.readTT(10),db.readS(10));
+		db.create(t);
 		System.out.println("Total Page Load Time: " + totalTime + " milliseconds");
 		Long loadtime = (Long)((JavascriptExecutor)driver).executeScript(
 			    "return performance.timing.loadEventEnd - performance.timing.navigationStart;");
 		System.out.println(loadtime);
-		t = new Test(1, 2, "Javascript Time measured", ""+loadtime, false,0);
-		DatabaseSingletonDaoImpl.getInstance().create(t);
+		t = new Test(2, "Javascript Time measured", ""+loadtime, false,db.readTT(10),db.readS(10));
+		db.create(t);
 		login();
+		
 	}
 	
 	public void login() {
 		driver.findElement(By.id("username")).sendKeys("test.trainer@revature.com.int1");;
-		driver.findElement(By.id("password")).sendKeys("p@$$w0rd2");
+		driver.findElement(By.id("password")).sendKeys("trainer123");
 		driver.findElement(By.id("Login")).click();;
 		
 		jse = (JavascriptExecutor) driver;
 		
 		jse.executeScript("scroll(0,800)");
-		
+		driver.close();
 	}
 	
 	public static void main(String[] args) {
