@@ -2,6 +2,7 @@ package com.revature.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,14 +36,7 @@ public class TestModel {
 	@Column(name="description")
 	private String description;
 	
-	@OneToMany(mappedBy="TestType")
-	@JoinTable(
-	        name = "TestModel",
-	        joinColumns = @JoinColumn(
-	                name = "ttID",
-	                referencedColumnName = "ID"
-	        )
-	)
+	@OneToMany(mappedBy="testmodel",cascade=CascadeType.ALL)
 	private List<TestType> ltt;
 	
 	

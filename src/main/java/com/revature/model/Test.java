@@ -1,5 +1,6 @@
 package com.revature.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,12 +29,12 @@ public class Test {
 	@Column(name="IS_DELETED",length=40)
 	private boolean isDeleted = false;
 	
-	@ManyToOne
-    @JoinColumn(name = "ID")
+	@ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "tID")
 	private TestType testID;
 	
-	@ManyToOne
-    @JoinColumn(name = "ID")
+	@ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "sID")
 	private System systemID;
 	
 	public Test() {}

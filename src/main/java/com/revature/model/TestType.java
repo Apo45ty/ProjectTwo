@@ -1,5 +1,6 @@
 package com.revature.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class TestType {
 		this.testmodel.setGroupID((int) group);
 		this.isDeleted = isDeleted;
 	}
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn (name = "groupID")
 	TestModel testmodel = new TestModel();
 	
