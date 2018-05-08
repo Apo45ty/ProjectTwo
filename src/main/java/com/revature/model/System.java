@@ -18,15 +18,20 @@ public class System{
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqname1")
-    @SequenceGenerator(initialValue=1, sequenceName="seq_name1",allocationSize=1,name="seqname1")
+	@SequenceGenerator(initialValue=1, sequenceName="seq_name1",allocationSize=1,name="seqname1")
+	
     @Column(name="ID", nullable=false)
-    private long id=0L;
+	private long id=0L;
+	
     @Column(name="CPU", length=40)
-    private String cpu="";
+	private String cpu="";
+	
     @Column(name="OS", length=40)
-    private String os="";
+	private String os="";
+	
     @Column(name="RAM", length=40)
-    private String ram="";
+	private String ram="";
+	
     @Column(name="DiskDrive", length=40)
     private String diskDrive="";
     
