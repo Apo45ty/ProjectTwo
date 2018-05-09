@@ -43,6 +43,7 @@ public class GetAllRequest extends HttpServlet {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Request-Method", "*");
 		try {
+			System.setProperty("javax.xml.bind.context.factory","org.eclipse.persistence.jaxb.JAXBContextFactory");
 			JAXBContext jaxbContext = JAXBContext.newInstance(Test.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
