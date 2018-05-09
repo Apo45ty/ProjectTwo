@@ -18,7 +18,7 @@ public class Selenium {
 	WebDriver driver;
 	JavascriptExecutor jse;
 	public void invokeBrowser() {
-		System.setProperty("webdriver.chrome.driver","src\\test\\resources\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\selenium\\chromedriver.exe");
 		driver = new ChromeDriver();
 		System.out.println(driver);
 		driver.manage().deleteAllCookies();
