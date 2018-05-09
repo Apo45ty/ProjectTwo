@@ -12,11 +12,16 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.eclipse.persistence.jaxb.JAXBContextFactory;
 
 @XmlRootElement
 @Entity
 @Table(name="Test")
 public class Test {
+	static {
+   	 	java.lang.System.setProperty("javax.xml.bind.context.factory", "org.eclipse.persistence.jaxb.JAXBContextFactory");
+    }
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqname")
 	@SequenceGenerator(initialValue=1,sequenceName="seq_name",allocationSize=1,name="seqname")
@@ -50,7 +55,6 @@ public class Test {
 	}
 
 
-	@XmlElement
 	public TestType getTestID() {
 		return testID;
 	}
@@ -59,7 +63,6 @@ public class Test {
 		this.testID = testID;
 	}
 
-	@XmlElement
 	public System getSystemID() {
 		return systemID;
 	}

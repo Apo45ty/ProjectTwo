@@ -11,6 +11,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import org.eclipse.persistence.jaxb.MarshallerProperties;
+import org.eclipse.persistence.jaxb.JAXBContextFactory;
 
 import com.revature.db.DatabaseSingletonDaoImpl;
 import com.revature.model.Test;
@@ -20,7 +21,7 @@ import com.revature.model.Test;
  */
 public class GetAllRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     
     /**
      * @see HttpServlet#HttpServlet()
      */
