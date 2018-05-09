@@ -123,7 +123,7 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 	}
 
 	@Override
-	public Test[] getAllTest() {
+	public List<Test> getAllTest() {
 		Session session = mysession.openSession();
 		Transaction t1 = null;
 		List<Test> emp = null;
@@ -138,10 +138,9 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 		}
 		Test[] result = null;
 		if(emp!=null&&emp.size()>0) {
-			result = new Test[emp.size()];
-			result = emp.toArray(result);
+			return emp;
 		}
-		return result;
+		return emp;
 	}
 
 }

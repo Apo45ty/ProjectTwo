@@ -2,6 +2,9 @@ package com.revature.db;
 
 import com.revature.model.Test;
 import com.revature.model.TestType;
+
+import java.util.List;
+
 import com.revature.model.System;
 
 public interface DatabaseSingletonDao {
@@ -17,5 +20,5 @@ public interface DatabaseSingletonDao {
 
 	boolean delete(Test t);
 
-	Test[] getAllTest();
+	List<Test> getAllTest();
 }
