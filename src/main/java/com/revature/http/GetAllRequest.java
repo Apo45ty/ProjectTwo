@@ -40,7 +40,31 @@ public class GetAllRequest extends HttpServlet {
 			throws ServletException, IOException {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Request-Method", "*");
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Request-Method", "*");
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(Test.class);
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			jaxbMarshaller.setProperty(MarshallerProperties.MEDIA_TYPE, "application/json");
+			jaxbMarshaller.setProperty(MarshallerProperties.JSON_INCLUDE_ROOT, true);
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			int page = 0;
+			try {
+				page = Integer.parseInt(request.getParameter("page"));
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			List<Test> emp = DatabaseSingletonDaoImpl.getInstance().getAllTest();
+			Test[]result = new Test[emp.size()];
+			result = emp.toArray(result);
+			jaxbMarshaller.marshal(result, System.out);
+			jaxbMarshaller.marshal(result, response.getWriter());
+
+		} catch (JAXBException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	/**

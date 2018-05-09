@@ -136,10 +136,6 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 		} finally {
 			session.close();
 		}
-		Test[] result = null;
-		if(emp!=null&&emp.size()>0) {
-			return emp;
-		}
 		return emp;
 	}
 
