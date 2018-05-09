@@ -23,7 +23,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>RunSelenium</servlet-name>
-		<url-pattern>/RunSelenium/</url-pattern>
+		<url-pattern>/RunSelenium/*</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
