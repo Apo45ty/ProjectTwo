@@ -1,10 +1,12 @@
 package com.revature.selenium;
 
 import java.io.File;
+import java.util.Properties;
+import java.util.Set;
 
 import com.revature.db.DatabaseSingletonDao;
 import com.revature.db.DatabaseSingletonDaoImpl;
-import com.revature.model.Test;
+import com.revature.model.TestSystem;
 
 public class Test_System {
     public static void main(String[] args) {
@@ -30,5 +32,17 @@ public class Test_System {
 			System.out.println("Free space (bytes): " + root.getFreeSpace());
 			System.out.println("Usable space (bytes): " + root.getUsableSpace());
 		} 
+
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		Properties properties = System.getProperties();
+        Set<Object> keys = properties.keySet();
+        for(Object key : keys){
+            System.out.println(key + ": " + properties.get(key));
+		}
+		
+		TestSystem sys = new TestSystem(0, arch, OS, (maxMemory + " bytes"), (roots[0].getTotalSpace() + " bytes"));
+		dao.createSys(sys);
     }
 }

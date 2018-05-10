@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.proxy.HibernateProxy;
 
-import com.revature.model.System;
+import com.revature.model.TestSystem;
 import com.revature.model.Test;
 import com.revature.model.TestType;
 
@@ -78,13 +78,13 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 		return t;
 	}
 	@Override
-	public System readS(long id) {
+	public TestSystem readS(long id) {
 		Session session = mysession.openSession();
 		Transaction t1 = null;
-		System s = null;
+		TestSystem s = null;
 		try {
 			t1 = session.beginTransaction();
-			s = session.get(System.class, id);
+			s = session.get(TestSystem.class, id);
 		} catch (HibernateException e) {
 			if(t1 !=null)
 				t1.rollback();
@@ -171,5 +171,22 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 	}
 
 	
+
+	@Override
+	public boolean createSys(TestSystem t) {
+		Session session = mysession.openSession();
+		Transaction t1 = null;
+		try {
+			t1 = session.beginTransaction();
+			session.save(t);
+			t1.commit();
+		} catch (HibernateException e) {
+			if(t1 !=null)
+				t1.rollback();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
 
 }

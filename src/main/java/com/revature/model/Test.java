@@ -41,11 +41,11 @@ public class Test {
 	
 	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name = "sID")
-	private System systemID;
+	private TestSystem systemID;
 	
 	public Test() {}
 	
-	public Test(long id, String comments, String result, boolean isDeleted, TestType testID, System systemID) {
+	public Test(long id, String comments, String result, boolean isDeleted, TestType testID, TestSystem systemID) {
 		super();
 		this.id = id;
 		this.comments = comments;
@@ -64,11 +64,11 @@ public class Test {
 		this.testID = testID;
 	}
 
-	public System getSystemID() {
+	public TestSystem getSystemID() {
 		return systemID;
 	}
 
-	public void setSystemID(System systemID) {
+	public void setSystemID(TestSystem systemID) {
 		this.systemID = systemID;
 	}
 
