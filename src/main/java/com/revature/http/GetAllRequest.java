@@ -38,29 +38,38 @@ public class GetAllRequest extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Set response headers to allow cross origin request
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Request-Method", "*");
+		//Try to execute jaxb marsheling
 		try {
+			//Set the context factory without the jaxb.properties file
 			System.setProperty("javax.xml.bind.context.factory","org.eclipse.persistence.jaxb.JAXBContextFactory");
+			
+			//JAXB JSON CONFIGURATION
 			JAXBContext jaxbContext = JAXBContext.newInstance(Test.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			jaxbMarshaller.setProperty(MarshallerProperties.MEDIA_TYPE, "application/json");
 			jaxbMarshaller.setProperty(MarshallerProperties.JSON_INCLUDE_ROOT, true);
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			
+			//Try to parse the page parameter
 			int page = 0;
 			try {
 				page = Integer.parseInt(request.getParameter("page"));
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			}
+			
+			//Fetch the results from the web page and convert them to an array
 			List<Test> emp = DatabaseSingletonDaoImpl.getInstance().getAllTest();
 			Test[]result = new Test[emp.size()];
 			result = emp.toArray(result);
+			
+			//Print out the jaxb json string
 			jaxbMarshaller.marshal(result, System.out);
 			jaxbMarshaller.marshal(result, response.getWriter());
-
 		} catch (JAXBException ex) {
 			ex.printStackTrace();
 		}
