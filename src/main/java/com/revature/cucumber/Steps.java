@@ -36,5 +36,6 @@ public class Steps {
 	@Then("^Reset the credential$")
 	public void Reset_the_credential() throws Throwable {
 		driver.findElement(By.name("btnLogInToSandbox")).click();
+		driver.close();
 	}
 }
