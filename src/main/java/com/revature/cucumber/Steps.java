@@ -14,7 +14,7 @@ public class Steps {
 
 	@Given("^Open the Firefox and launch the application$")
 	public void open_the_Firefox_and_launch_the_application() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://dev.assignforce.revaturelabs.com");
