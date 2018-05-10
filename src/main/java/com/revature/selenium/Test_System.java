@@ -43,5 +43,6 @@ public class Test_System {
 		}
 		
 		TestSystem sys = new TestSystem(0, arch, OS, (maxMemory + " bytes"), (roots[0].getTotalSpace() + " bytes"));
+		dao.createSys(sys);
     }
 }

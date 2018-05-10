@@ -80,13 +80,13 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 		return t;
 	}
 	@Override
-	public System readS(long id) {
+	public TestSystem readS(long id) {
 		Session session = mysession.openSession();
 		Transaction t1 = null;
-		System s = null;
+		TestSystem s = null;
 		try {
 			t1 = session.beginTransaction();
-			s = session.get(System.class, id);
+			s = session.get(TestSystem.class, id);
 		} catch (HibernateException e) {
 			if(t1 !=null)
 				t1.rollback();
