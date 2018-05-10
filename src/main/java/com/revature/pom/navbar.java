@@ -1,7 +1,7 @@
 /**
  * 
  */
-package dev.assignforce.revaturelabs;
+package com.revature.pom;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,17 +12,14 @@ import org.openqa.selenium.WebElement;
  * @date May 10, 2018
  * @time time 1:58:47 PM
  */
-public class dev_assignforce_revaturelabs_com_home {
+public class navbar {
 
 	/**
 	 * 
 	 */
 	private static WebElement element;
 
-	public dev_assignforce_revaturelabs_com_home() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	public static WebElement nav_bar(WebDriver wd) {
 		element = wd.findElement(By.className("md-nav-bar"));
 		return element;
@@ -73,4 +70,8 @@ public class dev_assignforce_revaturelabs_com_home {
 		return element;
 	}
 ///------------------- END NAV BAR -----------------------------------///
+	public static WebElement view (WebDriver wd) {
+		element = wd.findElement(By.id("view"));
+		return element;
+	}
 }
