@@ -3,6 +3,7 @@ package com.revature.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +39,7 @@ public class TestType {
 		this.testmodel.setGroupID((int) group);
 		this.isDeleted = isDeleted;
 	}
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn (name = "groupID")
 	TestModel testmodel = new TestModel();
 	

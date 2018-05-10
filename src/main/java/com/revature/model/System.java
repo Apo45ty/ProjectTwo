@@ -16,23 +16,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name="System")
 public class System{
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqname1")
-	@SequenceGenerator(initialValue=1, sequenceName="seq_name1",allocationSize=1,name="seqname1")
+    public static final String out = null;
+
+	@Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="system_seq")
+	@SequenceGenerator(initialValue=1, sequenceName="system_seq",allocationSize=1,name="system_seq")
 	
     @Column(name="ID", nullable=false)
 	private long id=0L;
 	
-    @Column(name="CPU", length=40)
+    @Column(name="CPU", length=140)
 	private String cpu="";
 	
-    @Column(name="OS", length=40)
+    @Column(name="OS", length=140)
 	private String os="";
 	
-    @Column(name="RAM", length=40)
+    @Column(name="RAM", length=140)
 	private String ram="";
 	
-    @Column(name="DiskDrive", length=40)
+    @Column(name="DiskDrive", length=140)
     private String diskDrive="";
     
 	public System(long id, String cpu, String os, String ram, String diskDrive) {
