@@ -28,12 +28,7 @@
 	</build>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>1.2.5</version>
-		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-core -->
 		<dependency>
 			<groupId>info.cukes</groupId>
@@ -45,13 +40,6 @@
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-testng</artifactId>
 			<version>1.2.5</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>6.11</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
@@ -140,7 +128,6 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
@@ -153,8 +140,72 @@
 			<version>11.2.0.3</version>
 		</dependency>
 
+				<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>1.2.5</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
-	
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.11</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.cobertura/cobertura -->
+		<dependency>
+			<groupId>net.sourceforge.cobertura</groupId>
+			<artifactId>cobertura</artifactId>
+			<version>2.1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-html -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-html</artifactId>
+			<version>0.2.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-jvm-deps -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-jvm-deps</artifactId>
+			<version>1.0.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>3.16.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/info.cukes/gherkin -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>2.12.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<repositories>
