@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name="System")
-public class System{
+public class TestSystem{
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqname1")
@@ -23,19 +23,19 @@ public class System{
     @Column(name="ID", nullable=false)
 	private long id=0L;
 	
-    @Column(name="CPU", length=40)
+    @Column(name="CPU", length=100)
 	private String cpu="";
 	
-    @Column(name="OS", length=40)
+    @Column(name="OS", length=100)
 	private String os="";
 	
-    @Column(name="RAM", length=40)
+    @Column(name="RAM", length=100)
 	private String ram="";
 	
-    @Column(name="DiskDrive", length=40)
+    @Column(name="DiskDrive", length=100)
     private String diskDrive="";
     
-	public System(long id, String cpu, String os, String ram, String diskDrive) {
+	public TestSystem(long id, String cpu, String os, String ram, String diskDrive) {
 		super();
 		this.id = id;
 		this.cpu = cpu;
@@ -44,7 +44,7 @@ public class System{
 		this.diskDrive = diskDrive;
 	}
 
-	public System() {
+	public TestSystem() {
 		super();
 	}
 
@@ -113,7 +113,7 @@ public class System{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		System other = (System) obj;
+		TestSystem other = (TestSystem) obj;
 		if (cpu == null) {
 			if (other.cpu != null)
 				return false;

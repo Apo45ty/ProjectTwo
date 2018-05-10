@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.revature.model.System;
+import com.revature.model.TestSystem;
 import com.revature.model.Test;
 import com.revature.model.TestType;
 
@@ -137,6 +137,23 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 			session.close();
 		}
 		return emp;
+	}
+
+	@Override
+	public boolean createSys(TestSystem t) {
+		Session session = mysession.openSession();
+		Transaction t1 = null;
+		try {
+			t1 = session.beginTransaction();
+			session.save(t);
+			t1.commit();
+		} catch (HibernateException e) {
+			if(t1 !=null)
+				t1.rollback();
+		} finally {
+			session.close();
+		}
+		return false;
 	}
 
 }
