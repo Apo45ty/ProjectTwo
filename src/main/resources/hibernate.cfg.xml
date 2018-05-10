@@ -14,7 +14,7 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<mapping class="com.revature.model.Test"></mapping>
-		<mapping class="com.revature.model.System"></mapping>
+		<mapping class="com.revature.model.TestSystem"></mapping>
 		<mapping class="com.revature.model.TestModel"></mapping>
 		<mapping class="com.revature.model.TestType"></mapping>
 

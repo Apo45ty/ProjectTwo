@@ -16,7 +16,7 @@ public interface DatabaseSingletonDao {
 	
 	TestType readTT(long id);
 	
-	System readS(long id);
+	TestSystem readS(long id);
 
 	boolean update(Test t);
 
