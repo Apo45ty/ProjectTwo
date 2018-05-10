@@ -704,7 +704,7 @@ module.exports = ""
 /***/ "./src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-sm bg-light navbar-light\">\n  <ul class=\"navbar-nav\">\n    <li class=\"nav-item active\">\n      <a class=\"nav-link\" href=\"#\">Active</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" href=\"#\">Link</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" href=\"#\">Link</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link disabled\" href=\"#\">Disabled</a>\n    </li>\n  </ul>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-sm bg-light navbar-light\">\n  <ul class=\"navbar-nav\">\n    <li class=\"nav-item active\">\n      <a class=\"nav-link\" href=\"#\">Active</a>\n    </li>\n    <li class=\"nav-item\">\n      <select class=\"selectpicker\" style=\"height:100%\">\n\t\t  <option>Run Test Suite 01</option>\n\t\t  <option>Run Test Suite 02</option>\n\t\t  <option>Run Test Suite 03</option>\n\t  </select>\n    </li>\n    <li class=\"nav-item\">\n      <button class=\"nav-link\">Run</button>\n    </li>\n  </ul>\n</nav>"
 
 /***/ }),
 
