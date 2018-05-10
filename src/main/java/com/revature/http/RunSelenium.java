@@ -24,7 +24,8 @@ import com.revature.model.Test;
  */
 public class RunSelenium extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	WebDriver driver;
+	DatabaseSingletonDao db;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -39,48 +40,80 @@ public class RunSelenium extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Set response headers to allow cross origin request
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Request-Method", "*");
-		DatabaseSingletonDao db = DatabaseSingletonDaoImpl.getInstance();
-		WebDriver driver;
-		JavascriptExecutor jse;
+		
+		openBrowser();
+		navigateToURL();
+		login();
+		driver.close();
+	}
+
+	/**
+	 * Settup webdriver and open new chrome browser window
+	 */
+	private void openBrowser() {
 		System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
 		driver = new ChromeDriver();
-		
+
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
-		long startTime = System.currentTimeMillis();
+	}
 
+	/**
+	 * Navigate the browser to the test page url and measure page load time
+	 */
+	private void navigateToURL() {
+
+		//Get time before loading the web page
+		long startTime = System.currentTimeMillis();
+		
+		//Set the browser url
 		driver.get("https://dev.assignforce.revaturelabs.com");
 
+		//Force a timeout to wait for page to load a given html element
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("Login")));
 
+		//Get the current time and measure how long the page loading took
 		long endTime = System.currentTimeMillis();
-
 		long totalTime = endTime - startTime;
-
+		
+		// Create a database dao instance and store run time as a Test object
+		db = DatabaseSingletonDaoImpl.getInstance();
 		Test t = new Test(1, "Java Time measured Running", "" + totalTime, false, db.readTT(10), db.readS(10));
 		db.create(t);
 		System.out.println("Total Page Load Time: " + totalTime + " milliseconds");
+		
+		//Use Javascript to measure the page load time using Performance Timing variables
 		Long loadtime = (Long) ((JavascriptExecutor) driver)
 				.executeScript("return performance.timing.loadEventEnd - performance.timing.navigationStart;");
 		System.out.println(loadtime);
+		//Store the javascript time in the database
 		t = new Test(2, "Javascript Time measured", "" + loadtime, false, db.readTT(10), db.readS(10));
 		db.create(t);
+	}
 
+	/**
+	 * Automate the entering login credentials and login into web page
+	 */
+	public void login() {
+		
+		//enter the username for the web page
 		driver.findElement(By.id("username")).sendKeys("test.trainer@revature.com.int1");
-		;
+		//enter the password for the web page
 		driver.findElement(By.id("password")).sendKeys("trainer123");
+		//click the login button
 		driver.findElement(By.id("Login")).click();
-		;
 
-		jse = (JavascriptExecutor) driver;
+		//Cast Web Driver to a javascript
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
 
+		//execute a page scroll
 		jse.executeScript("scroll(0,800)");
-		driver.close();
 
 	}
 
