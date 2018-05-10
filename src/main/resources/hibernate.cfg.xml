@@ -4,6 +4,7 @@
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
+
 	<session-factory>
 		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
 		<property name="hibernate.connection.username">testAutomator</property>
@@ -14,11 +15,12 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<mapping class="com.revature.model.Test"></mapping>
-		<mapping class="com.revature.model.System"></mapping>
+		<mapping class="com.revature.model.TestSystem"></mapping>
 		<mapping class="com.revature.model.TestModel"></mapping>
 		<mapping class="com.revature.model.TestType"></mapping>
-
+		
 		<!-- <mapping resource="Employee.hbm.xml"></mapping>-->
 		<!-- <mapping class="com.revature.model.Customer"></mapping> -->
 	</session-factory>
+	
 </hibernate-configuration>

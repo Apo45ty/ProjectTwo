@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TestComponent } from './test/test.component';
-import { DisplayGraphAndResultComponent } from './display-graph-and-result/display-graph-and-result.component';
+import { FullpageComponent } from './fullpage/fullpage.component';
 const routes: Routes = [
 	{
 		path:'main',
-		component:DisplayGraphAndResultComponent
+		component:FullpageComponent
 	},
 	{
 		path:'**',redirectTo:'main',pathMatch:'full'
@@ -17,4 +17,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [TestComponent,DisplayGraphAndResultComponent];
+export const routingComponents = [TestComponent];

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseGetterService } from '../database-getter.service';
 
 @Component({
   selector: 'app-display-results',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _databaseService:DatabaseGetterService) { }
 
   ngOnInit() {
   }

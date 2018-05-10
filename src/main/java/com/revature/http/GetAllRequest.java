@@ -15,8 +15,10 @@ import org.eclipse.persistence.jaxb.MarshallerProperties;
 import org.eclipse.persistence.jaxb.JAXBContextFactory;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.revature.db.DatabaseSingletonDaoImpl;
 import com.revature.model.Test;
+import com.revature.utl.TestAdapter;
 
 /**
  * Servlet implementation class GetAllRequest

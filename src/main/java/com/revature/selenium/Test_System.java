@@ -1,34 +1,24 @@
 package com.revature.selenium;
 
 import java.io.File;
+import java.util.Properties;
+import java.util.Set;
 
 import com.revature.db.DatabaseSingletonDao;
 import com.revature.db.DatabaseSingletonDaoImpl;
-import com.revature.model.Test;
+import com.revature.model.TestSystem;
 
 public class Test_System {
     public static void main(String[] args) {
-        DatabaseSingletonDao dao = DatabaseSingletonDaoImpl.getInstance();
-        System.out.println("Free memory (bytes): " + Runtime.getRuntime().freeMemory());
-
-		/* This will return Long.MAX_VALUE if there is no preset limit */
+		DatabaseSingletonDao dao = DatabaseSingletonDaoImpl.getInstance();
+		
+		//Get the required system information
 		long maxMemory = Runtime.getRuntime().maxMemory();
-		/* Maximum amount of memory the JVM will attempt to use */
-		System.out.println("Maximum memory (bytes): " + (maxMemory == Long.MAX_VALUE ? "no limit" : maxMemory));
-
-        System.out.println(System.getenv("NUMBER_OF_PROCESSORS"));
-        System.out.println(System.getenv("PROCESSOR_IDENTIFIER"));
         String OS = System.getProperty("os.name");
-		String arch = System.getProperty("os.arch");
-		String v = System.getProperty("os.version");
+		String cpu = System.getenv("PROCESSOR_IDENTIFIER");
         File[] roots = File.listRoots();
 
-		/* For each filesystem root, print some info */
-		for (File root : roots) {
-			System.out.println("File system root: " + root.getAbsolutePath());
-			System.out.println("Total space (bytes): " + root.getTotalSpace());
-			System.out.println("Free space (bytes): " + root.getFreeSpace());
-			System.out.println("Usable space (bytes): " + root.getUsableSpace());
-		} 
+		TestSystem sys = new TestSystem(0, cpu, OS, (maxMemory + " bytes"), (roots[0].getTotalSpace() + " bytes"));
+		dao.createSys(sys);
     }
 }

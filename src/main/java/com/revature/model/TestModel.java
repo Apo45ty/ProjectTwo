@@ -36,11 +36,7 @@ public class TestModel {
 	
 	@Column(name="description")
 	private String description;
-	
-	@OneToMany(fetch = FetchType.EAGER,mappedBy="testmodel",cascade=CascadeType.ALL)
-	private List<TestType> ltt;
-	
-	
+
 	public TestModel() {
 		
 	}

@@ -19,7 +19,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GetAllRequest</servlet-name>
-		<url-pattern>/getAll/*</url-pattern>
+		<url-pattern>/GetAllRequest/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>RunSelenium</servlet-name>

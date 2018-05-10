@@ -1,3 +1,7 @@
-<p>
-  display-results works!
-</p>
+<div >
+	<ul *ngFor="let test of this._databaseService.listData" class="list-group">
+		<li class="list-group-item">
+			{{test.test.comments}}
+		</li>
+	</ul>
+</div>
