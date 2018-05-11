@@ -3,6 +3,7 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
       <class name="com.revature.cucumber.RunnerUserEntersTheLandingPage">
         <methods>
           <include name="setUpClass"/>
@@ -10,6 +11,15 @@
           <include name="tearDownClass"/>
         </methods>
       </class> <!-- com.revature.cucumber.RunnerUserEntersTheLandingPage -->
+=======
+      <class name="com.revature.pom.dev_assignforce_revaturelabs_com_TestNG">
+        <methods>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+          <include name="temp"/>
+        </methods>
+      </class> <!-- com.revature.pom.dev_assignforce_revaturelabs_com_TestNG -->
+>>>>>>> 289544e5f54b8c971e51d0183bb045b3315cb707
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
