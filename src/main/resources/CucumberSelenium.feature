@@ -1,6 +1,6 @@
 Feature: Reset functionality on login page of Application				
 Scenario Outline: Verification of reset button with numbers of credential
-Given Open the Firefox and launch the application				
+Given Open Chrome and launch the application				
 
 When Enter the <username> and <password>
 
