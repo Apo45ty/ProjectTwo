@@ -1,64 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="2" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="23983" started-at="2018-05-10T20:12:45Z" finished-at="2018-05-10T20:13:09Z">
+  <suite name="Default suite" duration-ms="20187" started-at="2018-05-11T15:26:28Z" finished-at="2018-05-11T15:26:48Z">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.cucumber.Runner@15bfd87]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.cucumber.RunnerUserEntersTheLandingPage@5427c60c]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Default test" duration-ms="23983" started-at="2018-05-10T20:12:45Z" finished-at="2018-05-10T20:13:09Z">
-      <class name="com.revature.cucumber.Runner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.revature.cucumber.Runner@15bfd87]" name="setUpClass" is-config="true" duration-ms="356" started-at="2018-05-10T20:12:45Z" finished-at="2018-05-10T20:12:46Z">
+    <test name="Default test" duration-ms="20187" started-at="2018-05-11T15:26:28Z" finished-at="2018-05-11T15:26:48Z">
+      <class name="com.revature.cucumber.RunnerUserEntersTheLandingPage">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.revature.cucumber.RunnerUserEntersTheLandingPage@5427c60c]" name="setUpClass" is-config="true" duration-ms="1632" started-at="2018-05-11T15:26:28Z" finished-at="2018-05-11T15:26:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.cucumber.Runner@15bfd87]" name="feature" duration-ms="11" started-at="2018-05-10T20:12:46Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-10T20:12:46Z">
+        <test-method status="FAIL" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.cucumber.RunnerUserEntersTheLandingPage@5427c60c]" name="feature" duration-ms="18103" started-at="2018-05-11T15:26:30Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-11T15:26:48Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[ApplicationWillLoadAndConvertIntoJasonAllTests]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- feature -->
-        <test-method status="FAIL" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.cucumber.Runner@15bfd87]" name="feature" duration-ms="23368" started-at="2018-05-10T20:12:46Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-10T20:13:09Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Reset functionality on login page of Application]]>
+                <![CDATA[Entering the landing page all batches are displayed]]>
               </value>
             </param>
           </params>
           <exception class="cucumber.runtime.CucumberException">
             <message>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"name","selector":"btnLogInToSandbox"}
-  (Session info: chrome=66.0.3359.139)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T15:15:08.936Z'
-System info: host: 'KEVIN-NOTEBOOK', ip: '10.8.8.6', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\Kevin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 66.0.3359.139, webStorageEnabled: true}
-Session ID: ae00325992b4f83918290947736ea755
-*** Element info: {Using=name, value=btnLogInToSandbox}]]>
+              <![CDATA[java.lang.NullPointerException]]>
             </message>
             <full-stacktrace>
-              <![CDATA[cucumber.runtime.CucumberException: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"name","selector":"btnLogInToSandbox"}
-  (Session info: chrome=66.0.3359.139)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T15:15:08.936Z'
-System info: host: 'KEVIN-NOTEBOOK', ip: '10.8.8.6', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\Kevin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 66.0.3359.139, webStorageEnabled: true}
-Session ID: ae00325992b4f83918290947736ea755
-*** Element info: {Using=name, value=btnLogInToSandbox}
+              <![CDATA[cucumber.runtime.CucumberException: java.lang.NullPointerException
 at cucumber.api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:69)
 at cucumber.api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:21)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -86,46 +55,20 @@ at org.testng.TestNG.run(TestNG.java:1017)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"name","selector":"btnLogInToSandbox"}
-  (Session info: chrome=66.0.3359.139)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T15:15:08.936Z'
-System info: host: 'KEVIN-NOTEBOOK', ip: '10.8.8.6', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_171'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\Kevin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 66.0.3359.139, webStorageEnabled: true}
-Session ID: ae00325992b4f83918290947736ea755
-*** Element info: {Using=name, value=btnLogInToSandbox}
-at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-at java.lang.reflect.Constructor.newInstance(Unknown Source)
-at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
-at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
-at org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:395)
-at org.openqa.selenium.By$ByName.findElement(By.java:284)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
-at com.revature.cucumber.Steps.Reset_the_credential(Steps.java:38)
-at ✽.Then Reset the credential(CucumberSelenium.feature:7)
+Caused by: java.lang.NullPointerException
+at com.revature.cucumber.StepsUserEntersTheLandingPage.credentials_are_valid(StepsUserEntersTheLandingPage.java:26)
+at ✽.Given credentials are valid(src/main/resources/UserEntersTheLandingPage.feature:10)
 ]]>
             </full-stacktrace>
           </exception> <!-- cucumber.runtime.CucumberException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- feature -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.revature.cucumber.Runner@15bfd87]" name="tearDownClass" is-config="true" duration-ms="106" started-at="2018-05-10T20:13:09Z" finished-at="2018-05-10T20:13:09Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.revature.cucumber.RunnerUserEntersTheLandingPage@5427c60c]" name="tearDownClass" is-config="true" duration-ms="18" started-at="2018-05-11T15:26:48Z" finished-at="2018-05-11T15:26:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- com.revature.cucumber.Runner -->
+      </class> <!-- com.revature.cucumber.RunnerUserEntersTheLandingPage -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
