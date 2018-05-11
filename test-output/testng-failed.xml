@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<<<<<<< HEAD
 <suite guice-stage="DEVELOPMENT" name="Failed suite [TestAll]">
   <test thread-count="5" name="order(failed)">
     <classes>
@@ -20,3 +21,19 @@
     </classes>
   </test> <!-- order(failed) -->
 </suite> <!-- Failed suite [TestAll] -->
+=======
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="com.revature.test.Test_Runner">
+        <methods>
+          <include name="VPclicksBatches"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+          <include name="VPclicksSettings"/>
+        </methods>
+      </class> <!-- com.revature.test.Test_Runner -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
+>>>>>>> 9ed722bc01926d81f1da68be0e6983197c88c4c6

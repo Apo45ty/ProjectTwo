@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
   <reporter-output>
   </reporter-output>
+=======
+<testng-results skipped="0" failed="0" ignored="0" total="7" passed="7">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="52792" started-at="2018-05-11T19:24:07Z" finished-at="2018-05-11T19:25:00Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="52792" started-at="2018-05-11T19:24:07Z" finished-at="2018-05-11T19:25:00Z">
+      <class name="com.revature.test.Test_Runner">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:com.revature.test.Test_Runner@4516af24]" name="beforeTest" is-config="true" duration-ms="0" started-at="2018-05-11T19:24:07Z" finished-at="2018-05-11T19:24:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="VPclicksBatches()[pri:0, instance:com.revature.test.Test_Runner@4516af24]" name="VPclicksBatches" duration-ms="8782" started-at="2018-05-11T19:24:07Z" finished-at="2018-05-11T19:24:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VPclicksBatches -->
+        <test-method status="PASS" signature="VPclicksCurricula()[pri:0, instance:com.revature.test.Test_Runner@4516af24]" name="VPclicksCurricula" duration-ms="6452" started-at="2018-05-11T19:24:16Z" finished-at="2018-05-11T19:24:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VPclicksCurricula -->
+        <test-method status="PASS" signature="VPclicksLocation()[pri:0, instance:com.revature.test.Test_Runner@4516af24]" name="VPclicksLocation" duration-ms="6627" started-at="2018-05-11T19:24:22Z" finished-at="2018-05-11T19:24:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VPclicksLocation -->
+        <test-method status="PASS" signature="VPclicksLogout()[pri:0, instance:com.revature.test.Test_Runner@4516af24]" name="VPclicksLogout" duration-ms="6905" started-at="2018-05-11T19:24:29Z" finished-at="2018-05-11T19:24:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VPclicksLogout -->
+        <test-method status="PASS" signature="VPclicksOverview()[pri:0, instance:com.revature.test.Test_Runner@4516af24]" name="VPclicksOverview" duration-ms="6314" started-at="2018-05-11T19:24:36Z" finished-at="2018-05-11T19:24:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VPclicksOverview -->
+        <test-method status="PASS" signature="VPclicksSettings()[pri:0, instance:com.revature.test.Test_Runner@4516af24]" name="VPclicksSettings" duration-ms="7202" started-at="2018-05-11T19:24:42Z" finished-at="2018-05-11T19:24:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VPclicksSettings -->
+        <test-method status="PASS" signature="VPclicksTraniner()[pri:0, instance:com.revature.test.Test_Runner@4516af24]" name="VPclicksTraniner" duration-ms="8412" started-at="2018-05-11T19:24:50Z" finished-at="2018-05-11T19:24:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VPclicksTraniner -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.revature.test.Test_Runner@4516af24]" name="afterTest" is-config="true" duration-ms="2060" started-at="2018-05-11T19:24:58Z" finished-at="2018-05-11T19:25:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- com.revature.test.Test_Runner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+>>>>>>> 9ed722bc01926d81f1da68be0e6983197c88c4c6
 </testng-results>
