@@ -37,9 +37,10 @@ public class Steps {
 
 	@Then("^Press Logout button$")
 	public void Press_Logout_Button() throws Throwable {
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]")).click();
-		TimeUnit.MINUTES.sleep(1); 
-		driver.quit();
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			TimeUnit.SECONDS.sleep(15);
+			driver.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]")).click();
+			TimeUnit.SECONDS.sleep(10);
+			driver.quit();
 	}
 }
