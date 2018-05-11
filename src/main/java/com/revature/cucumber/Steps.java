@@ -15,7 +15,7 @@ public class Steps {
 	WebDriver driver;
 
 	@Given("^Open the Chrome and launch the application$")
-	public void open_Chrome_and_launch_the_application() throws Throwable {
+	public void open_the_Chrome_and_launch_the_application() throws Throwable {
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -38,8 +38,8 @@ public class Steps {
 	@Then("^Press Logout button$")
 	public void Press_Logout_Button() throws Throwable {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		TimeUnit.MINUTES.sleep(1); 
 		driver.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]")).click();
+		TimeUnit.MINUTES.sleep(1); 
 		driver.quit();
 	}
 }
