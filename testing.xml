@@ -3,7 +3,7 @@
   
    <test name = "Dev AssignForce Revature Labs | Login Test">
       <classes>
-         <class name = "dev_assignforce_revaturelabs_com_TestNG" />
+         <class name = "TestRunner" />
       </classes>
    </test>
 </suite>

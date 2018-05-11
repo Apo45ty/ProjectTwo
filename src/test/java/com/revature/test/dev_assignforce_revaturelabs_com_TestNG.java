@@ -1,6 +1,10 @@
-package com.revature.pom;
+package com.revature.test;
 
 import org.testng.annotations.Test;
+
+import com.revature.pom.BatchesPOM;
+import com.revature.pom.LoginPage;
+import com.revature.pom.NavbarPOM;
 
 import org.testng.annotations.BeforeTest;
 import java.io.File;
