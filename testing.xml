@@ -1,0 +1,9 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<suite name = "Simple HTML-XML Suite">
+  
+   <test name = "Dev AssignForce Revature Labs | Login Test">
+      <classes>
+         <class name = "dev_assignforce_revaturelabs_com_TestNG" />
+      </classes>
+   </test>
+</suite>

@@ -9,12 +9,12 @@ public class LoginPage {
 	private static WebElement element;
 	
 	public static WebElement user(WebDriver wd) {
-		element = wd.findElement(By.name("userName"));
+		element = wd.findElement(By.name("username"));
 		return element;
 	}
 	
 	public static WebElement pass(WebDriver wd) {
-		element = wd.findElement(By.name("password"));
+		element = wd.findElement(By.name("pw"));
 		return element;
 	}
 	
