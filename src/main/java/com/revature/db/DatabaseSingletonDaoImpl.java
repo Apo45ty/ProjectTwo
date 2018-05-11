@@ -1,6 +1,5 @@
 package com.revature.db;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
@@ -10,13 +9,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.proxy.HibernateProxy;
+import org.hibernate.query.Query;
 
-import com.revature.model.TestSystem;
 import com.revature.model.Test;
+import com.revature.model.TestModel;
+import com.revature.model.TestSystem;
 import com.revature.model.TestType;
 
 public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 	private static SessionFactory mysession;
+	public static int LIMITPERPAGE=25;
 	private void initDB() {
 		if(mysession == null) {
 			mysession = new Configuration().configure().buildSessionFactory();
@@ -26,6 +28,16 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 	private static DatabaseSingletonDao instance = new DatabaseSingletonDaoImpl();
 	public static DatabaseSingletonDao getInstance() {
 		return instance;
+	}
+	
+	public static void main(String[] args) {
+		DatabaseSingletonDao db = new DatabaseSingletonDaoImpl();
+//		Test t = new Test(1, "Time measured", "1000", false,db.readTT(10),db.readS(10));
+//		db.create(t);
+		for(TestSystem ts:db.getAllSystem(0)) {
+			System.out.println(ts.toString());
+		}
+		
 	}
 	@Override
 	public boolean create(Test t) {
@@ -101,6 +113,8 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 		try {
 			t1 = session.beginTransaction();
 			emp = session.get(Test.class, t.getId());
+			emp.setDate(t.getDate());
+			emp.setDeleted(t.isDeleted());
 			emp.setComments(t.getComments());;
 			emp.setResult(t.getResult());
 			session.saveOrUpdate(emp);
@@ -120,14 +134,75 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 		return update(t);
 	}
 
+	public List<TestSystem> getAllSystem(int page) {
+		Session session = mysession.openSession();
+		Transaction t1 = null;
+		List<TestSystem> emp = null;
+		int offset = page*LIMITPERPAGE;
+		try {
+			t1 = session.beginTransaction();
+			Query q =  session.createQuery("from TestSystem");	
+			q.setFirstResult(offset);
+			q.setMaxResults(LIMITPERPAGE);
+			emp = q.list();
+		} catch (HibernateException e) {
+			if(t1 !=null)
+				t1.rollback();
+		} finally {
+			session.close();
+		}
+		return emp;
+	}
+	public List<TestModel>  getAllModel(int page) {
+		Session session = mysession.openSession();
+		Transaction t1 = null;
+		List<TestModel> emp = null;
+		int offset = page*LIMITPERPAGE;
+		try {
+			t1 = session.beginTransaction();
+			Query q =  session.createQuery("from TestModel");	
+			q.setFirstResult(offset);
+			q.setMaxResults(LIMITPERPAGE);
+			emp =q.list();
+		} catch (HibernateException e) {
+			if(t1 !=null)
+				t1.rollback();
+		} finally {
+			session.close();
+		}
+		return emp;
+	}
+	public List<TestType>   getAllTestType(int page) {
+		Session session = mysession.openSession();
+		Transaction t1 = null;
+		List<TestType> emp = null;
+		int offset = page*LIMITPERPAGE;
+		try {
+			t1 = session.beginTransaction();
+			Query q =  session.createQuery("from TestType");	
+			q.setFirstResult(offset);
+			q.setMaxResults(LIMITPERPAGE);
+			emp =q.list();
+		} catch (HibernateException e) {
+			if(t1 !=null)
+				t1.rollback();
+		} finally {
+			session.close();
+		}
+		return emp;
+	}
 	@SuppressWarnings("unchecked")
-	public List<Test> getAllTest() {
+	public List<Test> getAllTest(int page) {
 		Session session = mysession.openSession();
 		Transaction t1 = null;
 		List<Test> emp = null;
+		int offset = page*LIMITPERPAGE;
 		try {
 			t1 = session.beginTransaction();
-			emp = session.createQuery("from Test").list();
+			Query q =  session.createQuery("from Test");	
+			q.setFirstResult(offset);
+			q.setMaxResults(LIMITPERPAGE);
+			emp =q.list();
 		} catch (HibernateException e) {
 			if(t1 !=null)
 				t1.rollback();
@@ -142,10 +217,11 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 //				java.lang.System.out.println("Something went Wrong");
 //			}
 		//}
-		
-	
 		return emp;
 	}
+	
+	
+	
 	@SuppressWarnings("unchecked")
 	public static <T> T initializeAndUnproxy(T entity) {
 	    if (entity == null) {
@@ -160,15 +236,7 @@ public class DatabaseSingletonDaoImpl implements DatabaseSingletonDao{
 	    }
 	    return entity;
 	}
-	public static void main(String[] args) {
-		DatabaseSingletonDao db = new DatabaseSingletonDaoImpl();
-		Test t = new Test(1, "Time measured", "1000", false,db.readTT(10),db.readS(10));
-		db.create(t);
-		
-//		List<Test>temp = getAllTest();
-//		for(Test item:temp)
-//			java.lang.System.out.println("Test: " + item.toString());
-	}
+	
 
 	
 

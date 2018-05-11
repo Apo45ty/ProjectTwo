@@ -21,7 +21,6 @@ public class TestSystem{
 	@Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="system_seq")
 	@SequenceGenerator(initialValue=1, sequenceName="system_seq",allocationSize=1,name="system_seq")
-	
     @Column(name="ID", nullable=false)
 	private long id=0L;
 	

@@ -12,12 +12,44 @@ export class TestComponent implements OnInit {
   public errorMsg;
   public page = 0;
   public tests;
+  public osOptions=[];
   constructor(private _databaseService:DatabaseGetterService,
 			  private router:Router) { 
   }
-  
+  onPreviousPage(){
+	  if(this.page>0){
+		  this.page--;
+	  }
+	  this.getRequests();
+  }
+  onNextPage(){
+	  this.page++;
+	  this.getRequests();
+  }
   ngOnInit() {
-	
+	this.getRequests();
+	this.getSystems();
+  }
+   
+  selectChanged(){
+  }
+  getSystems(){
+		this._databaseService.getSystems(this.page).subscribe(
+		data => {
+			this.osOptions = data;
+			this.osOptions.push({
+				testSystem:{
+					os:"All",
+					cpu:"All",
+					id:"All",
+					diskDrive:"All",
+					ram:"All"
+				}
+			});
+		},
+		error => this.errorMsg = error);
+  }
+  getRequests(){
 	let chartColors = {
 		red: 'rgb(255, 99, 132)',
 		orange: 'rgb(255, 159, 64)',
@@ -27,7 +59,7 @@ export class TestComponent implements OnInit {
 		purple: 'rgb(153, 102, 255)',
 		grey: 'rgb(201, 203, 207)'
 	};
-	var config = {
+	let config = {
 		type: 'line',
 		data: {
 			labels: ['1', '2', '3', '4', '5', '6', '7'],
@@ -73,7 +105,6 @@ export class TestComponent implements OnInit {
 			}
 		}
 	};
-
 	this._databaseService.getTests(this.page).subscribe(
 	data => {
 		this.tests = data;
@@ -88,6 +119,6 @@ export class TestComponent implements OnInit {
 		config.data.datasets[0].data = a;
 		let myLine = new Chart(ctx, config);
 	},
-	error => this.errorMsg = error);	
+	error => this.errorMsg = error);
   }
 }

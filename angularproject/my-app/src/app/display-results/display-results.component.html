@@ -1,7 +1,10 @@
 <div >
-	<ul *ngFor="let test of this._databaseService.listData" class="list-group">
+	<ul *ngFor="let test of this.listData" class="list-group">
 		<li class="list-group-item">
 			{{test.test.comments}}
 		</li>
 	</ul>
+	<button (click)="onPreviousPage()" style="left:33%" type="button" class="btn btn-primary">Previous Page</button>
+	<span>Page Number:{{this.page}}</span>
+	<button (click)="onNextPage()" type="button" class="btn btn-primary right">Next Page</button>
 </div>

@@ -1,3 +1,15 @@
+<span>Please Select a PC:</span>
+<select (click)="selectChanged()" class="selectpicker" style="max-width:400px">
+		  <option *ngFor="let test of this.osOptions" >{{test.testSystem.os}}(
+		  {{test.testSystem.cpu}},
+		  {{test.testSystem.diskDrive}},
+		  {{test.testSystem.ram}}
+		  )
+		  </option>
+</select>
 <div style="width:100%;">
 	<canvas id="canvas"></canvas>
 </div>
+<button (click)="onPreviousPage()" style="left:33%" type="button" class="btn btn-primary">Previous Page</button>
+<span>Page Number:{{this.page}}</span>
+<button (click)="onNextPage()" type="button" class="btn btn-primary right">Next Page</button>

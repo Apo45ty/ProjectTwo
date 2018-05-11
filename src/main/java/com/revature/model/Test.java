@@ -1,5 +1,7 @@
 package com.revature.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,6 +36,8 @@ public class Test {
 	private String result;
 	@Column(name="IS_DELETED",length=40)
 	private boolean isDeleted = false;
+	@Column(name="TestDate",length=40)
+	private Timestamp date;
 	
 	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name = "tID")
@@ -55,6 +59,14 @@ public class Test {
 		this.systemID = systemID;
 	}
 
+	@XmlElement
+	public Timestamp getDate() {
+		return date;
+	}
+
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
 
 	public TestType getTestID() {
 		return testID;
