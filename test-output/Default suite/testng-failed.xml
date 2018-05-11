@@ -7,7 +7,7 @@
         <methods>
           <include name="afterTest"/>
           <include name="beforeTest"/>
-          <include name="VerifyValidLogin"/>
+          <include name="temp"/>
         </methods>
       </class> <!-- com.revature.pom.dev_assignforce_revaturelabs_com_TestNG -->
     </classes>
