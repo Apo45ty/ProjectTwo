@@ -23,7 +23,7 @@ public class StepDefinition {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new PendingException();
 		System.out.println("Set the wd");
-		File chromeFile = new File("C:\\revature\\workspace\\CucumberAndSelenium\\src\\main\\resources\\chromedriver.exe");
+		File chromeFile = new File("src/main/resources/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", chromeFile.getAbsolutePath());
 		chrome = new ChromeDriver();
 		
@@ -113,7 +113,7 @@ public class StepDefinition {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new PendingException();
 		chrome.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-		System.out.println("log out, click button and close wd");
+		System.out.println("click logout button and close wd");
 		chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]")).click();
 		
 		chrome.close();
