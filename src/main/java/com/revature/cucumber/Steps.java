@@ -33,9 +33,10 @@ public class Steps {
 //		driver.findElement(By.id("password")).sendKeys(arg2);
 	}
 
-	@Then("^Reset the credential$")
-	public void Reset_the_credential() throws Throwable {
-		driver.findElement(By.name("btnLogInToSandbox")).click();
-		driver.close();
+	@Then("^Press Logout button$")
+	public void Press_Logout_Button() throws Throwable {
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]")).click();
+		driver.quit();
 	}
 }

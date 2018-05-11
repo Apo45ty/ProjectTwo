@@ -4,7 +4,7 @@ Given Open the Firefox and launch the application
 
 When Enter the <username> and <password>
 
-Then Reset the credential						
+Then Press Logout button						
 
 Examples:                      		
 
