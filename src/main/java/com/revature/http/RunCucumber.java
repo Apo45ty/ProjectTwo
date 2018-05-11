@@ -1,13 +1,17 @@
 package com.revature.http;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
+import org.testng.collections.Lists;
 
 
 /**
@@ -28,12 +32,14 @@ public class RunCucumber extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		TestListenerAdapter adapter = new TestListenerAdapter();
 		TestNG testng = new TestNG();
-        Class[] classes = new Class[]{
-        		com.revature.cucumber.Runner.class
-        };
-        testng.setTestClasses(classes);	
-        testng.run();
+		List<String> suites = Lists.newArrayList();
+		//path to xml
+		File f =new File(System.getProperty("user.dir")+"\\src\\main\\resources\\testng.xml");
+		suites.add(f.getAbsolutePath()); 
+		testng.setTestSuites(suites);
+		testng.run();
 	}
 
 	/**
