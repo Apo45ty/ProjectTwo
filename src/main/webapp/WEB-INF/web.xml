@@ -12,38 +12,18 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
-		<servlet-name>RunSelenium</servlet-name>
-		<display-name>RunSelenium</display-name>
+		<servlet-name>JavaAppRunTestNG</servlet-name>
+		<display-name>JavaAppRunTestNG</display-name>
 		<description></description>
-		<servlet-class>com.revature.http.RunSelenium</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>GetAllSystems</servlet-name>
-		<display-name>GetAllSystems</display-name>
-		<description></description>
-		<servlet-class>com.revature.http.GetAllSystems</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>RunCucumber</servlet-name>
-		<display-name>RunCucumber</display-name>
-		<description></description>
-		<servlet-class>com.revature.http.RunCucumber</servlet-class>
+		<servlet-class>com.revature.http.JavaAppRunTestNG</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GetAllRequest</servlet-name>
 		<url-pattern>/GetAllRequest/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>RunSelenium</servlet-name>
-		<url-pattern>/RunSelenium/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>GetAllSystems</servlet-name>
-		<url-pattern>/GetAllSystems/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>RunCucumber</servlet-name>
-		<url-pattern>/RunCucumber/*</url-pattern>
+		<servlet-name>JavaAppRunTestNG</servlet-name>
+		<url-pattern>/JavaAppRunTestNG/*</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
