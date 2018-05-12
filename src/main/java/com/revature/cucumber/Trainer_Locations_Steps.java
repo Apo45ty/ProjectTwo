@@ -6,7 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class Trainer_Location_Steps {
+public class Trainer_Locations_Steps {
     WebDriver chrome;
 
     @Given("^Open browser and go to salesforce page$")
