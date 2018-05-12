@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.collections.Lists;
@@ -34,11 +35,12 @@ public class RunCucumber extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TestListenerAdapter adapter = new TestListenerAdapter();
 		TestNG testng = new TestNG();
-		List<String> suites = Lists.newArrayList();
-		//path to xml
-		File f =new File(System.getProperty("user.dir")+"\\src\\main\\resources\\testng.xml");
-		suites.add(f.getAbsolutePath()); 
-		testng.setTestSuites(suites);
+//		List<String> suites = Lists.newArrayList();
+//		File f =new File("src\\main\\resources\\testng.xml");
+//		suites.add(f.getAbsolutePath()); 
+//		testng.setTestSuites(suites);
+		testng.setTestClasses(new Class[] { com.revature.cucumber.CucumberRunner.class });
+		testng.addListener((ITestNGListener) adapter);
 		testng.run();
 	}
 
