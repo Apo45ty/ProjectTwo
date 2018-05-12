@@ -8,6 +8,6 @@ Feature: Trainer tests location page
         When Log in with <username> and <password>
         Then Test the LOCATIONS page by clicking all elements
 
-    Examples:
-    | username | password |
-    | "test.trainer@revature.com.int1"  | "trainer123" |
+        Examples:
+            | username                         | password     |
+            | "test.trainer@revature.com.int1" | "trainer123" |
