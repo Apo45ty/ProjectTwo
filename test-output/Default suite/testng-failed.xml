@@ -5,10 +5,10 @@
     <classes>
       <class name="com.revature.test.Test_Runner">
         <methods>
-          <include name="VPclicksBatches"/>
+          <include name="VPclicksLogout"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
-          <include name="VPclicksSettings"/>
+          <include name="VPclicksOverview"/>
         </methods>
       </class> <!-- com.revature.test.Test_Runner -->
     </classes>
