@@ -471,39 +471,13 @@ var DatabaseGetterService = /** @class */ (function () {
         this.http = http;
         this.router = router;
         this.endpoint = 'http://ec2-18-219-104-154.us-east-2.compute.amazonaws.com:8090/ProjectTwo';
-        this.loadedData = false;
     }
     DatabaseGetterService.prototype.getTests = function (page) {
         var _this = this;
         var a = this.http.get(this.endpoint + '/GetAllRequest/?format=json&page=' + page);
         a.subscribe(function (data) {
-            _this.loadedData = true;
-        }, function (error) {
-            _this.loadedData = true;
-            _this.errorMsg = error;
-        });
-        return a;
-    };
-    DatabaseGetterService.prototype.getTestsNonTime = function (page) {
-        var _this = this;
-        var a = this.http.get(this.endpoint + '/GetAllRequest/?format=json&page=' + page);
-        a.subscribe(function (data) {
-            _this.loadedData = true;
-        }, function (error) {
-            _this.loadedData = true;
-            _this.errorMsg = error;
-        });
-        return a;
-    };
-    DatabaseGetterService.prototype.getSystems = function (page) {
-        var _this = this;
-        var a = this.http.get(this.endpoint + '/GetAllSystems/?format=json&page=' + page);
-        a.subscribe(function (data) {
-            _this.loadedData = true;
-        }, function (error) {
-            _this.loadedData = true;
-            _this.errorMsg = error;
-        });
+            _this.listData = data;
+        }, function (error) { return _this.errorMsg = error; });
         return a;
     };
     DatabaseGetterService = __decorate([
@@ -537,7 +511,6 @@ module.exports = "\n<div class=\"modal-body row\">\n  <div class=\"col-md-6\">\n
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DisplayGraphAndResultComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_getter_service__ = __webpack_require__("./src/app/database-getter.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -548,10 +521,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var DisplayGraphAndResultComponent = /** @class */ (function () {
-    function DisplayGraphAndResultComponent(_databaseService) {
-        this._databaseService = _databaseService;
+    function DisplayGraphAndResultComponent() {
     }
     DisplayGraphAndResultComponent.prototype.ngOnInit = function () {
     };
@@ -561,7 +532,7 @@ var DisplayGraphAndResultComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/display-graph-and-result/display-graph-and-result.component.html"),
             styles: [__webpack_require__("./src/app/display-graph-and-result/display-graph-and-result.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__database_getter_service__["a" /* DatabaseGetterService */]])
+        __metadata("design:paramtypes", [])
     ], DisplayGraphAndResultComponent);
     return DisplayGraphAndResultComponent;
 }());
@@ -580,7 +551,7 @@ module.exports = ""
 /***/ "./src/app/display-results/display-results.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div >\n\t<div *ngIf='this._databaseService.loadedData; else elseBlock'>\t\t\t\t\n\t\t<ul *ngFor=\"let test of this.listData\" class=\"list-group\">\n\t\t\t<li [ngClass]=\"{'list-group-item-danger':test.updatedTest.test_context.toLowerCase() == 'FAILED'.toLowerCase()}\" class=\"list-group-item list-group-item-success\">\n\t\t\t\t{{test.updatedTest.test_name}} ({{test.updatedTest.test_context}})\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<ng-template #elseBlock>\n\t\t<br/>\n\t\t\t<img src=\"https://i.gifer.com/7YQl.gif\"/>\n\t\t<br/>\n\t</ng-template>\n\t<button (click)=\"onPreviousPage()\" style=\"left:33%\" type=\"button\" class=\"btn btn-primary\">Previous Page</button>\n\t<span>Page Number:{{this.page}}</span>\n\t<button (click)=\"onNextPage()\" type=\"button\" class=\"btn btn-primary right\">Next Page</button>\n</div>\n"
+module.exports = "<div >\n\t<ul *ngFor=\"let test of this._databaseService.listData\" class=\"list-group\">\n\t\t<li class=\"list-group-item\">\n\t\t\t{{test.test.comments}}\n\t\t</li>\n\t</ul>\n</div>\n"
 
 /***/ }),
 
@@ -605,27 +576,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DisplayResultsComponent = /** @class */ (function () {
     function DisplayResultsComponent(_databaseService) {
         this._databaseService = _databaseService;
-        this.page = 0;
     }
-    DisplayResultsComponent.prototype.getResults = function () {
-        var _this = this;
-        this._databaseService.getTestsNonTime(this.page)
-            .subscribe(function (data) {
-            _this.listData = data;
-        }, function (error) { return _this.errorMsg = error; });
-    };
     DisplayResultsComponent.prototype.ngOnInit = function () {
-        this.getResults();
-    };
-    DisplayResultsComponent.prototype.onPreviousPage = function () {
-        if (this.page > 0) {
-            this.page--;
-        }
-        this.getResults();
-    };
-    DisplayResultsComponent.prototype.onNextPage = function () {
-        this.page++;
-        this.getResults();
     };
     DisplayResultsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -752,7 +704,7 @@ module.exports = ""
 /***/ "./src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar-expand-sm navbar navbar-dark bg-primary\"  >\n  <ul class=\"navbar-nav\"  >\n    <li class=\"nav-item active\">\n      <h2>Welcome to Test Automater    </h2>\n    </li>\n    <li class=\"nav-item\">\n      <select class=\"selectpicker\" style=\"height:100%\">\n\t\t  <option>Run Test Suite 01</option>\n\t\t  <option>Run Test Suite 02</option>\n\t\t  <option>Run Test Suite 03</option>\n\t  </select>\n    </li>\n    <li class=\"nav-item\">\n      <button class=\"nav-link\">Run</button>\n    </li>\n  </ul>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-sm bg-light navbar-light\">\n  <ul class=\"navbar-nav\">\n    <li class=\"nav-item active\">\n      <a class=\"nav-link\" href=\"#\">Active</a>\n    </li>\n    <li class=\"nav-item\">\n      <select class=\"selectpicker\" style=\"height:100%\">\n\t\t  <option>Run Test Suite 01</option>\n\t\t  <option>Run Test Suite 02</option>\n\t\t  <option>Run Test Suite 03</option>\n\t  </select>\n    </li>\n    <li class=\"nav-item\">\n      <button class=\"nav-link\">Run</button>\n    </li>\n  </ul>\n</nav>"
 
 /***/ }),
 
@@ -802,7 +754,7 @@ module.exports = ""
 /***/ "./src/app/test/test.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='this._databaseService.loadedData; else elseBlock'>\t\t\t\r\n\t<div style=\"width:100%;\">\r\n\t\t<canvas id=\"canvas\"></canvas>\r\n\t</div>\r\n</div>\r\n<ng-template #elseBlock>\r\n\t<br/>\r\n\t<img src=\"https://i.gifer.com/7YQl.gif\"/>\r\n\t<br/>\r\n</ng-template>\r\n<button (click)=\"onPreviousPage()\" style=\"left:33%\" type=\"button\" class=\"btn btn-primary\">Previous Page</button>\r\n<span>Page Number:{{this.page}}</span>\r\n<button (click)=\"onNextPage()\" type=\"button\" class=\"btn btn-primary right\">Next Page</button>\r\n"
+module.exports = "<div style=\"width:100%;\">\r\n\t<canvas id=\"canvas\"></canvas>\r\n</div>"
 
 /***/ }),
 
@@ -834,40 +786,8 @@ var TestComponent = /** @class */ (function () {
         this._databaseService = _databaseService;
         this.router = router;
         this.page = 0;
-        this.osOptions = [];
     }
-    TestComponent.prototype.onPreviousPage = function () {
-        if (this.page > 0) {
-            this.page--;
-        }
-        this.getRequests();
-    };
-    TestComponent.prototype.onNextPage = function () {
-        this.page++;
-        this.getRequests();
-    };
     TestComponent.prototype.ngOnInit = function () {
-        this.getRequests();
-        this.getSystems();
-    };
-    TestComponent.prototype.selectChanged = function () {
-    };
-    TestComponent.prototype.getSystems = function () {
-        var _this = this;
-        this._databaseService.getSystems(this.page).subscribe(function (data) {
-            _this.osOptions = data;
-            _this.osOptions.push({
-                testSystem: {
-                    os: "All",
-                    cpu: "All",
-                    id: "All",
-                    diskDrive: "All",
-                    ram: "All"
-                }
-            });
-        }, function (error) { return _this.errorMsg = error; });
-    };
-    TestComponent.prototype.getRequests = function () {
         var _this = this;
         var chartColors = {
             red: 'rgb(255, 99, 132)',
@@ -883,7 +803,7 @@ var TestComponent = /** @class */ (function () {
             data: {
                 labels: ['1', '2', '3', '4', '5', '6', '7'],
                 datasets: [{
-                        label: 'Runtime Plot',
+                        label: 'Random Plot',
                         fill: false,
                         backgroundColor: chartColors.blue,
                         borderColor: chartColors.blue,
@@ -927,19 +847,10 @@ var TestComponent = /** @class */ (function () {
         this._databaseService.getTests(this.page).subscribe(function (data) {
             _this.tests = data;
             console.log(data);
-            var a = [_this.tests.length];
+            var a = [];
             for (var i = 0; i < _this.tests.length; i++) {
                 config.data.labels[i] = '' + (i + 1);
-                try {
-                    var eTime = new Date(_this.tests[i].updatedTest.test_end_date);
-                    console.log(eTime);
-                    var sTime = new Date(_this.tests[i].updatedTest.test_start_date);
-                    console.log(sTime);
-                    a[i] = eTime - sTime;
-                }
-                catch (e) {
-                    console.log(e);
-                }
+                a[_this.tests.length - 1 - i] = _this.tests[i].test.result;
             }
             var canvas = document.getElementById("canvas");
             var ctx = canvas.getContext("2d");

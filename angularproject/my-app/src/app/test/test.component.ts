@@ -45,7 +45,7 @@ export class TestComponent implements OnInit {
 		data: {
 			labels: ['1', '2', '3', '4', '5', '6', '7'],
 			datasets: [{
-				label: 'Runtime Plot',
+				label: 'Random Plot',
 				fill: false,
 				backgroundColor: chartColors.blue,
 				borderColor: chartColors.blue,
@@ -145,6 +145,7 @@ export class TestComponent implements OnInit {
 		//Get the data for the graphs
 		let tests = data;
 		console.log(data);
+<<<<<<< HEAD
 		let a = [tests.length];
 		let failCount = 0;
 		for(let i=0;i<tests.length;i++){
@@ -159,6 +160,12 @@ export class TestComponent implements OnInit {
 			}catch(e) {
 			  console.log(e);
 			}
+=======
+		let a = [];
+		for(let i=0;i<this.tests.length;i++){
+			config.data.labels[i]=''+(i+1);
+			a[this.tests.length-1-i] = this.tests[i].test.result;
+>>>>>>> 61cc6993e95a493d512cff12e42a32aa3dc55192
 		}
 		
 		//Setup line chart

@@ -12,6 +12,21 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
+<<<<<<< HEAD
+=======
+		<servlet-name>RunSelenium</servlet-name>
+		<display-name>RunSelenium</display-name>
+		<description></description>
+		<servlet-class>com.revature.http.RunSelenium</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetAllSystems</servlet-name>
+		<display-name>GetAllSystems</display-name>
+		<description></description>
+		<servlet-class>com.revature.http.GetAllSystems</servlet-class>
+	</servlet>
+	<servlet>
+>>>>>>> 61cc6993e95a493d512cff12e42a32aa3dc55192
 		<servlet-name>RunCucumber</servlet-name>
 		<display-name>RunCucumber</display-name>
 		<description></description>
@@ -22,10 +37,24 @@
 		<url-pattern>/GetAllRequest/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+<<<<<<< HEAD
 		<servlet-name>RunCucumber</servlet-name>
 		<url-pattern>/RunCucumber/*</url-pattern>
 	</servlet-mapping>
 	
+=======
+		<servlet-name>RunSelenium</servlet-name>
+		<url-pattern>/RunSelenium/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetAllSystems</servlet-name>
+		<url-pattern>/GetAllSystems/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RunCucumber</servlet-name>
+		<url-pattern>/RunCucumber/*</url-pattern>
+	</servlet-mapping>
+>>>>>>> 61cc6993e95a493d512cff12e42a32aa3dc55192
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
