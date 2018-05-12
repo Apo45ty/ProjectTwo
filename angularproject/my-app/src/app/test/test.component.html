@@ -7,9 +7,16 @@
 		  )
 		  </option>
 </select>
-<div style="width:100%;">
-	<canvas id="canvas"></canvas>
+<div *ngIf='this._databaseService.loadedData; else elseBlock'>			
+	<div style="width:100%;">
+		<canvas id="canvas"></canvas>
+	</div>
 </div>
+<ng-template #elseBlock>
+	<br/>
+	<img src="https://i.gifer.com/7YQl.gif"/>
+	<br/>
+</ng-template>
 <button (click)="onPreviousPage()" style="left:33%" type="button" class="btn btn-primary">Previous Page</button>
 <span>Page Number:{{this.page}}</span>
 <button (click)="onNextPage()" type="button" class="btn btn-primary right">Next Page</button>

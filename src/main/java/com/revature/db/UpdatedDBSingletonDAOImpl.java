@@ -152,7 +152,6 @@ public class UpdatedDBSingletonDAOImpl implements UpdatedDBSingletonDAO{
 			System.out.println(e.getLocalizedMessage());
 		}catch (Exception e ) {
 			System.out.println(e.getLocalizedMessage());
-
 		} finally {
 			session.close();
 		}

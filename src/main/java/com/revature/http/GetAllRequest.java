@@ -12,13 +12,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import org.eclipse.persistence.jaxb.MarshallerProperties;
-import org.eclipse.persistence.jaxb.JAXBContextFactory;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.revature.db.DatabaseSingletonDaoImpl;
+import com.revature.db.UpdatedDBSingletonDAOImpl;
 import com.revature.model.Test;
-import com.revature.utl.TestAdapter;
+import com.revature.model.UpdatedTest;
 
 /**
  * Servlet implementation class GetAllRequest
@@ -50,7 +47,7 @@ public class GetAllRequest extends HttpServlet {
 			
 			//JAXB JSON CONFIGURATION
 //			JAXBContext jaxbContext = JAXBContextFactory.createContext("com.revature.model.Test", null);
-			JAXBContext jaxbContext = JAXBContext.newInstance(Test.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(UpdatedTest.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			jaxbMarshaller.setProperty(MarshallerProperties.MEDIA_TYPE, "application/json");
@@ -77,8 +74,8 @@ public class GetAllRequest extends HttpServlet {
 				e.printStackTrace();
 			}
 			//Fetch the results from the web page and convert them to an array
-			List<Test> emp = DatabaseSingletonDaoImpl.getInstance().getAllTest(page);
-			Test[]result = new Test[emp.size()];
+			List<UpdatedTest> emp = UpdatedDBSingletonDAOImpl.getInstance().getAllTest(page);
+			UpdatedTest[]result = new UpdatedTest[emp.size()];
 			result = emp.toArray(result);
 			
 			//Print out the jaxb json string

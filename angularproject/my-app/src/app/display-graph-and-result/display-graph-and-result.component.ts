@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DatabaseGetterService } from '../database-getter.service';
 @Component({
   selector: 'app-display-graph-and-result',
   templateUrl: './display-graph-and-result.component.html',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayGraphAndResultComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _databaseService:DatabaseGetterService) { }
 
   ngOnInit() {
+	  
   }
 
 }

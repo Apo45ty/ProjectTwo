@@ -1,9 +1,16 @@
 <div >
-	<ul *ngFor="let test of this.listData" class="list-group">
-		<li class="list-group-item">
-			{{test.test.comments}}
-		</li>
-	</ul>
+	<div *ngIf='this._databaseService.loadedData; else elseBlock'>				
+		<ul *ngFor="let test of this.listData" class="list-group">
+			<li class="list-group-item">
+				{{test.updatedTest.test_name}} ({{test.updatedTest.test_context}})
+			</li>
+		</ul>
+	</div>
+	<ng-template #elseBlock>
+		<br/>
+			<img src="https://i.gifer.com/7YQl.gif"/>
+		<br/>
+	</ng-template>
 	<button (click)="onPreviousPage()" style="left:33%" type="button" class="btn btn-primary">Previous Page</button>
 	<span>Page Number:{{this.page}}</span>
 	<button (click)="onNextPage()" type="button" class="btn btn-primary right">Next Page</button>
