@@ -22,11 +22,6 @@ public class Trainer_Locations_Steps {
         chrome = new ChromeDriver();
         chrome.manage().window().maximize();
         chrome.get("https://dev.assignforce.revaturelabs.com");
-
-    }
-
-    @Test
-    public void trainer_logs_in_with_and_to_test_LOCATIONS() throws Throwable {
         chrome.findElement(By.id("username")).sendKeys("test.trainer@revature.com.int1");
         chrome.findElement(By.id("password")).sendKeys("trainer123");
         chrome.findElement(By.id("password")).sendKeys(Keys.RETURN);
@@ -46,9 +41,9 @@ public class Trainer_Locations_Steps {
         System.out.println("number of elements found: " + list.size());
         for (WebElement element : list) {
             try {
-                TimeUnit.MILLISECONDS.sleep(800);
+                TimeUnit.MILLISECONDS.sleep(300);
                 element.click();
-                TimeUnit.MILLISECONDS.sleep(800);
+                TimeUnit.MILLISECONDS.sleep(300);
                 element.click();
             } catch (ElementNotVisibleException e) {
                 continue;
@@ -61,8 +56,7 @@ public class Trainer_Locations_Steps {
     @Test
     public void trainer_logs_out_after_testing_LOCATIONS() throws Throwable {
         TimeUnit.SECONDS.sleep(3);
-        chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]"))
-                .click();
+        chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button/span")).click();
         chrome.quit();
 
     }
