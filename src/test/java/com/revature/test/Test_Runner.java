@@ -38,29 +38,36 @@ public class Test_Runner {
 	public void VPclicksOverview() {
 		loginAsVPofTech();
 		clickCurricula();
+		wd.quit();
 		
 	}
 	@Test
 	public void VPclicksBatches() {
 		loginAsVPofTech();
 		clickBatches();
+		wd.quit();
+		
 		
 	}
 	@Test
 	public void VPclicksCurricula() {
 		loginAsVPofTech();
 		clickCurricula();
+		wd.quit();
+		
 		
 	}
 	@Test
 	public void VPclicksLocation() {
 		loginAsVPofTech();
 		clickLocations();
+		wd.quit();
 	}
 	@Test
 	public void VPclicksTraniner() {
 		loginAsVPofTech();
 		clickTrainers();
+		wd.quit();
 		
 	}
 //	@Test
@@ -73,12 +80,14 @@ public class Test_Runner {
 	public void VPclicksSettings () {
 		loginAsVPofTech();
 		clickSettings();
+		wd.quit();
 		
 	}
 	@Test
 	public void VPclicksLogout() {
 		loginAsVPofTech();
 		clickLogout();
+		wd.quit();
 		
 		
 	}
