@@ -13,11 +13,12 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
-		
+		<!-- 
 		<mapping class="com.revature.model.Test"></mapping>
 		<mapping class="com.revature.model.TestSystem"></mapping>
 		<mapping class="com.revature.model.TestModel"></mapping>
 		<mapping class="com.revature.model.TestType"></mapping>
+		 -->
 		<mapping class="com.revature.model.UpdatedTest"></mapping>
 		
 		<!-- <mapping resource="Employee.hbm.xml"></mapping>-->
