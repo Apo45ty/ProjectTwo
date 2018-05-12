@@ -7,6 +7,7 @@ Feature: VP of Tech tests location page
         Given Open browser and go to salesforce page of vpoftech
         When Log in with <username> and <password> of vpoftech
         Then Test the LOCATIONS page by clicking all elements of vpoftech
+        And VP of Tech logs out after testing LOCATIONS page
 
         Examples:
             | username                          | password   |

@@ -26,4 +26,10 @@ public class Vpoftech_Locations_Steps{
 	    // Write code here that turns the phrase above into concrete actions
 	    
 	}
+	
+	@Then("^VP of Tech logs out after testing LOCATIONS page$")
+	public void vp_of_Tech_logs_out_after_testing_LOCATIONS_page() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
 }
