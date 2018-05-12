@@ -1,12 +1,3 @@
-<span>Please Select a PC:</span>
-<select (click)="selectChanged()" class="selectpicker" style="max-width:400px">
-		  <option *ngFor="let test of this.osOptions" >{{test.testSystem.os}}(
-		  {{test.testSystem.cpu}},
-		  {{test.testSystem.diskDrive}},
-		  {{test.testSystem.ram}}
-		  )
-		  </option>
-</select>
 <div *ngIf='this._databaseService.loadedData; else elseBlock'>			
 	<div style="width:100%;">
 		<canvas id="canvas"></canvas>

@@ -64,7 +64,7 @@ export class TestComponent implements OnInit {
 		data: {
 			labels: ['1', '2', '3', '4', '5', '6', '7'],
 			datasets: [{
-				label: 'Random Plot',
+				label: 'Runtime Plot',
 				fill: false,
 				backgroundColor: chartColors.blue,
 				borderColor: chartColors.blue,
@@ -109,10 +109,18 @@ export class TestComponent implements OnInit {
 	data => {
 		this.tests = data;
 		console.log(data);
-		let a = [];
+		let a = [this.tests.length];
 		for(let i=0;i<this.tests.length;i++){
 			config.data.labels[i]=''+(i+1);
-			a[this.tests.length-1-i] = this.tests[i].test.result;
+			try{
+				let eTime:any = new Date(this.tests[i].updatedTest.test_end_date);
+				console.log(eTime);
+				let sTime:any = new Date(this.tests[i].updatedTest.test_start_date);
+				console.log(sTime);
+				a[i] = eTime - sTime;
+			}catch(e) {
+			  console.log(e);
+			}
 		}
 		var canvas : any = document.getElementById("canvas");
 		var ctx = canvas.getContext("2d");
