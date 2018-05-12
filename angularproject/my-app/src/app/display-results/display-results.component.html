@@ -1,6 +1,6 @@
 <div >
 	<div *ngIf='this._databaseService.loadedData; else elseBlock'>				
-		<ul *ngFor="let test of this.listData" class="list-group">
+		<ul *ngFor="let test of this._databaseService.listData" class="list-group">
 			<li [ngClass]="{'list-group-item-danger':test.updatedTest.test_context.toLowerCase() == 'FAILED'.toLowerCase()}" class="list-group-item list-group-item-success">
 				{{test.updatedTest.test_name}} ({{test.updatedTest.test_context}})
 			</li>
@@ -11,7 +11,4 @@
 			<img src="https://i.gifer.com/7YQl.gif"/>
 		<br/>
 	</ng-template>
-	<button (click)="onPreviousPage()" style="left:33%" type="button" class="btn btn-primary">Previous Page</button>
-	<span>Page Number:{{this.page}}</span>
-	<button (click)="onNextPage()" type="button" class="btn btn-primary right">Next Page</button>
 </div>
