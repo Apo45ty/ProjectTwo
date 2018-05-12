@@ -1,14 +1,10 @@
-Feature: Trainer_1 Tests_1 curricula page
-Scenario Outline: Trainer_1 logs in correctly and tests curricula page
-Given Open the Chrome and launch the application
+Feature: The trainer will tests the curricula column
+Scenario Outline: The trainer logs in correctly and tests curricula column
+  Given Launches Chrome Browser and initiates login
+  When The Trainer User enters the <username> and <password>
+  Then Clicks on curricula tabs and navigates
+  And Quits session right after testing curricula
 
-When Enter the <username> and <password>
-
-Then Press Logout button						
-
-Examples:                      		
-
-|username  |password         |		
-|User1     |password1        |		
-|User2     |password2        |		
-|User3     |password3        |    
+Examples:
+| username                         | password     |
+| "test.trainer@revature.com.int1" | "trainer123" |
