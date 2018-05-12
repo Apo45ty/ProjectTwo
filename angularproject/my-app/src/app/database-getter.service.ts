@@ -13,6 +13,20 @@ export class DatabaseGetterService {
 	public listData;
 	constructor(private http:HttpClient,private router:Router) { }
 	getTests(page):Observable<Test[]>{
+<<<<<<< HEAD
+		let a : Observable<Test[]> = this.http.get<Test[]>(this.endpoint+'/GetAllRequest/?format=json&page='+page);
+		a.subscribe(
+		data => {
+			this.listData=data;
+			this.loadedData=true;
+		},
+		error => {
+			this.loadedData=true;
+			this.errorMsg = error
+		});	
+		return a;
+	}
+=======
 		let a : Observable<Test[]> = this.http.get<Test[]>(this.endpoint+'/GetAllRequest/?format=json&page='+page);	
 		return a;
 	}
@@ -24,5 +38,6 @@ export class DatabaseGetterService {
 		let a : Observable<Test[]> = this.http.get<Test[]>(this.endpoint+'/GetAllSystems/?format=json&page='+page);	
 		return a;
 	}
+>>>>>>> 61cc6993e95a493d512cff12e42a32aa3dc55192
 	
 }
