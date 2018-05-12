@@ -116,6 +116,6 @@ public class StepDefinition {
 		System.out.println("click logout button and close wd");
 		chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]")).click();
 		
-		chrome.close();
+		chrome.quit();
 	}
 }
