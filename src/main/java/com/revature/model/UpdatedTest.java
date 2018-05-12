@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-@Table(name = "Test")
+@Table(name = "Updated_Test")
 public class UpdatedTest {
 
 	static {
@@ -24,7 +24,7 @@ public class UpdatedTest {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "test_id_seq")
 	@SequenceGenerator(initialValue = 1, sequenceName = "test_id_seq", allocationSize = 1, name = "test_id_seq")
-	@Column(name = "TEST_ID", nullable = false, length = 40)
+	@Column(name = "TEST_ID", nullable = false)
 	private long test_id;
 	@Column(name = "TEST_NAME", length = 64)
 	private String test_name;
