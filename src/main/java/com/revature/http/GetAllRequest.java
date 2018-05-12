@@ -62,17 +62,6 @@ public class GetAllRequest extends HttpServlet {
 				e.printStackTrace();
 			}
 			int tt = -1;
-			try {
-				tt = Integer.parseInt(request.getParameter("testtype"));
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			}
-			int ts = -1;
-			try {
-				ts = Integer.parseInt(request.getParameter("testsystem"));
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			}
 			//Fetch the results from the web page and convert them to an array
 			List<UpdatedTest> emp = UpdatedDBSingletonDAOImpl.getInstance().getAllTest(page);
 			UpdatedTest[]result = new UpdatedTest[emp.size()];
