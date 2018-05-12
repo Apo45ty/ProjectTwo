@@ -18,6 +18,7 @@
 		<mapping class="com.revature.model.TestSystem"></mapping>
 		<mapping class="com.revature.model.TestModel"></mapping>
 		<mapping class="com.revature.model.TestType"></mapping>
+		<mapping class="com.revature.model.UpdatedTest"></mapping>
 		
 		<!-- <mapping resource="Employee.hbm.xml"></mapping>-->
 		<!-- <mapping class="com.revature.model.Customer"></mapping> -->
