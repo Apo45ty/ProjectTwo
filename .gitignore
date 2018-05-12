@@ -25,3 +25,4 @@ ProjectTwo/angularproject/my-app/package-lock.json
 hs_err_pid*
 
 target
+test-output
