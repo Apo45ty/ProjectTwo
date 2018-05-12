@@ -3,6 +3,7 @@
  */
 package com.revature.db;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -39,8 +40,21 @@ public class UpdatedDBSingletonDAOImpl implements UpdatedDBSingletonDAO{
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		UpdatedDBSingletonDAO db = new UpdatedDBSingletonDAOImpl();
+//		Timestamp  timestamp = new Timestamp(System.currentTimeMillis());
+//		UpdatedTest t = new UpdatedTest(-12L,"TempName","PASSED",false,timestamp,"12:12temp");
+//		System.out.println(db.create(t));
+//		System.out.println(db.read(3L).toString());
+//		UpdatedTest updateTest = new UpdatedTest(3L,"TestUpdate","FAILED",false,timestamp,"temp");
+//		System.out.println(db.update(updateTest));
+//		UpdatedTest t1 = db.read(2);
+//		System.out.println(db.delete(t1));
+		List<UpdatedTest> leList = db.getAllTest(0);
+		for(UpdatedTest tempout : leList) {
+			System.out.println(tempout.toString());
+			//System.out.println(leList.isEmpty());
+		}
+		
 	}
 
 	@Override
@@ -89,8 +103,8 @@ public class UpdatedDBSingletonDAOImpl implements UpdatedDBSingletonDAO{
 			NewObject.setTest_name(test.getTest_name());
 			NewObject.setTest_context(test.getTest_context());
 			NewObject.setDeleted(test.isDeleted());
-			NewObject.setTest_run_date(test.getTest_run_date());
-			NewObject.setTest_runtime(test.getTest_runtime());
+			NewObject.setTest_start_date((test.getTest_start_date()));
+			NewObject.setTest_end_date((test.getTest_end_date()));
 			updateTranscation.commit();
 		} catch (HibernateException e) {
 			if(updateTranscation !=null)
@@ -109,20 +123,36 @@ public class UpdatedDBSingletonDAOImpl implements UpdatedDBSingletonDAO{
 
 	@Override
 	public List<UpdatedTest> getAllTest(int page) {
+//		try {
+//		return mysession.getCurrentSession().createQuery("from Updated_Test").list();
+//		} catch (HibernateException e) {
+//		System.out.println(e.getLocalizedMessage());
+//		}catch (Exception e ) {
+//			System.out.println(e.getLocalizedMessage());
+//		}finally {
+//			return null;
+//		}
+//		
+
 		Session session = mysession.openSession();
 		Transaction getAllTestTranscation = null;
 		List<UpdatedTest> listOfResults = null;
 		int offset = page*LIMITPERPAGE;
 		try {
+			//return mysession.getCurrentSession().createQuery("from Foo").list();
 			getAllTestTranscation = session.beginTransaction();
 			@SuppressWarnings("rawtypes")
-			Query getAllUpdatedTestQuery =  session.createQuery("from Test order by TEST_ID");	
+			Query getAllUpdatedTestQuery =  session.createQuery("from UpdatedTest",UpdatedTest.class );	
 			getAllUpdatedTestQuery.setFirstResult(offset);
 			getAllUpdatedTestQuery.setMaxResults(LIMITPERPAGE);
 			listOfResults = getAllUpdatedTestQuery.list();
 		} catch (HibernateException e) {
 			if(getAllTestTranscation != null)
 				getAllTestTranscation.rollback();
+			System.out.println(e.getLocalizedMessage());
+		}catch (Exception e ) {
+			System.out.println(e.getLocalizedMessage());
+
 		} finally {
 			session.close();
 		}
