@@ -16,7 +16,7 @@ public class Test_System {
 		
 		TestSystem thisSiS = new TestSystem(111L,"CPU!!!","OS!!!","RAMMM!!!","DisK Drive Info ALL TEMP");
 		 	TestType temp0 = new TestType(4L,"test",3L,false);
-			 Test sendit = new Test(5L,"test","Failed",false,temp0,thisSiS);
+			 Test sendit = new Test(5L,"test","Failed",false,dao.readTT(1),dao.readS(1));
 			 dao.create(sendit);
 
 		// //Get the required system information

@@ -49,6 +49,7 @@ public class GetAllRequest extends HttpServlet {
 			System.setProperty("javax.xml.bind.context.factory","org.eclipse.persistence.jaxb.JAXBContextFactory");
 			
 			//JAXB JSON CONFIGURATION
+//			JAXBContext jaxbContext = JAXBContextFactory.createContext("com.revature.model.Test", null);
 			JAXBContext jaxbContext = JAXBContext.newInstance(Test.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -92,20 +93,20 @@ public class GetAllRequest extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
-		String commandType = request.getParameter("type");
-		if (ajax) {
-			List<Test> result = DatabaseSingletonDaoImpl.getInstance().getAllTest(0);
-			if (commandType.equals("getallTest")) {
-				String json = new Gson().toJson(result);
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write(json);
-			}
-		}
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+//		String commandType = request.getParameter("type");
+//		if (ajax) {
+//			List<Test> result = DatabaseSingletonDaoImpl.getInstance().getAllTest(0);
+//			if (commandType.equals("getallTest")) {
+//				String json = new Gson().toJson(result);
+//				response.setContentType("application/json");
+//				response.setCharacterEncoding("UTF-8");
+//				response.getWriter().write(json);
+//			}
+//		}
+//	}
 
 }
