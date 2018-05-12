@@ -52,7 +52,7 @@ public class UpdatedDBSingletonDAOImpl implements UpdatedDBSingletonDAO{
 		List<UpdatedTest> leList = db.getAllTest(0);
 		for(UpdatedTest tempout : leList) {
 			System.out.println(tempout.toString());
-			System.out.println(leList.isEmpty());
+			//System.out.println(leList.isEmpty());
 		}
 		
 	}
@@ -103,8 +103,8 @@ public class UpdatedDBSingletonDAOImpl implements UpdatedDBSingletonDAO{
 			NewObject.setTest_name(test.getTest_name());
 			NewObject.setTest_context(test.getTest_context());
 			NewObject.setDeleted(test.isDeleted());
-			NewObject.setTest_run_date(test.getTest_run_date());
-			NewObject.setTest_runtime(test.getTest_runtime());
+			NewObject.setTest_start_date((test.getTest_start_date()));
+			NewObject.setTest_end_date((test.getTest_end_date()));
 			updateTranscation.commit();
 		} catch (HibernateException e) {
 			if(updateTranscation !=null)
