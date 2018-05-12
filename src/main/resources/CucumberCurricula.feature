@@ -1,13 +1,14 @@
-Feature: Trainer tests curricula page
+Feature: Trainer_1 Tests_1 curricula page
+Scenario Outline: Trainer_1 logs in correctly and tests curricula page
+Given Open the Chrome and launch the application
 
-    Trainer logs in and tests the curricula page
+When Enter the <username> and <password>
 
-    Scenario Outline: Trainer logs in and tests curricula page
+Then Press Logout button						
 
-        Given Open browser and go to salesforce page
-        When Log in with <username> and <password>
-        Then Test the CURRICULA page by clicking all elements
+Examples:                      		
 
-    Examples:
-    | username | password |
-    | "test.trainer@revature.com.int1"  | "trainer123" |
+|username  |password         |		
+|User1     |password1        |		
+|User2     |password2        |		
+|User3     |password3        |    
