@@ -6,9 +6,8 @@
       <class name="com.revature.test.Test_Runner">
         <methods>
           <include name="afterTest"/>
+          <include name="VPclicksTraniner"/>
           <include name="beforeTest"/>
-          <include name="VPclicksCurricula"/>
-          <include name="VPclicksOverview"/>
         </methods>
       </class> <!-- com.revature.test.Test_Runner -->
     </classes>
