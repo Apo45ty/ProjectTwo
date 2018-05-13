@@ -1,9 +1,10 @@
 package com.revature.test;
-
+//main
 import java.sql.Timestamp;
 
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
+import org.testng.annotations.Listeners;
 
 import com.revature.db.DatabaseSingletonDaoImpl;
 import com.revature.db.UpdatedDBSingletonDAO;
@@ -12,6 +13,7 @@ import com.revature.model.Test;
 import com.revature.model.TestSystem;
 import com.revature.model.TestType;
 import com.revature.model.UpdatedTest;
+@Listeners(SafeForceResultListener.class)
 
 public class SafeForceResultListener extends TestListenerAdapter {
 	private static	UpdatedDBSingletonDAO DAOImpl = UpdatedDBSingletonDAOImpl.getInstance();

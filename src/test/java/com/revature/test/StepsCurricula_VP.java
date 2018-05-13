@@ -5,10 +5,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+@Listeners(SafeForceResultListener.class)
 
 public class StepsCurricula_VP {
 
