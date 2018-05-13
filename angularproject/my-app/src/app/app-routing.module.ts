@@ -4,11 +4,11 @@ import { TestComponent } from './test/test.component';
 import { FullpageComponent } from './fullpage/fullpage.component';
 const routes: Routes = [
 	{
-		path:'main',
+		path:'',
 		component:FullpageComponent
 	},
 	{
-		path:'**',redirectTo:'main',pathMatch:'full'
+		path:'**',redirectTo:'',pathMatch:'full'
 	}
 ];
 
