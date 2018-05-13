@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Command line suite]">
-  <test thread-count="5" name="Command line test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="com.revature.cucumber.CucumberRunner">
+      <class name="com.revature.test.Test_Runner">
         <methods>
-          <include name="setUpClass"/>
-          <include name="feature" invocation-numbers="0"/>
-          <include name="tearDownClass"/>
+          <include name="VPclicksBatches"/>
+          <include name="VPclicksLocation"/>
+          <include name="VPclicksLogout"/>
+          <include name="afterTest"/>
+          <include name="VPclicksTraniner"/>
+          <include name="beforeTest"/>
+          <include name="VPclicksCurricula"/>
+          <include name="VPclicksOverview"/>
+          <include name="VPclicksSettings"/>
         </methods>
-      </class> <!-- com.revature.cucumber.CucumberRunner -->
+      </class> <!-- com.revature.test.Test_Runner -->
     </classes>
-  </test> <!-- Command line test(failed) -->
-</suite> <!-- Failed suite [Command line suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

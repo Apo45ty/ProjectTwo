@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 @Listeners(SafeForceResultListener.class)
-
 public class StepsCurricula_VP {
 
     WebDriver driver;
