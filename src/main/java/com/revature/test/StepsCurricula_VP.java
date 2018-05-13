@@ -1,4 +1,4 @@
-package com.revature.testng;
+package com.revature.test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -16,15 +16,11 @@ public class StepsCurricula_VP {
 
     @Test(priority = 1)
     public void launches_Chrome_Browser_and_initiates_login() throws Throwable {
-        File chrome = new File("src/main/resources/chromedriver");
-        System.setProperty("webdriver.chrome.driver", chrome.getAbsolutePath());
-
-        // System.setProperty("webdriver.chrome.driver",
-        // "src/main/resources/chromedriver");
+    	String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
-        options.addArguments(
-                "user-data-dir=/private/var/folders/dt/81r787vd3sb5d97y7rh3w0n40000gn/T/.org.chromium.Chromium.Eqg13J");
+        options.addArguments("user-data-dir=" + path);
         options.addArguments("--start-maximized");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver(options);
         driver.get("https://dev.assignforce.revaturelabs.com");
         driver.findElement(By.id("username")).sendKeys("test.vpoftech@revature.com.int1");
