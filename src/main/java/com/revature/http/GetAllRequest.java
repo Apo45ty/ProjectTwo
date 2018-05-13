@@ -59,8 +59,15 @@ public class GetAllRequest extends HttpServlet {
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			}
+			//Get the limit per page
+			int limit = UpdatedDBSingletonDAOImpl.LIMITPERPAGE;
+			try {
+				limit = Integer.parseInt(request.getParameter("limit"));
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
 			//Fetch the results from the web page and convert them to an array
-			List<UpdatedTest> emp = UpdatedDBSingletonDAOImpl.getInstance().getAllTest(page);
+			List<UpdatedTest> emp = UpdatedDBSingletonDAOImpl.getInstance().getAllTest(page,limit);
 			UpdatedTest[]result = new UpdatedTest[emp.size()];
 			result = emp.toArray(result);
 			
