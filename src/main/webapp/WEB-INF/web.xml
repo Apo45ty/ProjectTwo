@@ -13,9 +13,8 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GetAllRequest</servlet-name>
-		<url-pattern>/GetAllRequest/*</url-pattern>
+		<url-pattern>/getAllRequest/*</url-pattern>
 	</servlet-mapping>
-	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

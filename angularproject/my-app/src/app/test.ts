@@ -1,8 +1,8 @@
 export interface Test{
+	updatedTest:any;
 	id:number;
-	testID:number;
-	systemID:number;
-	comments:string;
-	results:string;
 	isDeleted:boolean;
+	test_end_date:any;
+	test_start_date:any;
+	test_context:String;
 }

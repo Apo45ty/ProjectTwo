@@ -1,9 +1,5 @@
 package com.revature.cucumber;
 
-import org.testng.annotations.Listeners;
-
-import com.revature.test.SafeForceResultListener;
-
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 @Listeners(SafeForceResultListener.class)

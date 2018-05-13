@@ -14,7 +14,6 @@ import javax.xml.bind.Marshaller;
 import org.eclipse.persistence.jaxb.MarshallerProperties;
 
 import com.revature.db.UpdatedDBSingletonDAOImpl;
-import com.revature.model.Test;
 import com.revature.model.UpdatedTest;
 
 /**
@@ -46,7 +45,6 @@ public class GetAllRequest extends HttpServlet {
 			System.setProperty("javax.xml.bind.context.factory","org.eclipse.persistence.jaxb.JAXBContextFactory");
 			
 			//JAXB JSON CONFIGURATION
-//			JAXBContext jaxbContext = JAXBContextFactory.createContext("com.revature.model.Test", null);
 			JAXBContext jaxbContext = JAXBContext.newInstance(UpdatedTest.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -61,9 +59,15 @@ public class GetAllRequest extends HttpServlet {
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			}
-			int tt = -1;
+			//Get the limit per page
+			int limit = UpdatedDBSingletonDAOImpl.LIMITPERPAGE;
+			try {
+				limit = Integer.parseInt(request.getParameter("limit"));
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
 			//Fetch the results from the web page and convert them to an array
-			List<UpdatedTest> emp = UpdatedDBSingletonDAOImpl.getInstance().getAllTest(page);
+			List<UpdatedTest> emp = UpdatedDBSingletonDAOImpl.getInstance().getAllTest(page,limit);
 			UpdatedTest[]result = new UpdatedTest[emp.size()];
 			result = emp.toArray(result);
 			
@@ -81,7 +85,6 @@ public class GetAllRequest extends HttpServlet {
 	 */
 //	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 //			throws ServletException, IOException {
-//		// TODO Auto-generated method stub
 //		boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
 //		String commandType = request.getParameter("type");
 //		if (ajax) {

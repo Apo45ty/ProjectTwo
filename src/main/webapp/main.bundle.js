@@ -308,11 +308,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var routes = [
     {
-        path: 'main',
+        path: '',
         component: __WEBPACK_IMPORTED_MODULE_3__fullpage_fullpage_component__["a" /* FullpageComponent */]
     },
     {
-        path: '**', redirectTo: 'main', pathMatch: 'full'
+        path: '**', redirectTo: '', pathMatch: 'full'
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -470,35 +470,14 @@ var DatabaseGetterService = /** @class */ (function () {
     function DatabaseGetterService(http, router) {
         this.http = http;
         this.router = router;
-        this.endpoint = 'http://ec2-18-219-104-154.us-east-2.compute.amazonaws.com:8090/ProjectTwo';
+        this.endpoint = 'http://ec2-18-219-104-154.us-east-2.compute.amazonaws.com:8090/ProjectTwo/getAllRequest/';
         this.loadedData = false;
     }
     DatabaseGetterService.prototype.getTests = function (page) {
         var _this = this;
-        var a = this.http.get(this.endpoint + '/GetAllRequest/?format=json&page=' + page);
+        var a = this.http.get(this.endpoint + '/getAllRequest/?format=json&page=' + page);
         a.subscribe(function (data) {
-            _this.loadedData = true;
-        }, function (error) {
-            _this.loadedData = true;
-            _this.errorMsg = error;
-        });
-        return a;
-    };
-    DatabaseGetterService.prototype.getTestsNonTime = function (page) {
-        var _this = this;
-        var a = this.http.get(this.endpoint + '/GetAllRequest/?format=json&page=' + page);
-        a.subscribe(function (data) {
-            _this.loadedData = true;
-        }, function (error) {
-            _this.loadedData = true;
-            _this.errorMsg = error;
-        });
-        return a;
-    };
-    DatabaseGetterService.prototype.getSystems = function (page) {
-        var _this = this;
-        var a = this.http.get(this.endpoint + '/GetAllSystems/?format=json&page=' + page);
-        a.subscribe(function (data) {
+            _this.listData = data;
             _this.loadedData = true;
         }, function (error) {
             _this.loadedData = true;
@@ -537,7 +516,6 @@ module.exports = "\n<div class=\"modal-body row\">\n  <div class=\"col-md-6\">\n
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DisplayGraphAndResultComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_getter_service__ = __webpack_require__("./src/app/database-getter.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -548,10 +526,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var DisplayGraphAndResultComponent = /** @class */ (function () {
-    function DisplayGraphAndResultComponent(_databaseService) {
-        this._databaseService = _databaseService;
+    function DisplayGraphAndResultComponent() {
     }
     DisplayGraphAndResultComponent.prototype.ngOnInit = function () {
     };
@@ -561,7 +537,7 @@ var DisplayGraphAndResultComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/display-graph-and-result/display-graph-and-result.component.html"),
             styles: [__webpack_require__("./src/app/display-graph-and-result/display-graph-and-result.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__database_getter_service__["a" /* DatabaseGetterService */]])
+        __metadata("design:paramtypes", [])
     ], DisplayGraphAndResultComponent);
     return DisplayGraphAndResultComponent;
 }());
@@ -580,7 +556,7 @@ module.exports = ""
 /***/ "./src/app/display-results/display-results.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div >\n\t<div *ngIf='this._databaseService.loadedData; else elseBlock'>\t\t\t\t\n\t\t<ul *ngFor=\"let test of this.listData\" class=\"list-group\">\n\t\t\t<li [ngClass]=\"{'list-group-item-danger':test.updatedTest.test_context.toLowerCase() == 'FAILED'.toLowerCase()}\" class=\"list-group-item list-group-item-success\">\n\t\t\t\t{{test.updatedTest.test_name}} ({{test.updatedTest.test_context}})\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<ng-template #elseBlock>\n\t\t<br/>\n\t\t\t<img src=\"https://i.gifer.com/7YQl.gif\"/>\n\t\t<br/>\n\t</ng-template>\n\t<button (click)=\"onPreviousPage()\" style=\"left:33%\" type=\"button\" class=\"btn btn-primary\">Previous Page</button>\n\t<span>Page Number:{{this.page}}</span>\n\t<button (click)=\"onNextPage()\" type=\"button\" class=\"btn btn-primary right\">Next Page</button>\n</div>\n"
+module.exports = "<div >\n\t<div *ngIf='this._databaseService.loadedData; else elseBlock'>\t\t\t\t\n\t\t<ul *ngFor=\"let test of this._databaseService.listData\" class=\"list-group\">\n\t\t\t<li [ngClass]=\"{'list-group-item-danger':test.updatedTest.test_context.toLowerCase() == 'FAILED'.toLowerCase()}\" class=\"list-group-item list-group-item-success\">\n\t\t\t\t{{test.updatedTest.test_name}} ({{test.updatedTest.test_context}})\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<ng-template #elseBlock>\n\t\t<br/>\n\t\t\t<img src=\"https://i.gifer.com/7YQl.gif\"/>\n\t\t<br/>\n\t</ng-template>\n</div>\n"
 
 /***/ }),
 
@@ -605,27 +581,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DisplayResultsComponent = /** @class */ (function () {
     function DisplayResultsComponent(_databaseService) {
         this._databaseService = _databaseService;
-        this.page = 0;
     }
-    DisplayResultsComponent.prototype.getResults = function () {
-        var _this = this;
-        this._databaseService.getTestsNonTime(this.page)
-            .subscribe(function (data) {
-            _this.listData = data;
-        }, function (error) { return _this.errorMsg = error; });
-    };
     DisplayResultsComponent.prototype.ngOnInit = function () {
-        this.getResults();
-    };
-    DisplayResultsComponent.prototype.onPreviousPage = function () {
-        if (this.page > 0) {
-            this.page--;
-        }
-        this.getResults();
-    };
-    DisplayResultsComponent.prototype.onNextPage = function () {
-        this.page++;
-        this.getResults();
     };
     DisplayResultsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -752,7 +709,7 @@ module.exports = ""
 /***/ "./src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar-expand-sm navbar navbar-dark bg-primary\"  >\n  <ul class=\"navbar-nav\"  >\n    <li class=\"nav-item active\">\n      <h2>Welcome to Test Automater    </h2>\n    </li>\n    <li class=\"nav-item\">\n      <select class=\"selectpicker\" style=\"height:100%\">\n\t\t  <option>Run Test Suite 01</option>\n\t\t  <option>Run Test Suite 02</option>\n\t\t  <option>Run Test Suite 03</option>\n\t  </select>\n    </li>\n    <li class=\"nav-item\">\n      <button class=\"nav-link\">Run</button>\n    </li>\n  </ul>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-sm bg-primary navbar-dark\"  >\r\n  <ul class=\"navbar-nav\"  >\r\n    <li class=\"nav-item active\">\r\n      <h2>Welcome to Test Automater    </h2>\r\n    </li>\r\n    <li class=\"nav-item\">\r\n      <select class=\"selectpicker\" style=\"height:100%\">\r\n\t\t  <option>Run Test Suite 01</option>\r\n\t\t  <option>Run Test Suite 02</option>\r\n\t\t  <option>Run Test Suite 03</option>\r\n\t  </select>\r\n    </li>\r\n    <li class=\"nav-item\">\r\n      <button class=\"nav-link btn btn-secondary\">Run</button>\r\n    </li>\r\n  </ul>\r\n</nav>"
 
 /***/ }),
 
@@ -802,7 +759,7 @@ module.exports = ""
 /***/ "./src/app/test/test.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='this._databaseService.loadedData; else elseBlock'>\t\t\t\r\n\t<div style=\"width:100%;\">\r\n\t\t<canvas id=\"canvas\"></canvas>\r\n\t</div>\r\n</div>\r\n<ng-template #elseBlock>\r\n\t<br/>\r\n\t<img src=\"https://i.gifer.com/7YQl.gif\"/>\r\n\t<br/>\r\n</ng-template>\r\n<button (click)=\"onPreviousPage()\" style=\"left:33%\" type=\"button\" class=\"btn btn-primary\">Previous Page</button>\r\n<span>Page Number:{{this.page}}</span>\r\n<button (click)=\"onNextPage()\" type=\"button\" class=\"btn btn-primary right\">Next Page</button>\r\n"
+module.exports = "<div *ngIf='this._databaseService.loadedData; else elseBlock'>\t\t\t\r\n\t<div style=\"width:100%\" id=\"canvasParrent\" >\r\n\t\t<canvas id=\"canvas\"></canvas>\r\n\t</div>\r\n\t<div style=\"width:100%\" id=\"canvas2Parrent\">\r\n\t\t<canvas id=\"canvas2\"></canvas>\r\n\t</div>\r\n</div>\r\n<ng-template #elseBlock>\r\n\t<br/>\r\n\t<img src=\"https://i.gifer.com/7YQl.gif\"/>\r\n\t<br/>\r\n</ng-template>\r\n<button (click)=\"onPreviousPage()\" style=\"left:33%\" type=\"button\" class=\"btn btn-primary\">Previous Page</button>\r\n<span>Page Number:{{this.page}}</span>\r\n<button (click)=\"onNextPage()\" type=\"button\" class=\"btn btn-primary right\">Next Page</button>\r\n"
 
 /***/ }),
 
@@ -834,7 +791,6 @@ var TestComponent = /** @class */ (function () {
         this._databaseService = _databaseService;
         this.router = router;
         this.page = 0;
-        this.osOptions = [];
     }
     TestComponent.prototype.onPreviousPage = function () {
         if (this.page > 0) {
@@ -848,24 +804,8 @@ var TestComponent = /** @class */ (function () {
     };
     TestComponent.prototype.ngOnInit = function () {
         this.getRequests();
-        this.getSystems();
     };
     TestComponent.prototype.selectChanged = function () {
-    };
-    TestComponent.prototype.getSystems = function () {
-        var _this = this;
-        this._databaseService.getSystems(this.page).subscribe(function (data) {
-            _this.osOptions = data;
-            _this.osOptions.push({
-                testSystem: {
-                    os: "All",
-                    cpu: "All",
-                    id: "All",
-                    diskDrive: "All",
-                    ram: "All"
-                }
-            });
-        }, function (error) { return _this.errorMsg = error; });
     };
     TestComponent.prototype.getRequests = function () {
         var _this = this;
@@ -924,27 +864,90 @@ var TestComponent = /** @class */ (function () {
                 }
             }
         };
+        var config2 = {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                        data: [
+                            10,
+                            20
+                        ],
+                        backgroundColor: [
+                            chartColors.blue,
+                            chartColors.orange
+                        ],
+                        label: 'Dataset 1'
+                    }],
+                labels: [
+                    'Passed',
+                    'Failed'
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Passed Vs Failed Test'
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            }
+        };
         this._databaseService.getTests(this.page).subscribe(function (data) {
-            _this.tests = data;
+            //Remove the line graph from dom and add a new element with same id
+            var para = document.createElement("canvas");
+            var att = document.createAttribute("id");
+            att.value = "canvas";
+            para.setAttributeNode(att);
+            var element = document.getElementById("canvasParrent");
+            var child = document.getElementById("canvas");
+            element.removeChild(child);
+            element.appendChild(para);
+            //Remove the donught graph from dom and add a new element with same id
+            para = document.createElement("canvas");
+            att = document.createAttribute("id");
+            att.value = "canvas2";
+            para.setAttributeNode(att);
+            element = document.getElementById("canvas2Parrent");
+            child = document.getElementById("canvas2");
+            element.removeChild(child);
+            element.appendChild(para);
+            //Get the data for the graphs
+            var tests = data;
             console.log(data);
-            var a = [_this.tests.length];
-            for (var i = 0; i < _this.tests.length; i++) {
+            var a = [tests.length];
+            var failCount = 0;
+            for (var i = 0; i < tests.length; i++) {
                 config.data.labels[i] = '' + (i + 1);
+                if (tests[i].updatedTest.test_context.toLowerCase() == 'FAILED'.toLowerCase()) {
+                    failCount++;
+                }
                 try {
-                    var eTime = new Date(_this.tests[i].updatedTest.test_end_date);
-                    console.log(eTime);
-                    var sTime = new Date(_this.tests[i].updatedTest.test_start_date);
-                    console.log(sTime);
+                    var eTime = new Date(tests[i].updatedTest.test_end_date);
+                    var sTime = new Date(tests[i].updatedTest.test_start_date);
                     a[i] = eTime - sTime;
                 }
                 catch (e) {
                     console.log(e);
                 }
             }
+            //Setup line chart
             var canvas = document.getElementById("canvas");
             var ctx = canvas.getContext("2d");
             config.data.datasets[0].data = a;
             var myLine = new __WEBPACK_IMPORTED_MODULE_3_chart_js__["Chart"](ctx, config);
+            myLine.update();
+            //Setup donught chart
+            var canvas2 = document.getElementById("canvas2");
+            var ctx2 = canvas2.getContext("2d");
+            config2.data.datasets[0].data = [25 - failCount, failCount];
+            var myDoughnut = new __WEBPACK_IMPORTED_MODULE_3_chart_js__["Chart"](ctx2, config2);
+            myDoughnut.update();
         }, function (error) { return _this.errorMsg = error; });
     };
     TestComponent = __decorate([
