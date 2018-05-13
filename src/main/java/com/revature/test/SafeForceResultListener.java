@@ -1,5 +1,5 @@
 package com.revature.test;
-//test
+//main
 import java.sql.Timestamp;
 
 import org.testng.ITestResult;

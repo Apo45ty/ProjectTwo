@@ -32,6 +32,7 @@ public class Vpoftech_Locations_Steps {
 		chrome.findElement(
 				By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[3]/a/span/span"))
 				.click();
+		//Press every item on the list
 		TimeUnit.SECONDS.sleep(3);
 		List<WebElement> list;
 		list = chrome.findElements(By.cssSelector(".md-no-style.md-button.md-ink-ripple"));
@@ -47,12 +48,26 @@ public class Vpoftech_Locations_Steps {
 			}
 
 		}
+
+		//Test deleting a row
+
+		//Test to add a location
+
+		//Test to add building
+
+		//Test to add room
+
+		//Test to edit selected
 	}
 
 	@Test (priority = 3)
 	public void vp_of_Tech_logs_out_after_testing_LOCATIONS() throws Throwable {
 		TimeUnit.SECONDS.sleep(3);
-        chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button")).click();
+        try {
+            chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button")).click();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         chrome.quit();
 	}
 }
