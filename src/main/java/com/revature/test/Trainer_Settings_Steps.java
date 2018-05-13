@@ -31,6 +31,7 @@ public class Trainer_Settings_Steps{
 
     @Test (priority = 2)
     public void trainer_clicks_SETTINGS() throws Throwable{
+        TimeUnit.SECONDS.sleep(3);
         chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[8]/a/span/span")).click();
         chrome.findElement(By.id("input_3")).sendKeys("1337");
         chrome.findElement(By.id("input_4")).sendKeys("1337");
