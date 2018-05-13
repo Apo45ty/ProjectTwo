@@ -1,5 +1,6 @@
 package com.revature.test;
 
+import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -9,6 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Listeners;
 // import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
@@ -19,9 +21,12 @@ public class Trainer_Locations_Steps {
 
     @Test (priority=1)
     public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_LOCATIONS() throws Throwable {
+        String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("user-data-dir=" + path);
+        options.addArguments("--start-maximized");
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        chrome = new ChromeDriver();
-        chrome.manage().window().maximize();
+        chrome = new ChromeDriver(options);
         chrome.get("https://dev.assignforce.revaturelabs.com");
         chrome.findElement(By.id("username")).sendKeys("test.trainer@revature.com.int1");
         chrome.findElement(By.id("password")).sendKeys("trainer123");

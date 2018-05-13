@@ -27,9 +27,10 @@ export class TestComponent implements OnInit {
   ngOnInit() {
 	this._databaseService.testComponent = this;
 	this._databaseService.testComponentCallback = this.getRequests;
+  }
+  ngAfterContentInit(){
 	this.getRequests(this);
   }
-   
   getRequests(me){
 	let chartColors = {
 		red: 'rgb(255, 99, 132)',
@@ -122,6 +123,7 @@ export class TestComponent implements OnInit {
 	};
 	me._databaseService.getTests(me.page).subscribe(
 	data => {
+		this._databaseService.loadedData=true;
 		//Remove the line graph from dom and add a new element with same id
 		let para = document.createElement("canvas");
 		let att = document.createAttribute("id");       
@@ -177,4 +179,5 @@ export class TestComponent implements OnInit {
 	},
 	error => me.errorMsg = error);
   }
+  
 }
