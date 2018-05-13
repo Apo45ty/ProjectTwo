@@ -18,19 +18,19 @@ export class TestComponent implements OnInit {
 	  if(this.page>0){
 		  this.page--;
 	  }
-	  this.getRequests();
+	  this.getRequests(this);
   }
   onNextPage(){
 	  this.page++;
-	  this.getRequests();
+	  this.getRequests(this);
   }
   ngOnInit() {
-	this.getRequests();
+	this._databaseService.testComponent = this;
+	this._databaseService.testComponentCallback = this.getRequests;
+	this.getRequests(this);
   }
    
-  selectChanged(){
-  }
-  getRequests(){
+  getRequests(me){
 	let chartColors = {
 		red: 'rgb(255, 99, 132)',
 		orange: 'rgb(255, 159, 64)',
@@ -120,7 +120,7 @@ export class TestComponent implements OnInit {
 			}
 		}
 	};
-	this._databaseService.getTests(this.page).subscribe(
+	me._databaseService.getTests(me.page).subscribe(
 	data => {
 		//Remove the line graph from dom and add a new element with same id
 		let para = document.createElement("canvas");
@@ -171,10 +171,10 @@ export class TestComponent implements OnInit {
 		//Setup donught chart
 		var canvas2 : any = document.getElementById("canvas2");
 		var ctx2 = canvas2.getContext("2d");
-		config2.data.datasets[0].data = [25-failCount,failCount];
+		config2.data.datasets[0].data = [tests.length-failCount,failCount];
 		let myDoughnut = new Chart(ctx2, config2);
 		myDoughnut.update();
 	},
-	error => this.errorMsg = error);
+	error => me.errorMsg = error);
   }
 }

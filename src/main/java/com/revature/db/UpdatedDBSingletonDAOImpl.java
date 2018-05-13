@@ -49,7 +49,7 @@ public class UpdatedDBSingletonDAOImpl implements UpdatedDBSingletonDAO{
 //		System.out.println(db.update(updateTest));
 //		UpdatedTest t1 = db.read(2);
 //		System.out.println(db.delete(t1));
-		List<UpdatedTest> leList = db.getAllTest(0);
+		List<UpdatedTest> leList = db.getAllTest(0,LIMITPERPAGE);
 		for(UpdatedTest tempout : leList) {
 			System.out.println(tempout.toString());
 			//System.out.println(leList.isEmpty());
@@ -122,7 +122,7 @@ public class UpdatedDBSingletonDAOImpl implements UpdatedDBSingletonDAO{
 	}
 
 	@Override
-	public List<UpdatedTest> getAllTest(int page) {
+	public List<UpdatedTest> getAllTest(int page,int LIMITPERPAGE) {
 //		try {
 //		return mysession.getCurrentSession().createQuery("from Updated_Test").list();
 //		} catch (HibernateException e) {
@@ -133,11 +133,11 @@ public class UpdatedDBSingletonDAOImpl implements UpdatedDBSingletonDAO{
 //			return null;
 //		}
 //		
-
 		Session session = mysession.openSession();
 		Transaction getAllTestTranscation = null;
 		List<UpdatedTest> listOfResults = null;
 		int offset = page*LIMITPERPAGE;
+		System.out.println("page : "+page+" Limit : "+LIMITPERPAGE);
 		try {
 			//return mysession.getCurrentSession().createQuery("from Foo").list();
 			getAllTestTranscation = session.beginTransaction();

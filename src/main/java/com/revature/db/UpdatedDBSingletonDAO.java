@@ -18,6 +18,6 @@ public interface UpdatedDBSingletonDAO {
 	boolean update(UpdatedTest test);
 	boolean delete(UpdatedTest test);
 	
-	List<UpdatedTest>getAllTest(int page);
+	List<UpdatedTest> getAllTest(int page, int LIMITPERPAGE);
 	
 }
