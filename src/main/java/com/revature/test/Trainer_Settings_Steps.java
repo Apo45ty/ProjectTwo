@@ -28,7 +28,18 @@ public class Trainer_Settings_Steps{
     }
 
     @Test (priority = 2)
-    public void trainer_clicks_SETTINGS(){
+    public void trainer_clicks_SETTINGS() throws Throwable{
+        chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[8]/a/span/span")).click();
+        chrome.findElement(By.id("input_3")).sendKeys("1337");
+        chrome.findElement(By.id("input_4")).sendKeys("1337");
+        chrome.findElement(By.id("input_5")).sendKeys("1337");
+        chrome.findElement(By.id("input_10")).sendKeys("1337");
+        chrome.findElement(By.id("input_11")).sendKeys("1337");
+        chrome.findElement(By.id("input_12")).sendKeys("1337");
+        chrome.findElement(By.id("input_13")).sendKeys("1337");
+        chrome.findElement(By.xpath("//*[@id=\"select_value_label_1\"]/span[1]/div")).click();
+        TimeUnit.MILLISECONDS.sleep(500);
+        chrome.findElement(By.xpath("//*[@id=\"select_option_17\"]"));
 
     }
 
