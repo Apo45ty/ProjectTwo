@@ -1,25 +1,16 @@
-<<<<<<< HEAD
 <div *ngIf='this._databaseService.loadedData; else elseBlock'>			
-	<div style="width:100%" id="canvasParrent" #canvasParrent >
+	<div style="width:100%" id="canvasParrent" >
 		<canvas id="canvas"></canvas>
 	</div>
 	<div style="width:100%" id="canvas2Parrent">
 		<canvas id="canvas2"></canvas>
 	</div>
-=======
-<span>Please Select a PC:</span>
-<select (click)="selectChanged()" class="selectpicker" style="max-width:400px">
-		  <option *ngFor="let test of this.osOptions" >{{test.testSystem.os}}(
-		  {{test.testSystem.cpu}},
-		  {{test.testSystem.diskDrive}},
-		  {{test.testSystem.ram}}
-		  )
-		  </option>
-</select>
-<div style="width:100%;">
-	<canvas id="canvas"></canvas>
->>>>>>> 61cc6993e95a493d512cff12e42a32aa3dc55192
 </div>
+<ng-template #elseBlock>
+	<br/>
+	<img src="https://i.gifer.com/7YQl.gif"/>
+	<br/>
+</ng-template>
 <button (click)="onPreviousPage()" style="left:33%" type="button" class="btn btn-primary">Previous Page</button>
 <span>Page Number:{{this.page}}</span>
 <button (click)="onNextPage()" type="button" class="btn btn-primary right">Next Page</button>

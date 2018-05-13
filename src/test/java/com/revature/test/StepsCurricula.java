@@ -14,7 +14,7 @@ public class StepsCurricula {
 
 @Test (priority = 1)
 public void launches_Chrome_Browser_and_initiates_login() throws Throwable {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://dev.assignforce.revaturelabs.com");
         driver.findElement(By.id("username")).sendKeys("test.trainer@revature.com.int1");
