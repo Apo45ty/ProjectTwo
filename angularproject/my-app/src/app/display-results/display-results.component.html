@@ -2,7 +2,7 @@
 	<div *ngIf='this._databaseService.loadedData; else elseBlock'>				
 		<ul *ngFor="let test of this._databaseService.listData" class="list-group">
 			<li [ngClass]="{'list-group-item-danger':test.updatedTest.test_context.toLowerCase() == 'FAILED'.toLowerCase()}" class="list-group-item list-group-item-success">
-				{{test.updatedTest.test_name}} ({{test.updatedTest.test_context}})
+				{{test.updatedTest.test_name}} ({{test.updatedTest.test_context}}) and took {{test.updatedTest.runtime}}ms
 			</li>
 		</ul>
 	</div>
