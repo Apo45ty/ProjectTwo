@@ -1,14 +1,15 @@
 package com.revature.http;
 
-import java.io.File;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.testng.ITestNGListener;
+import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
-import org.testng.collections.Lists;
+
+import com.revature.db.UpdatedDBSingletonDAO;
+import com.revature.db.UpdatedDBSingletonDAOImpl;
+import com.revature.model.UpdatedTest;
 
 public class JavaAppRunTestNG {
 	public static void main(String[] args) {
@@ -18,7 +19,7 @@ public class JavaAppRunTestNG {
 //		File f =new File("src\\main\\resources\\testng.xml");
 //		suites.add(f.getAbsolutePath()); 
 //		testng.setTestSuites(suites);
-		testng.setTestClasses(new Class[] { com.revature.cucumber.CucumberRunner.class });
+		testng.setTestClasses(new Class[] { com.revature.test.StepsCurricula_VP.class });
 		testng.addListener((ITestNGListener) adapter);
 		testng.run();
 	}

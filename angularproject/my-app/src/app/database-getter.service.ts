@@ -22,6 +22,15 @@ export class DatabaseGetterService {
 		data => {
 			this.listData=data;
 			this.loadedData=true;
+			for(let i=0;i<this.listData.length;i++){
+				try{
+					let eTime:any = new Date(this.listData[i].updatedTest.test_end_date); 
+					let sTime:any = new Date(this.listData[i].updatedTest.test_start_date);
+					this.listData[i].updatedTest.runtime = eTime - sTime;
+				}catch(e) {
+				  console.log(e);
+				}
+			}
 		},
 		error => {
 			this.loadedData=true;
