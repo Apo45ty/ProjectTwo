@@ -10,11 +10,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+<<<<<<< HEAD:src/main/java/com/revature/test/Trainer_Locations_Steps.java
 import org.openqa.selenium.chrome.ChromeOptions;
+=======
+import org.testng.annotations.Listeners;
+>>>>>>> 0577e084efc13d0011b37ec3ac87e075a7216fc2:src/test/java/com/revature/test/Trainer_Locations_Steps.java
 // import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-//@Listeners(SafeForceResultListener.class)
+@Listeners(SafeForceResultListener.class)
 public class Trainer_Locations_Steps {
     WebDriver chrome;
 
