@@ -56,7 +56,11 @@ public class Trainer_Locations_Steps {
     @Test (priority = 3)
     public void trainer_logs_out_after_testing_LOCATIONS() throws Throwable {
         TimeUnit.SECONDS.sleep(3);
-        chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button")).click();
+        try {
+            chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button")).click();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         chrome.quit();
     }
 }
