@@ -12,9 +12,12 @@ export class DatabaseGetterService {
 	public errorMsg;
 	public listData;
 	public loadedData = false;
+	public limitPerPage = 25;
+	public testComponentCallback;
+	public testComponent;
 	constructor(private http:HttpClient,private router:Router) { }
 	getTests(page):Observable<Test[]>{
-		let a : Observable<Test[]> = this.http.get<Test[]>(this.endpoint+'/getAllRequest/?format=json&page='+page);
+		let a : Observable<Test[]> = this.http.get<Test[]>(this.endpoint+'/getAllRequest/?format=json&page='+page+'&limit='+this.limitPerPage);
 		a.subscribe(
 		data => {
 			this.listData=data;
@@ -26,5 +29,6 @@ export class DatabaseGetterService {
 		});	
 		return a;
 	}
+	
 	
 }
