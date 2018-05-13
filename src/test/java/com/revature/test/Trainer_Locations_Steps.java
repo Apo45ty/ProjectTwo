@@ -9,10 +9,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Listeners;
 // import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-//@Listeners(SafeForceResultListener.class)
+@Listeners(SafeForceResultListener.class)
 public class Trainer_Locations_Steps {
     WebDriver chrome;
 
