@@ -55,15 +55,59 @@ public class Vpoftech_Locations_Steps {
 		}
 
 		//Test deleting a row
-		chrome.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-list/md-list-item[1]/div[1]/div[1]/md-checkbox/div[1]"));
-		
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-list/md-list-item[1]/div[1]/div[1]/md-checkbox/div[1]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-toolbar/button[5]/md-icon")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"dialogContent_1\"]/div/md-dialog-actions/button[1]")).click();
+		TimeUnit.SECONDS.sleep(1);
 		//Test to add a location
-
+		chrome.findElement(By.xpath("//*[@id=\"locAdd\"]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"input_54\"]")).sendKeys("A Building");
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"input_55\"]")).sendKeys("Herndon");
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"select_value_label_53\"]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"select_option_160\"]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/md-dialog-actions/button[1]")).click();
+		TimeUnit.SECONDS.sleep(1);
 		//Test to add building
-
+		chrome.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-list/md-list-item[1]/div[1]/div[1]/md-checkbox/div[1]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"bldgAdd\"]/md-icon")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"input_165\"]")).sendKeys("Building #1");
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/div/md-dialog-actions/button[1]")).click();
+		TimeUnit.SECONDS.sleep(1);
 		//Test to add room
-
+		chrome.findElement(By.xpath("//*[@id=\"loc391\"]/md-list-item/div/div[1]/md-checkbox/div[1]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"roomAdd\"]/md-icon")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"input_169\"]")).sendKeys("107");
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/div/md-dialog-actions/button[1]")).click();
+		TimeUnit.SECONDS.sleep(1);
 		//Test to edit selected
+		chrome.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-list/md-list-item[1]/div[1]/div[1]/md-checkbox/div[1]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"locEdit\"]/md-icon")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"input_284\"]")).sendKeys("Papa Wonka");
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"input_285\"]")).sendKeys("Pizza Townz");
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"select_value_label_283\"]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("//*[@id=\"select_option_334\"]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/md-dialog-actions/button[1]")).click();
+		TimeUnit.SECONDS.sleep(1);
 	}
 
 	@Test (priority = 3)
