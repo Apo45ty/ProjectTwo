@@ -35,9 +35,25 @@ public class StepsCurricula_VP {
                 By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[4]/a/span/span"))
                 .click();
         driver.findElement(By.id("coreArrow")).click();
-        driver.findElement(By.id("coreArrow")).click();
-        driver.findElement(By.id("focusArrow")).click();
-        driver.findElement(By.id("focusArrow")).click();
+        driver.findElement(By.id("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]/md-icon"));
+        driver.findElement(By.id("input_294")).sendKeys("New Core Currila"); ////*[@id="select_295"]
+        driver.findElement(By.xpath("//*[@id=\"select_295\"]")).click();
+        driver.findElement(By.xpath("//*[@id=\"select_option_330\"]/div[2]")).click();
+        driver.findElement(By.xpath("/html/body/div[3]/md-dialog")).click();
+        driver.findElement(By.xpath("/html/body/div[3]/md-dialog/md-dialog-actions/button[2]/span")).click();
+        driver.findElement(By.id("//*[@id=\"core\"]/md-list/md-list-item[1]/button[1]/i")).click();
+        driver.findElement(By.xpath("//*[@id=\"select_295\"]")).click();
+        driver.findElement(By.xpath("//*[@id=\"select_option_330\"]/div[2]")).click();
+        driver.findElement(By.xpath("/html/body/div[3]/md-dialog")).click();
+        driver.findElement(By.xpath("/html/body/div[3]/md-dialog/md-dialog-actions/button[2]/span")).click();
+        driver.findElement(By.xpath("//*[@id=\"input_1\"]")).click();
+        driver.findElement(By.xpath("//*[@id=\"input_1\"]")).sendKeys("New Skillz");
+
+        driver.findElement(By.xpath("//*[@id=\"skill\"]/form/div/div/div/span")).click();
+        // driver.findElement(By.id("coreArrow")).click();
+        // driver.findElement(By.id("coreArrow")).click();
+
+
 
     }
 
