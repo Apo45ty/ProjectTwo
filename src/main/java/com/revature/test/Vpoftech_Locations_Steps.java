@@ -1,4 +1,4 @@
-package com.revature.testng;
+package com.revature.test;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
