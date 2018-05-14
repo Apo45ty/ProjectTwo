@@ -34,48 +34,48 @@ public class Test_Runner {
 //		wd.manage().timeouts().implicitlyWait(33, TimeUnit.SECONDS);
 //		
 //	}
-	@Test
+	@Test (groups = { "include-test-one" })
 	public void VPclicksOverview() {
 		loginAsVPofTech();
 		clickCurricula();
 		
 	}
-	@Test
+	@Test(groups = { "include-test-one" })
 	public void VPclicksBatches() {
 		loginAsVPofTech();
 		clickBatches();
 		
 	}
-	@Test
+	@Test(groups = { "include-test-one" })
 	public void VPclicksCurricula() {
 		loginAsVPofTech();
 		clickCurricula();
 		
 	}
-	@Test
+	@Test(groups = { "include-test-one" })
 	public void VPclicksLocation() {
 		loginAsVPofTech();
 		clickLocations();
 	}
-	@Test
+	@Test(groups = { "include-test-one" })
 	public void VPclicksTraniner() {
 		loginAsVPofTech();
 		clickTrainers();
 		
 	}
-//	@Test
-//	public void VPclicksProfile () {
-//		loginAsVPofTech();
-//		clickProfile();
-//		wd.quit();
-//	}
-	@Test
+	@Test(groups = { "include-test-one" })
+	public void VPclicksProfile () {
+		loginAsVPofTech();
+		clickProfile();
+		wd.quit();
+	}
+	@Test(groups = { "include-test-one" })
 	public void VPclicksSettings () {
 		loginAsVPofTech();
 		clickSettings();
 		
 	}
-	@Test
+	@Test(groups = { "include-test-one" })
 	public void VPclicksLogout() {
 		loginAsVPofTech();
 		clickLogout();
