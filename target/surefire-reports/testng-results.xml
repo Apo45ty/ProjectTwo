@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Group of group Suite" duration-ms="5275" started-at="2018-05-14T12:25:50Z" finished-at="2018-05-14T12:25:55Z">
+    <groups>
+      <group name="include-test-one">
+        <method signature="Test_Runner.LoginAsVP()[pri:0, instance:com.revature.test.Test_Runner@61832929]" name="LoginAsVP" class="com.revature.test.Test_Runner"/>
+      </group> <!-- include-test-one -->
+    </groups>
+    <test name="Group of group Test" duration-ms="5275" started-at="2018-05-14T12:25:50Z" finished-at="2018-05-14T12:25:55Z">
+      <class name="com.revature.test.Test_Runner">
+        <test-method status="PASS" signature="LoginAsVP()[pri:0, instance:com.revature.test.Test_Runner@61832929]" name="LoginAsVP" duration-ms="5066" started-at="2018-05-14T08:25:50Z" finished-at="2018-05-14T08:25:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginAsVP -->
+      </class> <!-- com.revature.test.Test_Runner -->
+    </test> <!-- Group of group Test -->
+  </suite> <!-- Group of group Suite -->
+</testng-results>

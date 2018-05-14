@@ -1,0 +1,10 @@
+# Created on 2018-05-13T22:55:20.113
+org.apache.maven.surefire.testset.TestSetFailedException: Suite file C:\Users\kaiser\CS\RevatureTraning\Repo\ProjectTwo\ProjectTwo\testng.xml is not a valid file
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.locateTestSets(TestNGXmlTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:119)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413)
+
+
