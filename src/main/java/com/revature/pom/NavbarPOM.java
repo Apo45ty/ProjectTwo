@@ -17,7 +17,7 @@ public class NavbarPOM {
 	/**
 	 * 
 	 */
-	private static WebElement element;
+	public static WebElement element;
 
 	
 	public static WebElement nav_bar(WebDriver wd) {
