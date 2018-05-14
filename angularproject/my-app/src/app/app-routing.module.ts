@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TestComponent } from './test/test.component';
-
+import { FullpageComponent } from './fullpage/fullpage.component';
 const routes: Routes = [
 	{
-		path:'main',
-		component:TestComponent
+		path:'',
+		component:FullpageComponent
 	},
 	{
-		path:'**',redirectTo:'main',pathMatch:'full'
+		path:'**',redirectTo:'',pathMatch:'full'
 	}
 ];
 

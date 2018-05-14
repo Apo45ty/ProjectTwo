@@ -11,9 +11,19 @@
 		<servlet-class>com.revature.http.GetAllRequest</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<servlet-name>RunTest</servlet-name>
+		<display-name>RunTest</display-name>
+		<description></description>
+		<servlet-class>com.revature.http.RunTest</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>GetAllRequest</servlet-name>
-		<url-pattern>/getAll/*</url-pattern>
+		<url-pattern>/getAllRequest/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RunTest</servlet-name>
+		<url-pattern>/runTest/*</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

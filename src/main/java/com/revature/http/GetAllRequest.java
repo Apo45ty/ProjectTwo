@@ -1,6 +1,7 @@
 package com.revature.http;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,64 +13,89 @@ import javax.xml.bind.Marshaller;
 
 import org.eclipse.persistence.jaxb.MarshallerProperties;
 
-import com.revature.db.DatabaseSingletonDaoImpl;
-import com.revature.model.Test;
+import com.revature.db.UpdatedDBSingletonDAOImpl;
+import com.revature.model.UpdatedTest;
 
 /**
  * Servlet implementation class GetAllRequest
  */
 public class GetAllRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GetAllRequest() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public GetAllRequest() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// Set response headers to allow cross origin request
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Request-Method", "*");
+		//Try to execute jaxb marsheling
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Test.class);
+			//Set the context factory without the jaxb.properties file
+			System.setProperty("javax.xml.bind.context.factory","org.eclipse.persistence.jaxb.JAXBContextFactory");
+			
+			//JAXB JSON CONFIGURATION
+			JAXBContext jaxbContext = JAXBContext.newInstance(UpdatedTest.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-			// output pretty printed
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			// Set the Marshaller media type to JSON or XML
 			jaxbMarshaller.setProperty(MarshallerProperties.MEDIA_TYPE, "application/json");
-
-			// Set it to true if you need to include the JSON root element in the JSON
-			// output
 			jaxbMarshaller.setProperty(MarshallerProperties.JSON_INCLUDE_ROOT, true);
-			// Set it to true if you need the JSON output to formatted
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			
+			//Try to parse the page parameter
 			int page = 0;
 			try {
-				page=Integer.parseInt(request.getParameter("page"));
-			} catch(NumberFormatException e) {
+				page = Integer.parseInt(request.getParameter("page"));
+			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			}
-			Test[] result = DatabaseSingletonDaoImpl.getInstance().getAllTest();
+			//Get the limit per page
+			int limit = UpdatedDBSingletonDAOImpl.LIMITPERPAGE;
+			try {
+				limit = Integer.parseInt(request.getParameter("limit"));
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			//Fetch the results from the web page and convert them to an array
+			List<UpdatedTest> emp = UpdatedDBSingletonDAOImpl.getInstance().getAllTest(page,limit);
+			UpdatedTest[]result = new UpdatedTest[emp.size()];
+			result = emp.toArray(result);
+			
+			//Print out the jaxb json string
 			jaxbMarshaller.marshal(result, System.out);
 			jaxbMarshaller.marshal(result, response.getWriter());
-			
 		} catch (JAXBException ex) {
 			ex.printStackTrace();
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+//		String commandType = request.getParameter("type");
+//		if (ajax) {
+//			List<Test> result = DatabaseSingletonDaoImpl.getInstance().getAllTest(0);
+//			if (commandType.equals("getallTest")) {
+//				String json = new Gson().toJson(result);
+//				response.setContentType("application/json");
+//				response.setCharacterEncoding("UTF-8");
+//				response.getWriter().write(json);
+//			}
+//		}
+//	}
 
 }
