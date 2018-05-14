@@ -27,15 +27,17 @@ public class RunTest extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		TestListenerAdapter adapter = new TestListenerAdapter();
-//		TestNG testng = new TestNG();
-//		testng.setTestClasses(new Class[] { 
-//				com.revature.test.StepsCurricula.class,
-//		});
-//		testng.addListener((ITestNGListener) adapter);
-//		testng.run();
-//	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Request-Method", "*");
+		TestListenerAdapter adapter = new TestListenerAdapter();
+		TestNG testng = new TestNG();
+		testng.setTestClasses(new Class[] { 
+				com.revature.test.Trainer_Locations_Steps.class,
+		});
+		testng.addListener((ITestNGListener) adapter);
+		testng.run();
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
