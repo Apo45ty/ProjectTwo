@@ -23,7 +23,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>RunTest</servlet-name>
-		<url-pattern>/runTest</url-pattern>
+		<url-pattern>/runTest/*</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

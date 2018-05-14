@@ -11,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(com.revature.test.SafeForceResultListener.class)
 public class Trainer_Settings_Steps{
     WebDriver chrome;
 
