@@ -58,7 +58,7 @@ public class Trainer_Locations_Steps {
 
     }
 
-    @Test (priority = 3)
+    @Test (priority = 0)
     public void trainer_logs_out_after_testing_LOCATIONS() throws Throwable {
         TimeUnit.SECONDS.sleep(3);
         try {

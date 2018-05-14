@@ -44,8 +44,9 @@ public class RunTest extends HttpServlet {
 							com.revature.test.StepsCurricula_VP.class
 					});
 					testng.addListener((ITestNGListener) adapter);
-					testng.run();
 					testng.setVerbose(-1);
+					testng.setUseDefaultListeners(false);
+					testng.run();
 					hasRequest=false;
 				}
 			}
