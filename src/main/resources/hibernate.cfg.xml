@@ -12,7 +12,7 @@
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@maria.cq2oivzvgsvz.us-east-2.rds.amazonaws.com:1519:ORCL</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		<!-- 
 		<mapping class="com.revature.model.Test"></mapping>
 		<mapping class="com.revature.model.TestSystem"></mapping>
