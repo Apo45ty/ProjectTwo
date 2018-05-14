@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-@Table(name = "Updated_Test")
+@Table(name = "Updated_Test1")
 public class UpdatedTest {
 
 	static {
@@ -32,7 +32,8 @@ public class UpdatedTest {
 	// PASSED or FAILED or SKIPPED these are the three options TESTNG Has
 	@Column(name = "TEST_CONTEXT", length = 9)
 	private String test_context; // use ITestResult.getTestContext()
-	
+	@Column(name="TEST_COMMENT",length=256)
+	private String test_comment;	
 	@Column(name="IS_DELETED",length=16)
 	private boolean isDeleted = false;
 	@Column(name="TEST_START_DATE",length=64)
@@ -42,24 +43,28 @@ public class UpdatedTest {
 	
 	public UpdatedTest() {}
 
+
 	/**
 	 * @param test_id
 	 * @param test_name
 	 * @param test_context
+	 * @param test_comment
 	 * @param isDeleted
 	 * @param test_start_date
 	 * @param test_end_date
 	 */
-	public UpdatedTest(long test_id, String test_name, String test_context, boolean isDeleted,
+	public UpdatedTest(long test_id, String test_name, String test_context, String test_comment, boolean isDeleted,
 			Timestamp test_start_date, Timestamp test_end_date) {
 		super();
 		this.test_id = test_id;
 		this.test_name = test_name;
 		this.test_context = test_context;
+		this.test_comment = test_comment;
 		this.isDeleted = isDeleted;
 		this.test_start_date = test_start_date;
 		this.test_end_date = test_end_date;
 	}
+
 
 	/**
 	 * @return the test_id
@@ -150,16 +155,23 @@ public class UpdatedTest {
 	public void setTest_end_date(Timestamp test_end_date) {
 		this.test_end_date = test_end_date;
 	}
+	
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * @return the test_comment
 	 */
-	@Override
-	public String toString() {
-		return "UpdatedTest [test_id=" + test_id + ", test_name=" + test_name + ", test_context=" + test_context
-				+ ", isDeleted=" + isDeleted + ", test_start_date=" + test_start_date + ", test_end_date="
-				+ test_end_date + "]";
+	public String getTest_comment() {
+		return test_comment;
 	}
+
+
+	/**
+	 * @param test_comment the test_comment to set
+	 */
+	public void setTest_comment(String test_comment) {
+		this.test_comment = test_comment;
+	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -169,6 +181,7 @@ public class UpdatedTest {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (isDeleted ? 1231 : 1237);
+		result = prime * result + ((test_comment == null) ? 0 : test_comment.hashCode());
 		result = prime * result + ((test_context == null) ? 0 : test_context.hashCode());
 		result = prime * result + ((test_end_date == null) ? 0 : test_end_date.hashCode());
 		result = prime * result + (int) (test_id ^ (test_id >>> 32));
@@ -176,6 +189,7 @@ public class UpdatedTest {
 		result = prime * result + ((test_start_date == null) ? 0 : test_start_date.hashCode());
 		return result;
 	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
@@ -190,6 +204,11 @@ public class UpdatedTest {
 			return false;
 		UpdatedTest other = (UpdatedTest) obj;
 		if (isDeleted != other.isDeleted)
+			return false;
+		if (test_comment == null) {
+			if (other.test_comment != null)
+				return false;
+		} else if (!test_comment.equals(other.test_comment))
 			return false;
 		if (test_context == null) {
 			if (other.test_context != null)
@@ -215,5 +234,22 @@ public class UpdatedTest {
 			return false;
 		return true;
 	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "UpdatedTest [test_id=" + test_id + ", test_name=" + test_name + ", test_context=" + test_context
+				+ ", test_comment=" + test_comment + ", isDeleted=" + isDeleted + ", test_start_date=" + test_start_date
+				+ ", test_end_date=" + test_end_date + "]";
+	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	
 	
 }
