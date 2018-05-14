@@ -15,8 +15,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-
 import com.revature.pom.BatchesPOM;
 import com.revature.pom.LoginPage;
 import com.revature.pom.NavbarPOM;
