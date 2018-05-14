@@ -8,7 +8,7 @@ import { Test } from './Test';
 
 @Injectable()
 export class DatabaseGetterService {
-	public endpoint = 'http://localhost:8080/ProjectTwo';
+	public endpoint = 'http://ec2-18-219-104-154.us-east-2.compute.amazonaws.com:8090/ProjectTwo';
 	public errorMsg;
 	public listData;
 	public loadedData = false;
