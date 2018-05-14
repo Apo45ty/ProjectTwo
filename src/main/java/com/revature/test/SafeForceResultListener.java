@@ -23,7 +23,7 @@ public class SafeForceResultListener extends TestListenerAdapter {
 		 	Timestamp  startofTest = new Timestamp(result.getStartMillis());
 		 	System.out.println("Start Time of Test " + startofTest.toString());
 		 	System.out.println("End Time of Test " + endofTest.toString());
-		  	UpdatedTest sendit = new UpdatedTest(-12L,result.getName(),result.getTestContext().toString(),false,startofTest,endofTest);
+		  	UpdatedTest sendit = new UpdatedTest(-12L,result.getName(),"FAILED",false,startofTest,endofTest);
 		 	DAOImpl.create(sendit);
 	    }
 
@@ -33,7 +33,7 @@ public class SafeForceResultListener extends TestListenerAdapter {
 		 	Timestamp  startofTest = new Timestamp(result.getStartMillis());
 		 	System.out.println("Start Time of Test " + startofTest.toString());
 		 	System.out.println("End Time of Test " + endofTest.toString());
-		  	UpdatedTest sendit = new UpdatedTest(-12L,result.getName(),result.getTestContext().toString(),false,startofTest,endofTest);
+		  	UpdatedTest sendit = new UpdatedTest(-12L,result.getName(),"PASSED",false,startofTest,endofTest);
 		  	DAOImpl.create(sendit);
 	    }
 
@@ -43,7 +43,7 @@ public class SafeForceResultListener extends TestListenerAdapter {
 		 	Timestamp  startofTest = new Timestamp(result.getStartMillis());
 		 	System.out.println("Start Time of Test " + startofTest.toString());
 		 	System.out.println("End Time of Test " + endofTest.toString());
-		  	UpdatedTest sendit = new UpdatedTest(-12L,result.getName(),result.getTestContext().toString(),false,startofTest,endofTest);
+		  	UpdatedTest sendit = new UpdatedTest(-12L,result.getName(),"SKIPPED",false,startofTest,endofTest);
 		  	DAOImpl.create(sendit);
 	    }
 }

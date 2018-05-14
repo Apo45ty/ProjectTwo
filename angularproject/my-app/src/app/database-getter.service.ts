@@ -39,5 +39,15 @@ export class DatabaseGetterService {
 		return a;
 	}
 	
+	runTest(){
+		let a = this.http.get(this.endpoint+'/runTest/');
+		a.subscribe(
+		data => {
+		},
+		error => {
+			this.errorMsg = error
+		});	
+	}
+	
 	
 }
