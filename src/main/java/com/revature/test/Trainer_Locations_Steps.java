@@ -19,8 +19,8 @@ import org.testng.annotations.Test;
 public class Trainer_Locations_Steps {
     WebDriver chrome;
 
-    @Test (priority=1)
-    public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_LOCATIONS(){
+    @Test(priority = 1)
+    public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_LOCATIONS() {
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-data-dir=" + path);
@@ -34,22 +34,22 @@ public class Trainer_Locations_Steps {
 
     }
 
-    @Test (priority = 2)
-    public void trainer_tests_the_LOCATIONS_page_by_clicking_all_elements(){
+    @Test(priority = 2)
+    public void trainer_tests_the_LOCATIONS_page_by_clicking_all_elements() {
         try {
-			TimeUnit.SECONDS.sleep(8);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
+            TimeUnit.SECONDS.sleep(8);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
 
         chrome.findElement(
                 By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[3]/a/span/span"))
                 .click();
         try {
-			TimeUnit.SECONDS.sleep(3);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
         List<WebElement> list;
         list = chrome.findElements(By.cssSelector(".md-no-style.md-button.md-ink-ripple"));
         System.out.println("number of elements found: " + list.size());
@@ -69,15 +69,17 @@ public class Trainer_Locations_Steps {
 
     }
 
-    @Test (priority = 3)
-    public void trainer_logs_out_after_testing_LOCATIONS(){
+    @Test(priority = 3)
+    public void trainer_logs_out_after_testing_LOCATIONS() {
         try {
-			TimeUnit.SECONDS.sleep(3);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
         try {
-            chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button")).click();
+            chrome.findElement(
+                    By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button"))
+                    .click();
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
