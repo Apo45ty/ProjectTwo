@@ -44,16 +44,19 @@ public class SafeForceResultListener extends TestListenerAdapter {
 		Timestamp startofTest = new Timestamp(result.getStartMillis());
 		System.out.println("Start Time of Test " + startofTest.toString());
 		System.out.println("End Time of Test " + endofTest.toString());
+		String possibleErrorMessage = "No Comment Provided";
 		try {
 			if (result.getThrowable().getLocalizedMessage() != null) {
-				System.out.println("Expection: " + result.getThrowable().toString() + " -> "
-						+ result.getThrowable().getLocalizedMessage());
+				possibleErrorMessage = "Expection: " + result.getThrowable().toString() + " -> "
+						+ result.getThrowable().getLocalizedMessage();
+				System.out.println(possibleErrorMessage);
 			}
+				
 		} catch (NullPointerException e) {
 			// DoNothing
 		}
 		UpdatedTest sendit = new UpdatedTest(-12L, result.getName(), "PASSED",
-				result.getThrowable().getLocalizedMessage(), false, startofTest, endofTest);
+				possibleErrorMessage, false, startofTest, endofTest);
 		try {
 			DAOImpl.create(sendit);
 		} catch (Exception e) {

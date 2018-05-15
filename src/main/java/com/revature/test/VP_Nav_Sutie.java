@@ -16,7 +16,7 @@ import com.revature.pom.LoginPage;
 import com.revature.pom.NavbarPOM;
 
 @Listeners(SafeForceResultListener.class)
-public class VP_Click_Test_Sutie {
+public class VP_Nav_Sutie {
 
 	static WebDriver wd;
 
@@ -36,12 +36,12 @@ public class VP_Click_Test_Sutie {
 		}
 	}
 
-	@Test(groups = { "VP_Login", "Click" }, dependsOnMethods = { "LoginAsVP" })
+	@Test(groups = { "VP_Login", "Click", "Lvl=01" }, dependsOnMethods = { "LoginAsVP" })
 	public void VPclicksOverview() {
 		try {
 			loginAsVPofTech();
 
-			clickCurricula();
+			clickOverview();
 			TimeUnit.SECONDS.sleep(5);
 			wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		} catch (Exception e) {
@@ -52,7 +52,7 @@ public class VP_Click_Test_Sutie {
 		}
 	}
 
-	@Test(groups = { "VP_Login", "Click" }, dependsOnMethods = { "LoginAsVP" })
+	@Test(groups = { "VP_Login", "Click", "Lvl=01" }, dependsOnMethods = { "LoginAsVP" })
 	public void VPclicksBatches() {
 		try {
 			loginAsVPofTech();
@@ -67,7 +67,7 @@ public class VP_Click_Test_Sutie {
 
 	}
 
-	@Test(groups = { "VP_Login", "Click" }, dependsOnMethods = { "LoginAsVP" })
+	@Test(groups = { "VP_Login", "Click", "Lvl=01"}, dependsOnMethods = { "LoginAsVP" })
 	public void VPclicksCurricula() {
 		try {
 			loginAsVPofTech();
@@ -82,7 +82,7 @@ public class VP_Click_Test_Sutie {
 
 	}
 
-	@Test(groups = { "VP_Login", "Click" }, dependsOnMethods = { "LoginAsVP" })
+	@Test(groups = { "VP_Login", "Click", "Lvl=01" }, dependsOnMethods = { "LoginAsVP" })
 	public void VPclicksLocation() {
 		try {
 			loginAsVPofTech();
@@ -95,7 +95,7 @@ public class VP_Click_Test_Sutie {
 		}
 	}
 
-	@Test(groups = { "VP_Login", "Click" }, dependsOnMethods = { "LoginAsVP" })
+	@Test(groups = { "VP_Login", "Click", "Lvl=01" }, dependsOnMethods = { "LoginAsVP" })
 	public void VPclicksTraniner() {
 		try {
 			loginAsVPofTech();
@@ -110,7 +110,7 @@ public class VP_Click_Test_Sutie {
 
 	}
 
-	@Test(groups = { "VP_Login", "Click" }, dependsOnMethods = { "LoginAsVP" })
+	@Test(groups = { "VP_Login", "Click", "Lvl=01" }, dependsOnMethods = { "LoginAsVP" })
 	public void VPclicksProfile() {
 		try {
 			loginAsVPofTech();
@@ -125,7 +125,7 @@ public class VP_Click_Test_Sutie {
 
 	}
 
-	@Test(groups = { "VP_Login", "Click" }, dependsOnMethods = { "LoginAsVP" })
+	@Test(groups = { "VP_Login", "Click", "Lvl=01" }, dependsOnMethods = { "LoginAsVP" })
 	public void VPclicksSettings() {
 		try {
 			loginAsVPofTech();
@@ -140,7 +140,7 @@ public class VP_Click_Test_Sutie {
 
 	}
 
-	@Test(groups = { "VP_Login", "Click" }, dependsOnMethods = { "LoginAsVP" })
+	@Test(groups = { "VP_Login", "Click", "Lvl=01" }, dependsOnMethods = { "LoginAsVP" })
 	public void VPclicksLogout() {
 		try {
 			loginAsVPofTech();
@@ -167,7 +167,7 @@ public class VP_Click_Test_Sutie {
 	}
 
 	public void clickBatches() {
-		WebDriverWait wait = new WebDriverWait(wd, 1howLongtoWaitInSeconds);
+		WebDriverWait wait = new WebDriverWait(wd, howLongtoWaitInSeconds);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(NavbarPOM.batches(wd)));
 		element.click();
 	}
