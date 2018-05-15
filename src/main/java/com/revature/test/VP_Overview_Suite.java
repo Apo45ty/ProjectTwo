@@ -97,7 +97,7 @@ public class VP_Overview_Suite {
 
 	@Test(groups = { "VP_Login", "Click", "Overview", "Happy", "DropDown" })
 	// , dependsOnMethods = { "LoginAsVP", "VPclicksOverview" })
-	public void VPOverviewFilter() {
+	public void VPOverviewClickFilterAndDropOptions() {
 
 		try {
 			loginAsVPofTech();// login
