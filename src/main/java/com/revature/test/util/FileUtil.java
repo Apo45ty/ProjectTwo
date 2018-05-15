@@ -34,8 +34,8 @@ public class FileUtil {
 	public static boolean DeleteFile(String downloadPath, String fileName) {
 		// Checks to see if file is there first
 		if (isFileThere(downloadPath, fileName)) {
-			String filePath = downloadPath + fileName;// Combine folderpath and filename to filepath
-			System.out.println(filePath);
+			String filePath = downloadPath +"\\" +fileName;// Combine folderpath and filename to filepath
+			System.out.println("Deleteing: " + filePath);
 			try {
 				Files.deleteIfExists(Paths.get(filePath));
 			} catch (NoSuchFileException e) {
