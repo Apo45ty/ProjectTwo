@@ -1,6 +1,7 @@
 package com.revature.test;
 
 import java.io.File;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -122,7 +123,7 @@ public class VP_Overview_Suite {
 				 * NOTE TO FUTURE ED REMEBER TO CLICK THE DROP (filter) DOWN AGAIN TO BE ABLE TO
 				 * CLICK THINGS IN IT(think about it you wasted 30mins on this)vvv
 				 ****/
-				//Re Clicks the Filter Button for the dropdown
+				// Re Clicks the Filter Button for the dropdown
 				overview_element_filter_btn.click();
 				TimeUnit.MILLISECONDS.sleep(200);
 
@@ -132,9 +133,9 @@ public class VP_Overview_Suite {
 				TimeUnit.MILLISECONDS.sleep(100);
 				System.out.println(overview_element_filter_btn.getTagName().toString());
 				overview_element_filter_Drop_Upcoming.click();
-				TimeUnit.MILLISECONDS.sleep(900);// Time is given fro elements to load
+				TimeUnit.MILLISECONDS.sleep(256);// Time is given fro elements to load
 
-				//Re Clicks the Filter Button for the dropdown
+				// Re Clicks the Filter Button for the dropdown
 				overview_element_filter_btn.click();
 				TimeUnit.MILLISECONDS.sleep(200);
 
@@ -144,8 +145,48 @@ public class VP_Overview_Suite {
 				TimeUnit.MILLISECONDS.sleep(100);
 				System.out.println(overview_element_filter_btn.getTagName().toString());
 				overview_element_filter_Drop_All.click();
-				TimeUnit.MILLISECONDS.sleep(256);
+				TimeUnit.MILLISECONDS.sleep(300);
 
+				// Getting Table Data
+				// *[@id="view"]/div/md-card/md-content/md-table-container/table/thead
+				// *[@id="view"]/div/md-card/md-content/md-table-container/table/thead/tr
+				List<WebElement> cols = wd.findElements(
+						By.xpath("*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/thead/tr"));
+				List<WebElement> rows = wd.findElements(
+						By.xpath("*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody"));
+				if (rows != null) 	{
+					System.out.println("List of rows is not ");
+					for (int row = 0; row < rows.size(); row++) {
+						//*[@id="view"]/div/md-card/md-content/md-table-container/table/tbody/tr[1]/td[1]
+						List<WebElement> Columns_row = rows.get(row).findElements(By.tagName("td"));
+						System.out.println("Init for 1 ");
+						// Loop will execute till the last cell of that specific row.
+						for (int column = 0; column < Columns_row.size(); column++) {
+							// To retrieve text from that specific cell.
+							String celtext = Columns_row.get(column).getText();
+							System.out.println("Cell Value of row number " + row + " and column number " + column
+									+ " Is " + celtext);
+							System.out.println("Init for 2 ");
+						}
+					}
+				}else 
+					System.out.println("List of rows is empty");
+				
+				List<WebElement> whatIsThis = wd.findElements(By.xpath("//*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody/tr[1]/td[1]"));
+					for (WebElement temp : whatIsThis) {
+						System.out.println(temp.getTagName().toString());
+						System.out.println(temp.getText().toString());
+						System.out.println(temp.getClass().toString());
+						System.out.println(temp.getLocation().toString());
+						System.out.println(temp.getSize().toString());
+//						System.out.println(temp);
+//						System.out.println(temp);
+//						System.out.println(temp);
+					}
+				// *[@id="view"]/div/md-card/md-content/md-table-container/table/tbody/tr[1]
+				// *[@id="view"]/div/md-card/md-content/md-table-container
+				// *[@id="view"]/div/md-card/md-content/md-table-container/table/tbody
+				// *[@id="view"]/div/md-card/md-content/md-table-container/table
 			} catch (NullPointerException e) {
 				System.out.println(e.getLocalizedMessage());
 				org.testng.Assert.fail("Get CSV for Overview has Failed to appear in Document");
@@ -153,13 +194,17 @@ public class VP_Overview_Suite {
 
 			}
 
-			TimeUnit.SECONDS.sleep(4); // to Inspect Results
 		} catch (Exception e) {
 			System.out.println("Failure due to: " + e.getLocalizedMessage());
 			org.testng.Assert.fail("Failed to Click");
 		} finally {
 			wd.quit();
 		}
+	}
+
+	private void findElements(By xpath) {
+		// TODO Auto-generated method stub
+
 	}
 
 	// aria-label="Filter"
