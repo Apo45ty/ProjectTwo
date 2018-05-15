@@ -11,14 +11,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.Listeners;
-// import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import org.testng.annotations.Listeners;
 
 public class Trainer_Locations_Steps {
     WebDriver chrome;
 
-    @Test (priority=1)
+    @Test(priority = 1)
     public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_LOCATIONS() throws Throwable {
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
@@ -33,14 +32,22 @@ public class Trainer_Locations_Steps {
 
     }
 
-    @Test (priority = 2)
-    public void trainer_tests_the_LOCATIONS_page_by_clicking_all_elements() throws Throwable {
-        TimeUnit.SECONDS.sleep(8);
+    @Test(priority = 2)
+    public void trainer_tests_the_LOCATIONS_page_by_clicking_all_elements() {
+        try {
+            TimeUnit.SECONDS.sleep(8);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
 
         chrome.findElement(
                 By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[3]/a/span/span"))
                 .click();
-        TimeUnit.SECONDS.sleep(3);
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
         List<WebElement> list;
         list = chrome.findElements(By.cssSelector(".md-no-style.md-button.md-ink-ripple"));
         System.out.println("number of elements found: " + list.size());
@@ -52,17 +59,25 @@ public class Trainer_Locations_Steps {
                 element.click();
             } catch (ElementNotVisibleException e) {
                 continue;
+            } catch (InterruptedException e2) {
+                e2.printStackTrace();
             }
 
         }
 
     }
 
-    @Test (priority = 0)
-    public void trainer_logs_out_after_testing_LOCATIONS() throws Throwable {
-        TimeUnit.SECONDS.sleep(3);
+    @Test(priority = 3)
+    public void trainer_logs_out_after_testing_LOCATIONS() {
         try {
-            chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button")).click();
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
+        try {
+            chrome.findElement(
+                    By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button"))
+                    .click();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

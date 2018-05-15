@@ -10,13 +10,14 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+
 public class StepsCurricula_VP {
 
     WebDriver driver;
 
     @Test(priority = 1)
-    public void launches_Chrome_Browser_and_initiates_login() throws Throwable {
-    	String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
+    public void launches_Chrome_Browser_and_initiates_login() {
+        String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-data-dir=" + path);
         options.addArguments("--start-maximized");
@@ -29,14 +30,18 @@ public class StepsCurricula_VP {
     }
 
     @Test(priority = 2)
-    public void clicks_on_curricula_tabs_and_navigates() throws Throwable {
-        TimeUnit.SECONDS.sleep(8);
+    public void clicks_on_curricula_tabs_and_navigates() {
+        try {
+            TimeUnit.SECONDS.sleep(8);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.findElement(
                 By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[4]/a/span/span"))
                 .click();
         driver.findElement(By.id("coreArrow")).click();
         driver.findElement(By.id("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]")).click();
-        driver.findElement(By.id("input_294")).sendKeys("New Core Currila"); ////*[@id="select_295"]
+        driver.findElement(By.id("input_294")).sendKeys("New Core Currila"); //// *[@id="select_295"]
         driver.findElement(By.xpath("//*[@id=\"select_295\"]")).click();
         driver.findElement(By.xpath("//*[@id=\"select_option_330\"]/div[2]")).click();
         driver.findElement(By.xpath("/html/body/div[3]/md-dialog")).click();
@@ -53,17 +58,23 @@ public class StepsCurricula_VP {
         // driver.findElement(By.id("coreArrow")).click();
         // driver.findElement(By.id("coreArrow")).click();
 
-
-
     }
 
     @Test(priority = 3)
-    public void quits_session_right_after_testing_curricula() throws Throwable {
+    public void quits_session_right_after_testing_curricula() {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        TimeUnit.SECONDS.sleep(9);
+        try {
+            TimeUnit.SECONDS.sleep(9);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]"))
                 .click();
-        TimeUnit.SECONDS.sleep(5);
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.quit();
     }
 }

@@ -11,10 +11,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-public class Trainer_Settings_Steps{
+public class Trainer_Settings_Steps {
     WebDriver chrome;
 
-    @Test (priority = 1)
+    @Test(priority = 1)
     public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_SETTINGS() throws Throwable {
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
@@ -28,10 +28,16 @@ public class Trainer_Settings_Steps{
         chrome.findElement(By.id("password")).sendKeys(Keys.RETURN);
     }
 
-    @Test (priority = 2)
-    public void trainer_clicks_SETTINGS() throws Throwable{
-        TimeUnit.SECONDS.sleep(3);
-        chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[8]/a/span/span")).click();
+    @Test(priority = 2)
+    public void trainer_clicks_SETTINGS() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        chrome.findElement(
+                By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[8]/a/span/span"))
+                .click();
         chrome.findElement(By.id("input_3")).sendKeys("1337");
         chrome.findElement(By.id("input_4")).sendKeys("1337");
         chrome.findElement(By.id("input_5")).sendKeys("1337");
@@ -40,16 +46,22 @@ public class Trainer_Settings_Steps{
         chrome.findElement(By.id("input_12")).sendKeys("1337");
         chrome.findElement(By.id("input_13")).sendKeys("1337");
         chrome.findElement(By.xpath("//*[@id=\"select_value_label_1\"]/span[1]/div")).click();
-        TimeUnit.MILLISECONDS.sleep(500);
+        try {
+            TimeUnit.MILLISECONDS.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         chrome.findElement(By.xpath("//*[@id=\"select_option_17\"]"));
 
     }
 
-    @Test (priority = 3)
+    @Test(priority = 3)
     public void trainer_logs_out_after_testing_SETTINGS() throws Throwable {
         TimeUnit.SECONDS.sleep(3);
         try {
-            chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button")).click();
+            chrome.findElement(
+                    By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button"))
+                    .click();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
