@@ -146,47 +146,16 @@ public class VP_Overview_Suite {
 				System.out.println(overview_element_filter_btn.getTagName().toString());
 				overview_element_filter_Drop_All.click();
 				TimeUnit.MILLISECONDS.sleep(300);
-
-				// Getting Table Data
-				// *[@id="view"]/div/md-card/md-content/md-table-container/table/thead
-				// *[@id="view"]/div/md-card/md-content/md-table-container/table/thead/tr
-				List<WebElement> cols = wd.findElements(
-						By.xpath("*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/thead/tr"));
-				List<WebElement> rows = wd.findElements(
-						By.xpath("*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody"));
-				if (rows != null) 	{
-					System.out.println("List of rows is not ");
-					for (int row = 0; row < rows.size(); row++) {
-						//*[@id="view"]/div/md-card/md-content/md-table-container/table/tbody/tr[1]/td[1]
-						List<WebElement> Columns_row = rows.get(row).findElements(By.tagName("td"));
-						System.out.println("Init for 1 ");
-						// Loop will execute till the last cell of that specific row.
-						for (int column = 0; column < Columns_row.size(); column++) {
-							// To retrieve text from that specific cell.
-							String celtext = Columns_row.get(column).getText();
-							System.out.println("Cell Value of row number " + row + " and column number " + column
-									+ " Is " + celtext);
-							System.out.println("Init for 2 ");
-						}
-					}
-				}else 
-					System.out.println("List of rows is empty");
 				
-				List<WebElement> whatIsThis = wd.findElements(By.xpath("//*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody/tr[1]/td[1]"));
-					for (WebElement temp : whatIsThis) {
-						System.out.println(temp.getTagName().toString());
-						System.out.println(temp.getText().toString());
-						System.out.println(temp.getClass().toString());
-						System.out.println(temp.getLocation().toString());
-						System.out.println(temp.getSize().toString());
-//						System.out.println(temp);
-//						System.out.println(temp);
-//						System.out.println(temp);
+				//Alright this gets a list of all the rows using a xpath (Would like to use CSS Selector, but this works for now so it stays )
+				List<WebElement> tableRows = wd.findElements(By.xpath("//*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody/tr"));
+				for (WebElement eachRow : tableRows) {
+					List<WebElement> tableCell =  eachRow.findElements(By.tagName("td"));
+					for(WebElement eachCellColoum : tableCell) {
+						System.out.println(eachCellColoum.getText());
 					}
-				// *[@id="view"]/div/md-card/md-content/md-table-container/table/tbody/tr[1]
-				// *[@id="view"]/div/md-card/md-content/md-table-container
-				// *[@id="view"]/div/md-card/md-content/md-table-container/table/tbody
-				// *[@id="view"]/div/md-card/md-content/md-table-container/table
+				}
+
 			} catch (NullPointerException e) {
 				System.out.println(e.getLocalizedMessage());
 				org.testng.Assert.fail("Get CSV for Overview has Failed to appear in Document");
@@ -200,11 +169,6 @@ public class VP_Overview_Suite {
 		} finally {
 			wd.quit();
 		}
-	}
-
-	private void findElements(By xpath) {
-		// TODO Auto-generated method stub
-
 	}
 
 	// aria-label="Filter"
