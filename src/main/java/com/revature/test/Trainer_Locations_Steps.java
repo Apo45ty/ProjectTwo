@@ -24,7 +24,7 @@ public class Trainer_Locations_Steps {
         // object so that the Chrome Driver uses the User profile
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("user-data-dir=" + path);
+        //options.addArguments("user-data-dir=" + path);
         options.addArguments("--start-maximized");
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         chrome = new ChromeDriver(options);

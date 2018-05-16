@@ -24,7 +24,7 @@ public class Trainer_Settings_Steps {
         // object so that the Chrome Driver uses the User profile
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("user-data-dir=" + path);
+        //options.addArguments("user-data-dir=" + path);
         options.addArguments("--start-maximized");
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         chrome = new ChromeDriver(options);
@@ -39,10 +39,10 @@ public class Trainer_Settings_Steps {
         try {
             TimeUnit.SECONDS.sleep(5);
             // Find the Settings button and click it
-
             // Get list of all items in the navbar, then click Settings
             List<WebElement> list;
             list = chrome.findElements(By.cssSelector(".md-nav-item.ng-scope.ng-isolate-scope.layout-align-end-end"));
+            WebElement temp = null;
             for (WebElement we : list) {
                 // For some reason I need to click the button to the right of the want I want
                 // clicked
@@ -52,6 +52,17 @@ public class Trainer_Settings_Steps {
                     break;
                 }
             }
+            
+            TimeUnit.SECONDS.sleep(2);
+            temp = chrome.findElement(By.id("input_3"));
+            temp.sendKeys(Keys.TAB);
+            temp.sendKeys(Keys.TAB);
+            temp.sendKeys(Keys.TAB);
+            temp.sendKeys(Keys.ENTER);
+            TimeUnit.SECONDS.sleep(1);
+            temp.sendKeys(Keys.ARROW_DOWN);
+            TimeUnit.SECONDS.sleep(1);
+            temp.sendKeys(Keys.ENTER);
 
             // Fill all the text fields with information
             TimeUnit.SECONDS.sleep(2);
@@ -63,14 +74,17 @@ public class Trainer_Settings_Steps {
             chrome.findElement(By.id("input_12")).sendKeys("1337");
             chrome.findElement(By.id("input_13")).sendKeys("1337");
 
-            // Click Default Batch Location dropdown
-            chrome.findElement(By.cssSelector(".md-select-value")).click();
-            TimeUnit.SECONDS.sleep(1);
-            // Click an item in the drop down list
-            chrome.findElement(By.cssSelector(".ng-scope.md-ink-ripple")).click();
-            // Click Default Batch Building dropdown
-            TimeUnit.SECONDS.sleep(1);
-            chrome.findElement(By.cssSelector(".md-select-value.md-select-placeholder")).click();
+            // // Click Default Batch Location dropdown
+            // // chrome.findElement(By.)
+            // chrome.findElement(
+            //         By.xpath("//*[@id=\"view\"]/md-card/md-content/md-list/md-list-item[4]/md-input-container"))
+            //         .click();
+            // TimeUnit.SECONDS.sleep(1);
+            // // Click an item in the drop down list
+            // chrome.findElement(By.cssSelector(".ng-scope.md-ink-ripple")).click();
+            // // Click Default Batch Building dropdown
+            // TimeUnit.SECONDS.sleep(1);
+            // chrome.findElement(By.cssSelector(".md-select-value.md-select-placeholder")).click();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
