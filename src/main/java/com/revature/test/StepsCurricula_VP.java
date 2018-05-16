@@ -16,12 +16,12 @@ public class StepsCurricula_VP {
 
     @Test(priority = 1)
     public void launches_Chrome_Browser_and_initiates_login() throws Throwable {
-    	String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("user-data-dir=" + path);
-        options.addArguments("--start-maximized");
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver(options);
+    	// String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
+//        ChromeOptions options = new ChromeOptions();
+        // options.addArguments("user-data-dir=" + path);
+//        options.addArguments("--start-maximized");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        driver = new ChromeDriver();
         driver.get("https://dev.assignforce.revaturelabs.com");
         driver.findElement(By.id("username")).sendKeys("test.vpoftech@revature.com.int1");
         driver.findElement(By.id("password")).sendKeys("yuvi1712");
@@ -35,7 +35,7 @@ public class StepsCurricula_VP {
                 By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[4]/a/span/span"))
                 .click();
         driver.findElement(By.id("coreArrow")).click();
-        driver.findElement(By.id("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]")).click();
+        driver.findElement(By.id("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]")).click(); //Curricula plus button
         driver.findElement(By.id("input_294")).sendKeys("New Core Currila"); ////*[@id="select_295"]
         driver.findElement(By.xpath("//*[@id=\"select_295\"]")).click();
         driver.findElement(By.xpath("//*[@id=\"select_option_330\"]/div[2]")).click();
