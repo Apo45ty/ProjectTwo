@@ -17,11 +17,11 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 //@Listeners(SafeForceResultListener.class)
-public class Vpoftech_Settings_Steps {
+public class Trainer_Settings_Steps_Good {
     WebDriver chrome;
 
     @Test(priority = 1)
-    public void vpoftech_opens_browser_and_goes_to_salesforce_page_to_test_SETTINGS() {
+    public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_SETTINGS() {
         // Get path to Chrome's user profile directory and add it to the ChromeOptions
         // object so that the Chrome Driver uses the User profile
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
@@ -31,13 +31,13 @@ public class Vpoftech_Settings_Steps {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         chrome = new ChromeDriver(options);
         chrome.get("https://dev.assignforce.revaturelabs.com");
-        chrome.findElement(By.id("username")).sendKeys("test.vpoftech@revature.com.int1");
-        chrome.findElement(By.id("password")).sendKeys("yuvi1712");
+        chrome.findElement(By.id("username")).sendKeys("test.trainer@revature.com.int1");
+        chrome.findElement(By.id("password")).sendKeys("trainer123");
         chrome.findElement(By.id("password")).sendKeys(Keys.RETURN);
     }
 
     @Test(priority = 2)
-    public void vpoftech_clicks_SETTINGS() {
+    public void trainer_clicks_SETTINGS() {
         try {
             TimeUnit.SECONDS.sleep(5);
             // Find the Settings button and click it
@@ -54,10 +54,28 @@ public class Vpoftech_Settings_Steps {
                 }
             }
 
+            // Fill all the text fields with information
+            TimeUnit.SECONDS.sleep(2);
+            chrome.findElement(By.id("input_3")).clear();
+            chrome.findElement(By.id("input_3")).sendKeys("1337");
+            chrome.findElement(By.id("input_4")).clear();
+            chrome.findElement(By.id("input_4")).sendKeys("1337");
+            chrome.findElement(By.id("input_5")).clear();
+            chrome.findElement(By.id("input_5")).sendKeys("1337");
+            chrome.findElement(By.id("input_10")).clear();
+            chrome.findElement(By.id("input_10")).sendKeys("1337");
+            chrome.findElement(By.id("input_11")).clear();
+            chrome.findElement(By.id("input_11")).sendKeys("1337");
+            chrome.findElement(By.id("input_12")).clear();
+            chrome.findElement(By.id("input_12")).sendKeys("1337");
+            chrome.findElement(By.id("input_13")).clear();
+            chrome.findElement(By.id("input_13")).sendKeys("1337");
+
             // Click Default Batch Location dropdown
             // chrome.findElement(By.)
-            TimeUnit.SECONDS.sleep(1);
-            chrome.findElement(By.cssSelector("md-select[ng-change=\"sCtrl.getBuildings()\"]")).click();
+            chrome.findElement(
+                    By.xpath("//*[@id=\"view\"]/md-card/md-content/md-list/md-list-item[4]/md-input-container"))
+                    .click();
             TimeUnit.SECONDS.sleep(1);
             // Click an item in the drop down list
             list = chrome.findElements(By.cssSelector(".ng-scope.md-ink-ripple"));
@@ -76,35 +94,6 @@ public class Vpoftech_Settings_Steps {
                 }
 
             }
-
-            // Fill the information, reset, fill again, the click save
-            for (int i = 0; i < 2; i++) {
-                // Fill all the text fields with information
-                TimeUnit.SECONDS.sleep(2);
-                chrome.findElement(By.id("input_3")).clear();
-                chrome.findElement(By.id("input_3")).sendKeys("1000");
-                chrome.findElement(By.id("input_4")).clear();
-                chrome.findElement(By.id("input_4")).sendKeys("10");
-                chrome.findElement(By.id("input_5")).clear();
-                chrome.findElement(By.id("input_5")).sendKeys("10000");
-                chrome.findElement(By.id("input_10")).clear();
-                chrome.findElement(By.id("input_10")).sendKeys("100000100");
-                chrome.findElement(By.id("input_11")).clear();
-                chrome.findElement(By.id("input_11")).sendKeys("10000");
-                chrome.findElement(By.id("input_12")).clear();
-                chrome.findElement(By.id("input_12")).sendKeys("101000");
-                chrome.findElement(By.id("input_13")).clear();
-                chrome.findElement(By.id("input_13")).sendKeys("10101");
-
-                // Reset button
-                if (i == 0)
-                    chrome.findElement(By.cssSelector("button[ng-click=\"sCtrl.resetSettings()\"]")).click();
-                // Save button
-                else if (i == 1)
-                    chrome.findElement(By.cssSelector("button[ng-click=\"sCtrl.updateSettings()\"]")).click();
-
-            }
-
             // Click Default Batch Building dropdown
             TimeUnit.SECONDS.sleep(1);
             // chrome.findElement(By.cssSelector("md-select[aria-label=\"No Default
@@ -119,13 +108,13 @@ public class Vpoftech_Settings_Steps {
     }
 
     @Test(priority = 3)
-    public void vpoftech_logs_out_after_testing_SETTINGS() {
+    public void trainer_logs_out_after_testing_SETTINGS() {
         // Wait 3 seconds and click the logout button, then close the browser window.
         JavascriptExecutor jse = (JavascriptExecutor) chrome;
         try {
             jse.executeScript("window.scrollBy(0,-500)", "");
             TimeUnit.SECONDS.sleep(3);
-            chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button")).click();
+            chrome.findElement(By.cssSelector("li[name=\"logout\"]")).click();
             TimeUnit.SECONDS.sleep(3);
             chrome.quit();
         } catch (NullPointerException e) {

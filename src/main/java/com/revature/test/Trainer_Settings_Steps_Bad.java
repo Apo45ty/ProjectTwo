@@ -16,7 +16,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 //@Listeners(SafeForceResultListener.class)
-public class Trainer_Settings_Steps {
+public class Trainer_Settings_Steps_Bad {
     WebDriver chrome;
 
     @Test(priority = 1)
@@ -56,19 +56,19 @@ public class Trainer_Settings_Steps {
             // Fill all the text fields with information
             TimeUnit.SECONDS.sleep(2);
             chrome.findElement(By.id("input_3")).clear();
-            chrome.findElement(By.id("input_3")).sendKeys("1337");
+            chrome.findElement(By.id("input_3")).sendKeys("ssjslajslasjdlskjalskdjlasjkaslj");
             chrome.findElement(By.id("input_4")).clear();
-            chrome.findElement(By.id("input_4")).sendKeys("1337");
+            chrome.findElement(By.id("input_4")).sendKeys("aslajsladkajslajlsklasdajsdjlklda");
             chrome.findElement(By.id("input_5")).clear();
-            chrome.findElement(By.id("input_5")).sendKeys("1337");
+            chrome.findElement(By.id("input_5")).sendKeys("asldajsldjalsjaljlakjsadladlasjjaslj");
             chrome.findElement(By.id("input_10")).clear();
-            chrome.findElement(By.id("input_10")).sendKeys("1337");
+            chrome.findElement(By.id("input_10")).sendKeys("aksjdklasjaldjaldjaldaldasdjasjldas");
             chrome.findElement(By.id("input_11")).clear();
-            chrome.findElement(By.id("input_11")).sendKeys("1337");
+            chrome.findElement(By.id("input_11")).sendKeys("askjdklajslajdaskajldjalasadasda");
             chrome.findElement(By.id("input_12")).clear();
-            chrome.findElement(By.id("input_12")).sendKeys("1337");
+            chrome.findElement(By.id("input_12")).sendKeys("asadljasadlakdaldjslkaldslkadljdl");
             chrome.findElement(By.id("input_13")).clear();
-            chrome.findElement(By.id("input_13")).sendKeys("1337");
+            chrome.findElement(By.id("input_13")).sendKeys("aldalslalaljaljasdljalasljlaasljasl");
 
             // Click Default Batch Location dropdown
             // chrome.findElement(By.)
@@ -79,11 +79,8 @@ public class Trainer_Settings_Steps {
             // Click an item in the drop down list
             list = chrome.findElements(By.cssSelector(".ng-scope.md-ink-ripple"));
             for (WebElement we : list) {
-                // For some reason I need to click the button to the right of the want I want
-                // clicked
                 try {
                     if (we.getAttribute("ng-selected").equals("location.id == sCtrl.settings.defaultLocation")) {
-                        System.out.println("Bet I clicked an item :)");
                         we.click();
                         break;
                     }
