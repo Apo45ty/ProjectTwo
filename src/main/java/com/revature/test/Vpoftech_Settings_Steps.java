@@ -11,12 +11,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(SafeForceResultListener.class)
+//@Listeners(SafeForceResultListener.class)
 public class Vpoftech_Settings_Steps {
     WebDriver chrome;
 
     @Test(priority = 1)
     public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_SETTINGS() {
+        // Get path to Chrome's user profile directory and add it to the ChromeOptions
+        // object so that the Chrome Driver uses the User profile
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-data-dir=" + path);
@@ -36,18 +38,17 @@ public class Vpoftech_Settings_Steps {
 
     @Test(priority = 3)
     public void trainer_logs_out_after_testing_SETTINGS() {
+        // Wait 3 seconds and click the logout button, then close the browser window.
         try {
             TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e1) {
-            e1.printStackTrace();
-        }
-        try {
             chrome.findElement(
                     By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button"))
                     .click();
+            chrome.quit();
         } catch (NullPointerException e) {
             e.printStackTrace();
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
         }
-        chrome.quit();
     }
 }

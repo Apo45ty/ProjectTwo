@@ -14,11 +14,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 import org.testng.annotations.Listeners;
 
+//@Listeners(SafeForceResultListener.class)
 public class Vpoftech_Locations_Steps {
 	WebDriver chrome;
 
 	@Test(priority = 1)
-	public void vp_of_tech_opens_browser_and_goes_to_salesforce_page_to_test_LOCATIONS() throws Throwable {
+	public void vp_of_tech_opens_browser_and_goes_to_salesforce_page_to_test_LOCATIONS() {
+		// Get path to Chrome's user profile directory and add it to the ChromeOptions
+		// object so that the Chrome Driver uses the User profile
 		String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("user-data-dir=" + path);
@@ -34,40 +37,31 @@ public class Vpoftech_Locations_Steps {
 	@Test(priority = 2)
 	public void vp_of_Tech_tests_the_LOCATIONS_page_by_clicking_all_elements() {
 		try {
-			TimeUnit.SECONDS.sleep(8);
-		} catch (InterruptedException e3) {
-			e3.printStackTrace();
-		}
+			// Wait 7 seconds for the page to load before clicking any elements
+			TimeUnit.SECONDS.sleep(7);
 
-		chrome.findElement(
-				By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[3]/a/span/span"))
-				.click();
+			// Find and click the LOCATIONS button
+			chrome.findElement(
+					By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[3]/a/span/span"))
+					.click();
 
-		
-		try {
 			TimeUnit.SECONDS.sleep(3);
-		} catch (InterruptedException e2) {
-			e2.printStackTrace();
-		}
-		
-		// Press every item on the list
-		List<WebElement> list;
-		list = chrome.findElements(By.cssSelector(".md-no-style.md-button.md-ink-ripple"));
-		System.out.println("number of elements found: " + list.size());
-		for (WebElement element : list) {
-			try {
-				TimeUnit.MILLISECONDS.sleep(800);
-				element.click();
-				TimeUnit.MILLISECONDS.sleep(800);
-				element.click();
-			} catch (ElementNotVisibleException e) {
-				continue;
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
-			}
-		}
 
-		try {
+			// Find and click every item on the list
+			List<WebElement> list;
+			list = chrome.findElements(By.cssSelector(".md-no-style.md-button.md-ink-ripple"));
+			System.out.println("number of elements found: " + list.size());
+			for (WebElement element : list) {
+				try {
+					TimeUnit.MILLISECONDS.sleep(800);
+					element.click();
+					TimeUnit.MILLISECONDS.sleep(800);
+					element.click();
+				} catch (ElementNotVisibleException e) {
+					continue;
+				}
+			}
+
 			// Test deleting a row
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.xpath(
@@ -128,22 +122,25 @@ public class Vpoftech_Locations_Steps {
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/md-dialog-actions/button[1]")).click();
 			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
+		} catch (InterruptedException e2) {
+			e2.printStackTrace();
+		}
 	}
 
 	@Test(priority = 3)
-	public void vp_of_Tech_logs_out_after_testing_LOCATIONS() throws Throwable {
-		TimeUnit.SECONDS.sleep(3);
+	public void vp_of_Tech_logs_out_after_testing_LOCATIONS() {
+		// Wait 3 seconds and click the logout button, then close the browser window.
 		try {
+			TimeUnit.SECONDS.sleep(3);
 			chrome.findElement(
 					By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button"))
 					.click();
+			chrome.quit();
 		} catch (NullPointerException e) {
 			e.printStackTrace();
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
 		}
-		chrome.quit();
 	}
 }
