@@ -33,34 +33,36 @@ public class StepsCurricula_VP {
 		TimeUnit.SECONDS.sleep(8);
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		driver.findElement(By.xpath("//li[@name='curricula']")).click();
+		driver.findElement(By.xpath("//li[@name='curricula']")).click(); //Clicks curricula tab
 		driver.findElement(
 		By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]"))
-		.click();
-		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).click();
+		.click(); // clicks plus sign button
+		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).click(); //selects texbox
 		TimeUnit.SECONDS.sleep(1);
-		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).clear();
+		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).clear(); //clears textbox
 		TimeUnit.SECONDS.sleep(1);
-		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).sendKeys("New Core Curricula"); 
+		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).sendKeys("New Core Curricula"); //Adds new curriculum name
 		
 //		driver.findElement(By.id("coreArrow")).click();
 
-		driver.findElement(By.id("select_value_label_2")).click();
-		driver.findElement(By.xpath("//*[@id=\"select_295\"]")).click();
-		driver.findElement(By.xpath("//*[@id=\"select_option_330\"]/div[2]")).click();
-		driver.findElement(By.xpath("/html/body/div[3]/md-dialog")).click();
-		driver.findElement(By.xpath("/html/body/div[3]/md-dialog/md-dialog-actions/button[2]/span")).click();
-		driver.findElement(By.id("//*[@id=\"core\"]/md-list/md-list-item[1]/button[1]/i")).click();
-		driver.findElement(By.xpath("//*[@id=\"select_295\"]")).click();
-		driver.findElement(By.xpath("//*[@id=\"select_option_330\"]/div[2]")).click();
-		driver.findElement(By.xpath("/html/body/div[3]/md-dialog")).click();
-		driver.findElement(By.xpath("/html/body/div[3]/md-dialog/md-dialog-actions/button[2]/span")).click();
-		driver.findElement(By.xpath("//*[@id=\"input_1\"]")).click();
-		driver.findElement(By.xpath("//*[@id=\"input_1\"]")).sendKeys("New Skillz");
+		driver.findElement(By.cssSelector("md-select[aria-label=\"curriculumSkills\"]")).click(); //clicks skills
+		driver.findElement(By.id("select_option_32")).click(); //chooses skill
+
+		driver.findElement(By.id("dialogContent_6")).click(); //clicks box
+		driver.findElement(By.cssSelector("input[ng-click=\"saveCurriculum()\"]")).click(); //clicks save button
+
+		// driver.findElement(By.xpath("/html/body/div[3]/md-dialog/md-dialog-actions/button[2]/span")).click();
+		// driver.findElement(By.id("//*[@id=\"core\"]/md-list/md-list-item[1]/button[1]/i")).click();
+		// driver.findElement(By.xpath("//*[@id=\"select_295\"]")).click();
+		// driver.findElement(By.xpath("//*[@id=\"select_option_330\"]/div[2]")).click();
+		// driver.findElement(By.xpath("/html/body/div[3]/md-dialog")).click();
+		// driver.findElement(By.xpath("/html/body/div[3]/md-dialog/md-dialog-actions/button[2]/span")).click();
+		// driver.findElement(By.xpath("//*[@id=\"input_1\"]")).click();
+		// driver.findElement(By.xpath("//*[@id=\"input_1\"]")).sendKeys("New Skillz");
 		
-		driver.findElement(By.xpath("//*[@id=\"skill\"]/form/div/div/div/span")).click();
-		driver.findElement(By.id("coreArrow")).click();
-		driver.findElement(By.id("coreArrow")).click();
+		// driver.findElement(By.xpath("//*[@id=\"skill\"]/form/div/div/div/span")).click();
+		// driver.findElement(By.id("coreArrow")).click();
+		// driver.findElement(By.id("coreArrow")).click();
 	}
 
 	// @Test(priority = 3)
