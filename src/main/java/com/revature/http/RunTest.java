@@ -26,20 +26,32 @@ public class RunTest extends HttpServlet {
         super();
     }
     
+    
+    public static final int  RUNALLTEST=0;
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Request-Method", "*");
+		//try to parse the suite info
+		int suite = RUNALLTEST;
+		try {
+			suite = Integer.parseInt(request.getParameter("suite"));
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		
 		TestListenerAdapter adapter = new TestListenerAdapter();
 		TestNG testng = new TestNG();
-//		testng.setTestClasses(new Class[] { 
-//				com.revature.test.Trainer_Settings_Steps.class
-//		});	
 	    List<String> suites = Lists.newArrayList();
 	    System.out.println((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
-	    suites.add((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
+	    switch(suite) {
+	    case RUNALLTEST:
+	    default:
+	    	suites.add((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
+		    break;
+	    }
 	    testng.setTestSuites(suites);
 		testng.addListener((ITestNGListener) adapter);
 		testng.setVerbose(2);

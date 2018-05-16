@@ -16,6 +16,8 @@ import org.testng.annotations.Listeners;
 // import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
+import com.revature.test.SafeForceResultListener;
+@Listeners(SafeForceResultListener.class)
 public class Trainer_Locations_Steps {
     WebDriver chrome;
 
