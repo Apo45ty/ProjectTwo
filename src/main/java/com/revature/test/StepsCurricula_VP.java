@@ -20,7 +20,7 @@ public class StepsCurricula_VP {
 //		 ChromeOptions options = new ChromeOptions();
 //		 options.addArguments("user-data-dir=");
 //		 options.addArguments("--start-maximized");
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("https://dev.assignforce.revaturelabs.com");
 		driver.findElement(By.id("username")).sendKeys("test.vpoftech@revature.com.int1");
@@ -30,13 +30,14 @@ public class StepsCurricula_VP {
 
 	@Test(priority = 2)
 	public void clicks_on_curricula_tabs_and_navigates() throws Throwable {
-		// TimeUnit.SECONDS.sleep(8);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		TimeUnit.SECONDS.sleep(8);
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		driver.findElement(By.xpath("//li[@name='curricula']")).click();
 		// driver.findElement(
 		// By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[4]/a/span/span"))
 		// .click();
+		
 		// driver.findElement(By.id("coreArrow")).click();
 		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// Thread.sleep(200);
@@ -67,11 +68,11 @@ public class StepsCurricula_VP {
 	@Test(priority = 3)
 	public void clicks_on_plus() throws Throwable {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//		driver.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]"))
-//		.click();
+		driver.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]"))
+		.click();
 
-		driver.findElement(By.xpath("//*[@id=\"core\"]/md-list/md-list-item[1]/button[1]/i"))
-				.click(); // Curricula plus button
+		// driver.findElement(By.xpath("//*[@id=\"core\"]/md-list/md-list-item[1]/button[1]/i"))
+		// 		.click(); // Curricula plus button
 	}
 
 	@Test(priority = 4)
