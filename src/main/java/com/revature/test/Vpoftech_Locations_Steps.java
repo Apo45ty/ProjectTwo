@@ -24,7 +24,7 @@ public class Vpoftech_Locations_Steps {
 		// object so that the Chrome Driver uses the User profile
 		String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
 		ChromeOptions options = new ChromeOptions();
-		//options.addArguments("user-data-dir=" + path);
+		options.addArguments("user-data-dir=" + path);
 		options.addArguments("--start-maximized");
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		chrome = new ChromeDriver(options);
@@ -47,20 +47,22 @@ public class Vpoftech_Locations_Steps {
 
 			TimeUnit.SECONDS.sleep(3);
 
-			// // Find and click every item on the list
-			// List<WebElement> list;
-			// list = chrome.findElements(By.cssSelector(".md-no-style.md-button.md-ink-ripple"));
-			// System.out.println("number of elements found: " + list.size());
-			// for (WebElement element : list) {
-			// 	try {
-			// 		TimeUnit.MILLISECONDS.sleep(800);
-			// 		element.click();
-			// 		TimeUnit.MILLISECONDS.sleep(800);
-			// 		element.click();
-			// 	} catch (ElementNotVisibleException e) {
-			// 		continue;
-			// 	}
-			// }
+			// Find and click every item on the list
+			List<WebElement> list;
+			list = chrome.findElements(By.cssSelector(".md-no-style.md-button.md-ink-ripple"));
+			System.out.println("number of elements found: " + list.size());
+			for (WebElement element : list) {
+				try {
+					TimeUnit.MILLISECONDS.sleep(100);
+					element.click();
+					TimeUnit.MILLISECONDS.sleep(100);
+					element.click();
+				} catch (ElementNotVisibleException e) {
+					continue;
+				} catch (NullPointerException e1) {
+					continue;
+				}
+			}
 
 			// Test deleting a row
 			TimeUnit.SECONDS.sleep(1);

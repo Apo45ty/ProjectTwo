@@ -14,17 +14,17 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 import org.testng.annotations.Listeners;
 
-@Listeners(SafeForceResultListener.class)
+//@Listeners(SafeForceResultListener.class)
 public class Trainer_Locations_Steps {
     WebDriver chrome;
 
-    // @Test(priority = 1)
+    @Test(priority = 1)
     public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_LOCATIONS() throws Throwable {
         // Get path to Chrome's user profile directory and add it to the ChromeOptions
         // object so that the Chrome Driver uses the User profile
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("user-data-dir=" + path);
+        options.addArguments("user-data-dir=" + path);
         options.addArguments("--start-maximized");
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         chrome = new ChromeDriver(options);
@@ -53,11 +53,14 @@ public class Trainer_Locations_Steps {
             System.out.println("number of elements found: " + list.size());
             for (WebElement element : list) {
                 try {
-                    TimeUnit.MILLISECONDS.sleep(800);
+                    TimeUnit.MILLISECONDS.sleep(100);
                     element.click();
-                    TimeUnit.MILLISECONDS.sleep(800);
+                    TimeUnit.MILLISECONDS.sleep(100);
                     element.click();
                 } catch (ElementNotVisibleException e) {
+                    continue;
+                } catch (NullPointerException e1) {
+                    System.out.println("woopsi");
                     continue;
                 }
             }
