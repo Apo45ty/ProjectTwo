@@ -55,12 +55,19 @@ public class Trainer_Settings_Steps {
 
             // Fill all the text fields with information
             TimeUnit.SECONDS.sleep(2);
+            chrome.findElement(By.id("input_3")).clear();
             chrome.findElement(By.id("input_3")).sendKeys("1337");
+            chrome.findElement(By.id("input_4")).clear();
             chrome.findElement(By.id("input_4")).sendKeys("1337");
+            chrome.findElement(By.id("input_5")).clear();
             chrome.findElement(By.id("input_5")).sendKeys("1337");
+            chrome.findElement(By.id("input_10")).clear();
             chrome.findElement(By.id("input_10")).sendKeys("1337");
+            chrome.findElement(By.id("input_11")).clear();
             chrome.findElement(By.id("input_11")).sendKeys("1337");
+            chrome.findElement(By.id("input_12")).clear();
             chrome.findElement(By.id("input_12")).sendKeys("1337");
+            chrome.findElement(By.id("input_13")).clear();
             chrome.findElement(By.id("input_13")).sendKeys("1337");
 
             // Click Default Batch Location dropdown
@@ -91,8 +98,9 @@ public class Trainer_Settings_Steps {
             }
             // Click Default Batch Building dropdown
             TimeUnit.SECONDS.sleep(1);
-            chrome.findElement(By.cssSelector(".md-select-value.md-select-placeholder")).click();
-
+            //chrome.findElement(By.cssSelector("md-select[aria-label=\"No Default Building\"]")).click();
+            //Click another element to return focus
+            //chrome.findElement(By.id("input_3")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (NoSuchElementException e1) {
@@ -108,6 +116,7 @@ public class Trainer_Settings_Steps {
             chrome.findElement(
                     By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button"))
                     .click();
+            TimeUnit.SECONDS.sleep(3);
             chrome.quit();
         } catch (NullPointerException e) {
             e.printStackTrace();
