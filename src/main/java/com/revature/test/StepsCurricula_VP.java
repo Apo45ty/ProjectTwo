@@ -38,11 +38,13 @@ public class StepsCurricula_VP {
 		By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]"))
 		.click();
 		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).click();
-		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).sendKeys("New Core Currila"); 
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).clear();
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).sendKeys("New Core Curricula"); 
 		
 //		driver.findElement(By.id("coreArrow")).click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		TimeUnit.SECONDS.sleep(9);
+
 		driver.findElement(By.id("select_value_label_2")).click();
 		driver.findElement(By.xpath("//*[@id=\"select_295\"]")).click();
 		driver.findElement(By.xpath("//*[@id=\"select_option_330\"]/div[2]")).click();
