@@ -20,7 +20,7 @@ public class Trainer_Settings_Steps{
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-data-dir=" + path);
         options.addArguments("--start-maximized");
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
         chrome = new ChromeDriver(options);
         chrome.get("https://dev.assignforce.revaturelabs.com");
         chrome.findElement(By.id("username")).sendKeys("test.trainer@revature.com.int1");

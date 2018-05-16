@@ -17,10 +17,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "Updated_Test")
 public class UpdatedTest {
 
-	static {
-		java.lang.System.setProperty("javax.xml.bind.context.factory",
-				"org.eclipse.persistence.jaxb.JAXBContextFactory");
-	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "test_id_seq")
 	@SequenceGenerator(initialValue = 1, sequenceName = "test_id_seq", allocationSize = 1, name = "test_id_seq")

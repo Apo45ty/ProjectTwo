@@ -51,7 +51,6 @@ public class GetAllRequest extends HttpServlet {
 			jaxbMarshaller.setProperty(MarshallerProperties.JSON_INCLUDE_ROOT, true);
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-			// Try to parse the page parameter
 			int page = 0;
 			try {
 				page = Integer.parseInt(request.getParameter("page"));
