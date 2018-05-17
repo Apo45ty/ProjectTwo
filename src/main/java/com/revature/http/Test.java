@@ -16,8 +16,8 @@ public class Test {
 //				com.revature.test.Trainer_Settings_Steps.class
 //		});	
 	    java.util.List<String> suites = Lists.newArrayList();
-	    System.out.println((new File("src/main/resources/testng.xml")).getAbsolutePath());
-	    suites.add((new File("./src/main/resources/testng.xml")).getAbsolutePath());
+	    System.out.println((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
+	    suites.add((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
 	    testng.setTestSuites(suites);
 		testng.addListener((ITestNGListener) adapter);
 		testng.setVerbose(-1);

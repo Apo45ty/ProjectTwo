@@ -3,10 +3,10 @@
 <suite name="TestAll">
 
 	<test name="Run01">
-    <classes>
-      <class name="com.revature.temp.CucumberRunner"/>
-    </classes>
-  </test>
+		<classes>
+			<class name="com.revature.temp.TrainerRunner" />
+		</classes>
+	</test>
 
 
 </suite>

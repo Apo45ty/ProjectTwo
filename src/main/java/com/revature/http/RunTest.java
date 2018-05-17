@@ -49,13 +49,13 @@ public class RunTest extends HttpServlet {
 	    switch(suite) {
 	    case RUNALLTEST:
 	    default:
-	    	suites.add((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
+	    	suites.add("C:\\selenium\\testng.xml");
 		    break;
 	    }
 	    testng.setTestSuites(suites);
 		testng.addListener((ITestNGListener) adapter);
 		testng.setVerbose(2);
-//		testng.setUseDefaultListeners(false);
+		testng.setUseDefaultListeners(false);
 		testng.setPreserveOrder(true);
 		testng.run();
 	}
