@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.Listeners;
 
 //@Listeners(SafeForceResultListener.class)
-public class Trainer_Locations_Steps {
+public class Trainer_Locations{
     WebDriver chrome;
 
     @Test(priority = 1)

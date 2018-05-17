@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,16 +16,16 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 //@Listeners(SafeForceResultListener.class)
-public class Trainer_Settings_Steps_Good {
+public class Trainer_Settings_Good{
     WebDriver chrome;
 
     @Test(priority = 1)
-    public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_SETTINGS() {
+    public void trainer_opens_browser_and_logs_in() {
         // Get path to Chrome's user profile directory and add it to the ChromeOptions
         // object so that the Chrome Driver uses the User profile
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("user-data-dir=" + path);
+        // options.addArguments("user-data-dir=" + path);
         options.addArguments("--start-maximized");
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         chrome = new ChromeDriver(options);
@@ -53,7 +52,16 @@ public class Trainer_Settings_Steps_Good {
                     break;
                 }
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (NoSuchElementException e1) {
+            e1.printStackTrace();
+        }
+    }
 
+    @Test(priority = 3)
+    public void trainer_tests_settings_textfields() {
+        try {
             // Fill all the text fields with information
             TimeUnit.SECONDS.sleep(2);
             chrome.findElement(By.id("input_3")).clear();
@@ -70,7 +78,16 @@ public class Trainer_Settings_Steps_Good {
             chrome.findElement(By.id("input_12")).sendKeys("1337");
             chrome.findElement(By.id("input_13")).clear();
             chrome.findElement(By.id("input_13")).sendKeys("1337");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (NoSuchElementException e1) {
+            e1.printStackTrace();
+        }
+    }
 
+    @Test(priority = 4)
+    public void trainer_tests_settings_dropdowns() {
+        try {
             // Click Default Batch Location dropdown
             // chrome.findElement(By.)
             chrome.findElement(
@@ -78,6 +95,7 @@ public class Trainer_Settings_Steps_Good {
                     .click();
             TimeUnit.SECONDS.sleep(1);
             // Click an item in the drop down list
+            List<WebElement> list;
             list = chrome.findElements(By.cssSelector(".ng-scope.md-ink-ripple"));
             for (WebElement we : list) {
                 try {
@@ -107,14 +125,14 @@ public class Trainer_Settings_Steps_Good {
         }
     }
 
-    @Test(priority = 3)
+    @Test(priority = 5)
     public void trainer_logs_out_after_testing_SETTINGS() {
         // Wait 3 seconds and click the logout button, then close the browser window.
-        JavascriptExecutor jse = (JavascriptExecutor) chrome;
         try {
-            jse.executeScript("window.scrollBy(0,-500)", "");
             TimeUnit.SECONDS.sleep(3);
-            chrome.findElement(By.cssSelector("li[name=\"logout\"]")).click();
+            chrome.findElement(
+                    By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button"))
+                    .click();
             TimeUnit.SECONDS.sleep(3);
             chrome.quit();
         } catch (NullPointerException e) {
