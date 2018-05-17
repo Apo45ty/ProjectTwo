@@ -60,39 +60,11 @@ public class Trainer_Settings_Good{
     }
 
     @Test(priority = 3)
-    public void trainer_tests_settings_textfields() {
-        try {
-            // Fill all the text fields with information
-            TimeUnit.SECONDS.sleep(2);
-            chrome.findElement(By.id("input_3")).clear();
-            chrome.findElement(By.id("input_3")).sendKeys("1337");
-            chrome.findElement(By.id("input_4")).clear();
-            chrome.findElement(By.id("input_4")).sendKeys("1337");
-            chrome.findElement(By.id("input_5")).clear();
-            chrome.findElement(By.id("input_5")).sendKeys("1337");
-            chrome.findElement(By.id("input_10")).clear();
-            chrome.findElement(By.id("input_10")).sendKeys("1337");
-            chrome.findElement(By.id("input_11")).clear();
-            chrome.findElement(By.id("input_11")).sendKeys("1337");
-            chrome.findElement(By.id("input_12")).clear();
-            chrome.findElement(By.id("input_12")).sendKeys("1337");
-            chrome.findElement(By.id("input_13")).clear();
-            chrome.findElement(By.id("input_13")).sendKeys("1337");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (NoSuchElementException e1) {
-            e1.printStackTrace();
-        }
-    }
-
-    @Test(priority = 4)
     public void trainer_tests_settings_dropdowns() {
         try {
             // Click Default Batch Location dropdown
-            // chrome.findElement(By.)
-            chrome.findElement(
-                    By.xpath("//*[@id=\"view\"]/md-card/md-content/md-list/md-list-item[4]/md-input-container"))
-                    .click();
+        	TimeUnit.SECONDS.sleep(2);
+            chrome.findElement(By.cssSelector("md-select[ng-change=\"sCtrl.getBuildings()\"]")).click();
             TimeUnit.SECONDS.sleep(1);
             // Click an item in the drop down list
             List<WebElement> list;
@@ -112,12 +84,44 @@ public class Trainer_Settings_Good{
                 }
 
             }
-            
+
             // Click Default Batch Building dropdown
-            TimeUnit.SECONDS.sleep(1);
-            chrome.findElement(By.cssSelector("md-select[ng-model=\"sCtrl.settings.defaultBuilding\"]")).click();
+            // TimeUnit.SECONDS.sleep(1);
+            // chrome.findElement(By.cssSelector("md-select[ng-model=\"sCtrl.settings.defaultBuilding\"]")).click();
             // Click an item on the dropdown
-            chrome.findElement(By.cssSelector("md-option[ng-selected=\"building.id == sCtrl.settings.defaultBuilding\"]")).click();
+            // try {
+            //     chrome.findElement(
+            //             By.cssSelector("md-option[ng-selected=\"building.id == sCtrl.settings.defaultBuilding\"]"))
+            //             .click();
+            // } catch (NoSuchElementException e2) {
+            //     chrome.findElement(By.cssSelector("md-toolbar[ng-click=\"sCtrl.viewContent()\"]")).click();
+            // }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (NoSuchElementException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    @Test(priority = 4)
+    public void trainer_tests_settings_textfields() {
+        try {
+            // Fill all the text fields with information
+            TimeUnit.SECONDS.sleep(2);
+            chrome.findElement(By.id("input_3")).clear();
+            chrome.findElement(By.id("input_3")).sendKeys("1337");
+            chrome.findElement(By.id("input_4")).clear();
+            chrome.findElement(By.id("input_4")).sendKeys("1337");
+            chrome.findElement(By.id("input_5")).clear();
+            chrome.findElement(By.id("input_5")).sendKeys("1337");
+            chrome.findElement(By.id("input_10")).clear();
+            chrome.findElement(By.id("input_10")).sendKeys("1337");
+            chrome.findElement(By.id("input_11")).clear();
+            chrome.findElement(By.id("input_11")).sendKeys("1337");
+            chrome.findElement(By.id("input_12")).clear();
+            chrome.findElement(By.id("input_12")).sendKeys("1337");
+            chrome.findElement(By.id("input_13")).clear();
+            chrome.findElement(By.id("input_13")).sendKeys("1337");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (NoSuchElementException e1) {

@@ -64,15 +64,15 @@ public class Vpoftech_Locations_Good {
 					continue;
 				}
 			}
-		} catch (InterruptedException e){
+		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} catch (NoSuchElementException e1){
+		} catch (NoSuchElementException e1) {
 			e1.printStackTrace();
 		}
 	}
 
 	@Test(priority = 3)
-	public void vpoftech_tests_deleting_a_row(){
+	public void vpoftech_tests_deleting_a_row() {
 		try {
 			// Test deleting a row
 			TimeUnit.SECONDS.sleep(1);
@@ -85,13 +85,13 @@ public class Vpoftech_Locations_Good {
 			chrome.findElement(By.xpath("//*[@id=\"dialogContent_1\"]/div/md-dialog-actions/button[1]")).click();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} catch (NoSuchElementException e1){
+		} catch (NoSuchElementException e1) {
 			e1.printStackTrace();
 		}
 	}
-	
+
 	@Test(priority = 4)
-	public void vpoftech_tests_to_add_a_location(){
+	public void vpoftech_tests_to_add_a_location() {
 		try {
 			// Test to add a location
 			TimeUnit.SECONDS.sleep(1);
@@ -108,13 +108,13 @@ public class Vpoftech_Locations_Good {
 			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/md-dialog-actions/button[1]")).click();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} catch (NoSuchElementException e1){
+		} catch (NoSuchElementException e1) {
 			e1.printStackTrace();
 		}
 	}
-	
+
 	@Test(priority = 5)
-	public void vpoftech_tests_to_add_a_building(){
+	public void vpoftech_tests_to_add_a_building() {
 		try {
 			// Test to add building
 			TimeUnit.SECONDS.sleep(1);
@@ -129,13 +129,13 @@ public class Vpoftech_Locations_Good {
 			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/div/md-dialog-actions/button[1]")).click();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} catch (NoSuchElementException e1){
+		} catch (NoSuchElementException e1) {
 			e1.printStackTrace();
 		}
 	}
-			
+
 	@Test(priority = 6)
-	public void vpoftech_tests_to_add_a_room()	{
+	public void vpoftech_tests_to_add_a_room() {
 		try {
 			// Test to add room
 			TimeUnit.SECONDS.sleep(1);
@@ -148,13 +148,13 @@ public class Vpoftech_Locations_Good {
 			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/div/md-dialog-actions/button[1]")).click();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} catch (NoSuchElementException e1){
+		} catch (NoSuchElementException e1) {
 			e1.printStackTrace();
 		}
-	}		
-			
+	}
+
 	@Test(priority = 7)
-	public void vpoftech_tests_to_edit_a_selected_item(){
+	public void vpoftech_tests_to_edit_a_selected_item() {
 		try {
 			// Test to edit selected
 			TimeUnit.SECONDS.sleep(1);
@@ -175,10 +175,10 @@ public class Vpoftech_Locations_Good {
 			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/md-dialog-actions/button[1]")).click();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} catch (NoSuchElementException e1){
+		} catch (NoSuchElementException e1) {
 			e1.printStackTrace();
 		}
-	}		
+	}
 
 	@Test(priority = 8)
 	public void vp_of_Tech_logs_out_after_testing_LOCATIONS() {

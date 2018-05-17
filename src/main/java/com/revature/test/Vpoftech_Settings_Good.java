@@ -26,7 +26,7 @@ public class Vpoftech_Settings_Good {
         // object so that the Chrome Driver uses the User profile
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("user-data-dir=" + path);
+        //options.addArguments("user-data-dir=" + path);
         options.addArguments("--start-maximized");
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         chrome = new ChromeDriver(options);
@@ -59,8 +59,53 @@ public class Vpoftech_Settings_Good {
             e1.printStackTrace();
         }
     }
-
+    
     @Test(priority = 3)
+    public void vpoftech_tests_settings_dropdowns() {
+        try {
+            // Click Default Batch Location dropdown
+            // chrome.findElement(By.)
+            TimeUnit.SECONDS.sleep(2);
+            chrome.findElement(By.cssSelector("md-select[ng-change=\"sCtrl.getBuildings()\"]")).click();
+            TimeUnit.SECONDS.sleep(1);
+            // Click an item in the drop down list
+            List<WebElement> list;
+            list = chrome.findElements(By.cssSelector(".ng-scope.md-ink-ripple"));
+            for (WebElement we : list) {
+                try {
+                    if (we.getAttribute("ng-selected").equals("location.id == sCtrl.settings.defaultLocation")) {
+                        we.click();
+                        break;
+                    }
+                } catch (ElementNotVisibleException e) {
+                    System.out.println("Element is not visible man");
+                    continue;
+                } catch (NullPointerException e1) {
+                    System.out.println("Null pointer my man");
+                    continue;
+                }
+
+            }
+
+            // Click Default Batch Building dropdown
+            // TimeUnit.SECONDS.sleep(1);
+            // chrome.findElement(By.cssSelector("md-select[ng-model=\"sCtrl.settings.defaultBuilding\"]")).click();
+            // Click an item on the dropdown
+            // try {
+            //     chrome.findElement(
+            //             By.cssSelector("md-option[ng-selected=\"building.id == sCtrl.settings.defaultBuilding\"]"))
+            //             .click();
+            // } catch (NoSuchElementException e2) {
+            //     chrome.findElement(By.cssSelector("md-toolbar[ng-click=\"sCtrl.viewContent()\"]")).click();
+            // }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (NoSuchElementException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    @Test(priority = 4)
     public void vpoftech_tests_settings_textfields() {
         try {
             // Fill the information, reset, fill again, the click save
@@ -90,46 +135,6 @@ public class Vpoftech_Settings_Good {
                     chrome.findElement(By.cssSelector("button[ng-click=\"sCtrl.updateSettings()\"]")).click();
 
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (NoSuchElementException e1) {
-            e1.printStackTrace();
-        }
-    }
-
-    @Test(priority = 4)
-    public void vpoftech_tests_settings_dropdowns() {
-        try {
-            // Click Default Batch Location dropdown
-            // chrome.findElement(By.)
-            TimeUnit.SECONDS.sleep(1);
-            chrome.findElement(By.cssSelector("md-select[ng-change=\"sCtrl.getBuildings()\"]")).click();
-            TimeUnit.SECONDS.sleep(1);
-            // Click an item in the drop down list
-            List<WebElement> list;
-            list = chrome.findElements(By.cssSelector(".ng-scope.md-ink-ripple"));
-            for (WebElement we : list) {
-                try {
-                    if (we.getAttribute("ng-selected").equals("location.id == sCtrl.settings.defaultLocation")) {
-                        we.click();
-                        break;
-                    }
-                } catch (ElementNotVisibleException e) {
-                    System.out.println("Element is not visible man");
-                    continue;
-                } catch (NullPointerException e1) {
-                    System.out.println("Null pointer my man");
-                    continue;
-                }
-
-            }
-
-            // Click Default Batch Building dropdown
-            TimeUnit.SECONDS.sleep(1);
-            chrome.findElement(By.cssSelector("md-select[ng-model=\"sCtrl.settings.defaultBuilding\"]")).click();
-            // Click an item on the dropdown
-            chrome.findElement(
-                    By.cssSelector("md-option[ng-selected=\"building.id == sCtrl.settings.defaultBuilding\"]")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (NoSuchElementException e1) {
