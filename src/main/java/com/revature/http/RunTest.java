@@ -19,19 +19,68 @@ import org.testng.collections.Lists;
  */
 public class RunTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RunTest() {
-        super();
-    }
-    
-    
-    public static final int  RUNALLTEST=0;
+	public static final int RUNALLTEST=0;
+	private MyThread t;
+
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public RunTest() {
+		super();
+		t = new MyThread();
+		Thread thread = new Thread(t);
+		thread.start();
+	}
+
+	/**
+	 * My thread class
+	 * 
+	 * @author Elton-John
+	 */
+	class MyThread implements Runnable {
+		private boolean hasRequest = false;
+		private boolean done = false;
+
+		@Override
+		public void run() {
+			while (!done) {
+				if (hasRequest) {
+					TestListenerAdapter adapter = new TestListenerAdapter();
+					TestNG testng = new TestNG();
+					testng.setTestClasses(new Class[] { com.revature.test.Trainer_Locations_Steps.class,
+							com.revature.test.StepsCurricula_VP.class });
+					testng.addListener((ITestNGListener) adapter);
+					testng.setVerbose(-1);
+					testng.setUseDefaultListeners(false);
+					testng.run();
+					hasRequest = false;
+				}
+			}
+		}
+
+		public boolean getHasRequest() {
+			return hasRequest;
+		}
+
+		public synchronized void setHasRequest(boolean hasrequest) {
+			hasRequest = hasrequest;
+		}
+
+		public boolean isDone() {
+			return done;
+		}
+
+		public void setDone(boolean pdone) {
+			done = pdone;
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Request-Method", "*");
 		//try to parse the suite info
@@ -61,10 +110,11 @@ public class RunTest extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
