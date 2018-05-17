@@ -1,12 +1,21 @@
 package com.revature.temp;
 
-import org.junit.runner.RunWith;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-@CucumberOptions(features="C:\\selenium\\TrainersTest.feature",glue={"com.revature.temp"})
+@CucumberOptions(features="C:\\selenium\\TrainersTest.feature")
 public class TrainerRunner extends AbstractTestNGCucumberTests{
+	@BeforeSuite
+	public void beforeSuite() {
+		System.out.println("================== TRACKFORCE TESTS ==================");
+		
+	}
 
+	@AfterSuite
+	public void afterSuite() {
+		System.out.println("Logging out");
+	}
 }
