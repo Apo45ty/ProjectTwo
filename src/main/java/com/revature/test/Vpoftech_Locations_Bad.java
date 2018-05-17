@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.Listeners;
 
 //@Listeners(SafeForceResultListener.class)
-public class Vpoftech_Locations_Good {
+public class Vpoftech_Locations_Bad {
 	WebDriver chrome;
 
 	@Test(priority = 1)

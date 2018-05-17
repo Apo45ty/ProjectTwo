@@ -112,12 +112,12 @@ public class Trainer_Settings_Good{
                 }
 
             }
+            
             // Click Default Batch Building dropdown
             TimeUnit.SECONDS.sleep(1);
-            // chrome.findElement(By.cssSelector("md-select[aria-label=\"No Default
-            // Building\"]")).click();
-            // Click another element to return focus
-            // chrome.findElement(By.id("input_3")).click();
+            chrome.findElement(By.cssSelector("md-select[ng-model=\"sCtrl.settings.defaultBuilding\"]")).click();
+            // Click an item on the dropdown
+            chrome.findElement(By.cssSelector("md-option[ng-selected=\"building.id == sCtrl.settings.defaultBuilding\"]")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (NoSuchElementException e1) {

@@ -17,7 +17,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 //@Listeners(SafeForceResultListener.class)
-public class Vpoftech_Settings_Good{
+public class Vpoftech_Settings_Good {
     WebDriver chrome;
 
     @Test(priority = 1)
@@ -37,7 +37,7 @@ public class Vpoftech_Settings_Good{
     }
 
     @Test(priority = 2)
-    public void vpoftech_clicks_SETTINGS(){
+    public void vpoftech_clicks_SETTINGS() {
         try {
             TimeUnit.SECONDS.sleep(5);
             // Find the Settings button and click it
@@ -55,12 +55,11 @@ public class Vpoftech_Settings_Good{
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } catch (NoSuchElementException e1){
+        } catch (NoSuchElementException e1) {
             e1.printStackTrace();
         }
     }
 
-    
     @Test(priority = 3)
     public void vpoftech_tests_settings_textfields() {
         try {
@@ -91,15 +90,15 @@ public class Vpoftech_Settings_Good{
                     chrome.findElement(By.cssSelector("button[ng-click=\"sCtrl.updateSettings()\"]")).click();
 
             }
-        } catch (InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        } catch (NoSuchElementException e1){
+        } catch (NoSuchElementException e1) {
             e1.printStackTrace();
         }
     }
 
     @Test(priority = 4)
-    public void vpoftech_tests_settings_dropdowns(){
+    public void vpoftech_tests_settings_dropdowns() {
         try {
             // Click Default Batch Location dropdown
             // chrome.findElement(By.)
@@ -124,9 +123,16 @@ public class Vpoftech_Settings_Good{
                 }
 
             }
+
+            // Click Default Batch Building dropdown
+            TimeUnit.SECONDS.sleep(1);
+            chrome.findElement(By.cssSelector("md-select[ng-model=\"sCtrl.settings.defaultBuilding\"]")).click();
+            // Click an item on the dropdown
+            chrome.findElement(
+                    By.cssSelector("md-option[ng-selected=\"building.id == sCtrl.settings.defaultBuilding\"]")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } catch (NoSuchElementException e1){
+        } catch (NoSuchElementException e1) {
             e1.printStackTrace();
         }
     }
@@ -138,7 +144,9 @@ public class Vpoftech_Settings_Good{
         try {
             jse.executeScript("window.scrollBy(0,-500)", "");
             TimeUnit.SECONDS.sleep(3);
-            chrome.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button")).click();
+            chrome.findElement(
+                    By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]/button"))
+                    .click();
             TimeUnit.SECONDS.sleep(3);
             chrome.quit();
         } catch (NullPointerException e) {

@@ -15,11 +15,11 @@ import org.testng.annotations.Test;
 import org.testng.annotations.Listeners;
 
 //@Listeners(SafeForceResultListener.class)
-public class Trainer_Locations{
+public class Trainer_Locations {
     WebDriver chrome;
 
     @Test(priority = 1)
-    public void trainer_opens_browser_and_goes_to_salesforce_page_to_test_LOCATIONS() throws Throwable {
+    public void trainer_opens_browser_and_logs_in() throws Throwable {
         // Get path to Chrome's user profile directory and add it to the ChromeOptions
         // object so that the Chrome Driver uses the User profile
         String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
@@ -36,7 +36,7 @@ public class Trainer_Locations{
     }
 
     @Test(priority = 2)
-    public void trainer_tests_the_LOCATIONS_page_by_clicking_all_elements() {
+    public void trainer_clicks_locations_tab_then_clicks_all_items() {
         try {
             // Wait 7 seconds for the page to load before clicking any elements
             TimeUnit.SECONDS.sleep(7);
