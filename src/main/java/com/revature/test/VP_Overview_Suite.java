@@ -1,7 +1,12 @@
 package com.revature.test;
 
 import java.io.File;
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -18,85 +23,82 @@ import org.testng.annotations.Test;
 
 import com.revature.pom.LoginPage;
 import com.revature.pom.NavbarPOM;
+import com.revature.test.model.MockBatch;
 import com.revature.test.util.FileUtil;
+import com.revature.test.util.TableUtil;
 
 @Listeners(SafeForceResultListener.class)
 public class VP_Overview_Suite {
 	static WebDriver wd;
 	private int howLongtoWaitInSeconds = 3;
 	private static String downloadPath = "C:\\Users\\kaiser\\Downloads";
-	// @Test(groups = { "VP_Login" })
-	// public void LoginAsVP() {
-	//
-	// try {
-	// loginAsVPofTech();
-	// TimeUnit.SECONDS.sleep(2);
-	// } catch (Exception e) {
-	// System.out.println("I am guessing the log in failed");
-	// org.testng.Assert.fail("Failed to Login");
-	// } finally {
-	// wd.quit();
-	// }
-	// }
-	//
-	// @Test(groups = { "VP_Login", "Click", "Lvl=01" }, dependsOnMethods = {
-	// "LoginAsVP" })
-	// public void VPclicksOverview() {
-	// try {
-	// loginAsVPofTech();
-	// clickOverview();
-	// TimeUnit.SECONDS.sleep(2);
-	// wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-	// } catch (Exception e) {
-	// System.out.println("I am guessing the log in failed");
-	// org.testng.Assert.fail("Failed to Click");
-	// } finally {
-	// wd.quit();
-	// }
-	// }
+
+	@Test(groups = { "VP_Login" , "Login" })
+	public void LoginAsVP() {
+
+		try {
+			loginAsVPofTech();
+			TimeUnit.SECONDS.sleep(2);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Login");
+		} finally {
+			wd.quit();
+		}
+	}
+
+	@Test(groups = { "VP_Login", "Click", "Navbar" }, dependsOnMethods = { "LoginAsVP" }, enabled = false)
+	public void VPclicksOverview() {
+		try {
+			loginAsVPofTech();
+			clickOverview();
+			TimeUnit.SECONDS.sleep(3);
+			wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+	}
 
 	// commented out for quicker testig and study
 	// TODO replace hard waits for soft one
-	// @Test(groups = { "VP_Login", "Click", "Overview", "Happy" })
-	// // , dependsOnMethods = { "LoginAsVP", "VPclicksOverview" })
-	// public void VPOverviewClickExportCSV() {
-	// String expectedFileNameToBeDL = "batches.csv";
-	//
-	// try {
-	// FileUtil.DeleteFile(downloadPath, expectedFileNameToBeDL);// Deletes The File
-	// expected to be downloaded if
-	// // it is already there
-	// loginAsVPofTech();// login
-	// TimeUnit.SECONDS.sleep(5); // Wait for page to load
-	// wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); // really making
-	// sure the page has loaded
-	// try {
-	// TimeUnit.SECONDS.sleep(2); // Wait for page to load
-	// WebElement overview_getCSV =
-	// wd.findElement(By.cssSelector("button[filename='batches.csv']"));
-	// System.out.println(overview_getCSV.toString());
-	// overview_getCSV.click(); // click on the found element I hope
-	// TimeUnit.SECONDS.sleep(3);// Apperantly you need to wait for the download
-	// Assert.assertTrue(FileUtil.isFileThere(downloadPath, expectedFileNameToBeDL),
-	// "no filename matches anything in the given dierctory");
-	// } catch (NullPointerException e) {
-	// org.testng.Assert.fail("Get CSV for Overview has Failed to appear in
-	// Document");
-	// System.out.println("Failed to find Eelement \'overview_getCSV\'");
-	//
-	// }
-	//
-	// TimeUnit.SECONDS.sleep(4);
-	// } catch (Exception e) {
-	// System.out.println("Failure due to: " + e.getLocalizedMessage());
-	// org.testng.Assert.fail("Failed to Click");
-	// } finally {
-	// wd.quit();
-	// }
-	// }
+	@Test(groups = { "VP_Login", "Click", "Overview", "Happy", "Download" }, dependsOnMethods = { "LoginAsVP" })
+	public void VPOverviewClickExportCSV() {
+		String expectedFileNameToBeDL = "batches.csv";
 
-	@Test(groups = { "VP_Login", "Click", "Overview", "Happy", "DropDown" })
-	// , dependsOnMethods = { "LoginAsVP", "VPclicksOverview" })
+		try {
+			FileUtil.DeleteFile(downloadPath, expectedFileNameToBeDL);// Deletes The File expected to be downloaded if
+																		// it is already there
+			loginAsVPofTech();// login
+			TimeUnit.SECONDS.sleep(5); // Wait for page to load
+			wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); // really making
+
+			try {
+				TimeUnit.SECONDS.sleep(2); // Wait for page to load
+				WebElement overview_getCSV = wd.findElement(By.cssSelector("button[filename='batches.csv']"));
+				System.out.println(overview_getCSV.toString());
+				overview_getCSV.click(); // click on the found element I hope
+				TimeUnit.SECONDS.sleep(3);// Apperantly you need to wait for the download
+				Assert.assertTrue(FileUtil.isFileThere(downloadPath, expectedFileNameToBeDL),
+						"no filename matches anything in the given dierctory");
+			} catch (NullPointerException e) {
+				org.testng.Assert.fail("Get CSV for Overview has Failed to appear in Document");
+				System.out.println("Failed to find Eelement \'overview_getCSV\'");
+
+			}
+
+			TimeUnit.SECONDS.sleep(4);
+		} catch (Exception e) {
+			System.out.println("Failure due to: " + e.getLocalizedMessage());
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+	}
+
+	@Test(groups = { "VP_Login", "Click", "Overview", "Happy", "DropDown" }, dependsOnMethods = { "LoginAsVP"})
 	public void VPOverviewClickFilterAndDropOptions() {
 
 		try {
@@ -146,15 +148,6 @@ public class VP_Overview_Suite {
 				System.out.println(overview_element_filter_btn.getTagName().toString());
 				overview_element_filter_Drop_All.click();
 				TimeUnit.MILLISECONDS.sleep(300);
-				
-				//Alright this gets a list of all the rows using a xpath (Would like to use CSS Selector, but this works for now so it stays )
-				List<WebElement> tableRows = wd.findElements(By.xpath("//*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody/tr"));
-				for (WebElement eachRow : tableRows) {
-					List<WebElement> tableCell =  eachRow.findElements(By.tagName("td"));
-					for(WebElement eachCellColoum : tableCell) {
-						System.out.println(eachCellColoum.getText());
-					}
-				}
 
 			} catch (NullPointerException e) {
 				System.out.println(e.getLocalizedMessage());
@@ -163,6 +156,144 @@ public class VP_Overview_Suite {
 
 			}
 
+		} catch (Exception e) {
+			System.out.println("Failure due to: " + e.getLocalizedMessage());
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+	}
+
+	@Test(groups = { "VP_Login", "Click", "Overview", "Happy", "DropDown" }, dependsOnMethods = { "LoginAsVP"})
+	public void VPOverviewContentOfDropAll() {
+
+		try {
+			loginAsVPofTech();// login
+			wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); // really making sure the page has loaded
+			TimeUnit.SECONDS.sleep(2); // Wait for page to load
+			try {
+				// Finds the Filter Button I hope
+				WebElement overview_element_filter_btn = wd.findElement(By.cssSelector("button[aria-label='Filter']"));
+				System.out.println(overview_element_filter_btn.getTagName().toString());
+				overview_element_filter_btn.click(); // click on the found element I hope
+				TimeUnit.MILLISECONDS.sleep(200);
+
+				// All DropDown Option
+				WebElement overview_element_filter_Drop_All = wd
+						.findElement(By.cssSelector("button[ng-click=\"hCtrl.batchFilter = 'All'\"]"));
+				TimeUnit.MILLISECONDS.sleep(100);
+				System.out.println(overview_element_filter_btn.getTagName().toString());
+				overview_element_filter_Drop_All.click();
+				TimeUnit.MILLISECONDS.sleep(300);
+
+				/**
+				 * I Can't think of a way to test if getAll batches is really of the batchs -
+				 * Maybe compare it to the other two filter options,and see if there are any in
+				 * their, but not in all, but... eh
+				 */
+
+			} catch (NullPointerException e) {
+				System.out.println(e.getLocalizedMessage());
+				org.testng.Assert.fail("Get CSV for Overview has Failed to appear in Document");
+				System.out.println("Failed to find Eelement \'overview_getCSV\'");
+
+			}
+
+		} catch (Exception e) {
+			System.out.println("Failure due to: " + e.getLocalizedMessage());
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+	}
+
+	@Test(groups = { "VP_Login", "Click", "Overview", "Happy", "Sort", "Table" }, dependsOnMethods = { "LoginAsVP" })
+	public void VPOverviewTableSortByNameAscending() {
+		try {
+			loginAsVPofTech();// login
+			WebDriverWait wait = new WebDriverWait(wd, 4);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("th[md-order-by=\"name\"]")));
+
+			List<WebElement> UnSortedRows = wd.findElements(
+					By.xpath("//*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody/tr"));
+			List<MockBatch> Notclicked = com.revature.test.util.TableUtil.getMockBatch(UnSortedRows);// Pre-AnySorting
+			try {
+				WebElement overview_element_sort_table_by_name = wd
+						.findElement(By.cssSelector("th[md-order-by=\"name\"]"));
+				System.out.println("overview_element_sort_name: " + overview_element_sort_table_by_name.getText());
+				overview_element_sort_table_by_name.click();
+				try {
+					// Ascending Test
+					List<WebElement> tableRows = wd.findElements(
+							By.xpath("//*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody/tr"));
+					List<MockBatch> clickedOnce = com.revature.test.util.TableUtil.getMockBatch(tableRows);
+					List<MockBatch> expectedSort = Notclicked;
+					Collections.sort(expectedSort, new MockBatch.SortByName());
+					for (int index = 0; index < Notclicked.size(); index++) {
+						System.out.println("'" + clickedOnce.get(index).getName() + "' | '"
+								+ expectedSort.get(index).getName() + "'");
+						if (!(clickedOnce.get(index).getName().equals(expectedSort.get(index).getName()))) {
+							org.testng.Assert.fail("Sort by Name is not in Ascending Order");
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					org.testng.Assert.fail("Ascending Table Error");
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+				System.err.println(e.getLocalizedMessage());
+				org.testng.Assert.fail("Failed to Find the Element");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("Failure due to: " + e.getLocalizedMessage());
+			org.testng.Assert.fail("Failed during Click");
+		} finally {
+			wd.quit();
+		}
+	}
+
+	@Test(groups = { "VP_Login", "Click", "Overview", "Happy", "Sort", "Table" }, dependsOnMethods = { "LoginAsVP" })
+	public void VPOverviewTableSortByNameDescending() {
+
+		try {
+			loginAsVPofTech();// login
+			WebDriverWait wait = new WebDriverWait(wd, 4);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("th[md-order-by=\"name\"]")));
+
+			List<WebElement> UnSortedRows = wd.findElements(
+					By.xpath("//*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody/tr"));
+			List<MockBatch> Notclicked = com.revature.test.util.TableUtil.getMockBatch(UnSortedRows); // Pre-AnySorting
+
+			try {
+				WebElement overview_element_sort_table_by_name = wd
+						.findElement(By.cssSelector("th[md-order-by=\"name\"]"));
+				System.out.println("overview_element_sort_name: " + overview_element_sort_table_by_name.getText());
+				overview_element_sort_table_by_name.click(); // Click sort
+				try {
+					// Descending Test
+
+					List<WebElement> tableRows = wd.findElements(
+							By.xpath("//*[@id=\"view\"]/div/md-card/md-content/md-table-container/table/tbody/tr"));
+					List<MockBatch> clickedTwice = com.revature.test.util.TableUtil.getMockBatch(tableRows);
+					List<MockBatch> expectedSortReverse = Notclicked;
+					Collections.sort(expectedSortReverse, new MockBatch.SortByName());
+					Collections.reverse(expectedSortReverse);
+					for (int index = 0; index < Notclicked.size(); index++) {
+						if (!(clickedTwice.get(index).getName().equals(expectedSortReverse.get(index).getName())))
+							org.testng.Assert.fail("Sort by Name is not in Descending Order");
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					org.testng.Assert.fail("Decending Table Error");
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+				org.testng.Assert.fail("Failed to Find the Element");
+				System.out.println("Failed to find Eelement \'overview_element_sort_name\'");
+			}
 		} catch (Exception e) {
 			System.out.println("Failure due to: " + e.getLocalizedMessage());
 			org.testng.Assert.fail("Failed to Click");
