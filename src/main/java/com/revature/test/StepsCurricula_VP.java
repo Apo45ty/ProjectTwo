@@ -3,11 +3,15 @@ package com.revature.test;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class StepsCurricula_VP {
 
@@ -72,18 +76,86 @@ public class StepsCurricula_VP {
 
 		try {
 			TimeUnit.SECONDS.sleep(1);
-			driver.findElement(By.cssSelector("input[ng-model=\"cCtrl.skillName\"]")).sendKeys("New Test Skill1");
+			driver.findElement(By.cssSelector("input[ng-model=\"cCtrl.skillName\"]")).sendKeys("Prueba 1");
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(By.xpath("//*[@id=\"skill\"]/form/div/div/div")).click(); // Clicks CREATE Skill button
 		} catch (InterruptedException e) {
 		}
 
+
+
 	}
 
 	@Test(priority = 5)
+	public void delete_curriculum() {
+		try {
+			TimeUnit.SECONDS.sleep(2);
+			driver.findElement(By.cssSelector("button[ng-click=\"cCtrl.removeCurriculum($event,curr)\"]")).click();
+			TimeUnit.SECONDS.sleep(2);
+			driver.findElement(By.cssSelector("button[ng-click=\"dialog.hide()\"]")).click(); // Clicks delete Skill button
+		} catch (InterruptedException e) {
+		}
+
+
+	}
+
+	@Test(priority = 6)
+	public void curricula_with_all_skills() {
+
+
+		try {
+			TimeUnit.SECONDS.sleep(4);
+			driver.findElement(By.xpath("//li[@name='curricula']")).click(); // Clicks Curricula Tab
+			TimeUnit.SECONDS.sleep(2);
+			driver.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]"))
+					.click(); // clicks plus sign button
+			TimeUnit.SECONDS.sleep(2);
+			driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).click(); // selects input texbox
+			TimeUnit.SECONDS.sleep(1);
+			driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).clear(); // clears input textbox
+			TimeUnit.SECONDS.sleep(1);
+			driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]"))
+					.sendKeys("New Core Curricula Test6"); // Adds new curriculum name
+			TimeUnit.SECONDS.sleep(1);
+			driver.findElement(By.cssSelector("md-select[aria-label=\"curriculumSkills\"]")).click(); // clicks skills
+			TimeUnit.SECONDS.sleep(1);
+
+			
+		} catch (InterruptedException e) {
+		}
+
+		List<WebElement> list = driver.findElements(By.cssSelector("md-option[ng-repeat=\"x in skills| orderBy:'name'\"]"));
+		for (WebElement skills : list) {
+			try {
+				TimeUnit.MILLISECONDS.sleep(40);
+				skills.click();
+
+			} catch (ElementNotVisibleException e) {
+				e.printStackTrace();
+			}catch(NullPointerException e1) {
+				e1.printStackTrace();
+			}catch(InterruptedException e2) {
+				
+			}
+		}
+		try {
+		TimeUnit.SECONDS.sleep(2);
+		driver.findElement(By.id("select_option_209")).sendKeys(Keys.ESCAPE);
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElement(By.cssSelector("button[ng-click=\"saveCurriculum()\"]")).click(); // clicks save button
+		} catch (InterruptedException e) {
+			}
+			
+		}
+		
+		
+	
+
+	@Test(priority = 7)
 	public void quits_session_right_after_testing_curricula() {
 		try {
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//			driver.findElements(By.cssSelector(selector));
 			TimeUnit.SECONDS.sleep(9);
 			driver.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]"))
 					.click();
