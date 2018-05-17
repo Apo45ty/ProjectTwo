@@ -27,7 +27,6 @@ public class GetAllRequest extends HttpServlet {
 	 */
 	public GetAllRequest() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

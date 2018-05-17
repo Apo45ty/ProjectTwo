@@ -40,7 +40,7 @@ public class RunTest extends HttpServlet {
 					TestListenerAdapter adapter = new TestListenerAdapter();
 					TestNG testng = new TestNG();
 					testng.setTestClasses(new Class[] { 
-							com.revature.test.Trainer_Locations_Steps.class,
+							com.revature.test.Trainer_Locations.class,
 							com.revature.test.StepsCurricula_VP.class
 					});
 					testng.addListener((ITestNGListener) adapter);
@@ -77,7 +77,6 @@ public class RunTest extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

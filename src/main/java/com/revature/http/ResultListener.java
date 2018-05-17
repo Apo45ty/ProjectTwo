@@ -24,7 +24,7 @@ public class ResultListener implements ITestListener {
 	 * 
 	 */
 	public ResultListener() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/*
@@ -34,7 +34,6 @@ public class ResultListener implements ITestListener {
 	 */
 	@Override
 	public void onTestStart(ITestResult result) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -97,7 +96,6 @@ public class ResultListener implements ITestListener {
 	 */
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -108,7 +106,6 @@ public class ResultListener implements ITestListener {
 	 */
 	@Override
 	public void onStart(ITestContext context) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -119,7 +116,6 @@ public class ResultListener implements ITestListener {
 	 */
 	@Override
 	public void onFinish(ITestContext context) {
-		// TODO Auto-generated method stub
 
 	}
 
