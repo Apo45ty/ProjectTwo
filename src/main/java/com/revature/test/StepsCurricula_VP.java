@@ -19,7 +19,7 @@ public class StepsCurricula_VP {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("user-data-dir=");
 		options.addArguments("--start-maximized");
-		System.setProperty("webdriver.chrome.driver", "/ProjectTwo/src/main/resources/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		driver = new ChromeDriver(options);
 		driver.get("https://dev.assignforce.revaturelabs.com");
 		driver.findElement(By.id("username")).sendKeys("test.vpoftech@revature.com.int1");
@@ -33,25 +33,32 @@ public class StepsCurricula_VP {
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		driver.findElement(By.xpath("//li[@name='curricula']")).click(); //Clicks Curricula Tab
+		TimeUnit.SECONDS.sleep(2);
 		driver.findElement(
 		By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]"))
 		.click(); // clicks plus sign button
+		TimeUnit.SECONDS.sleep(2);
 		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).click(); //selects input texbox
 		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).clear(); //clears input textbox
 		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).sendKeys("New Core Curricula"); //Adds new curriculum name
 		
-
+		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.cssSelector("md-select[aria-label=\"curriculumSkills\"]")).click(); //clicks skills
+		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.id("select_option_32")).click(); //chooses skill
-
-		driver.findElement(By.cssSelector("md-dialog[aria-label=\"Curriculum Curriculum ...\"]")).click(); //clicks box
-		driver.findElement(By.cssSelector("input[ng-click=\"saveCurriculum()\"]")).click(); //clicks save button
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElement(By.id("select_option_32")).sendKeys(Keys.ESCAPE);
+//		driver.findElement(By.xpath("//*[@id=\"dialogContent_6\"]/form/div[1]/h3")).click(); //clicks box
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElement(By.cssSelector("button[ng-click=\"saveCurriculum()\"]")).click(); //clicks save button
 
 
 		//Create Skill
+		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.cssSelector("input[ng-model=\"cCtrl.skillName\"]")).sendKeys("New Test Skill");
+		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.cssSelector("div[ng-click=\"cCtrl.createSkill(skillForm)\")]")).click();
 
 		// driver.findElement(By.xpath("/html/body/div[3]/md-dialog/md-dialog-actions/button[2]/span")).click();
