@@ -36,7 +36,7 @@ public class StepsCurricula_VP {
 	public void clicks_on_curricula_tabs_and_navigates() {
 
 		try {
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.SECONDS.sleep(4);
 			driver.findElement(By.xpath("//li[@name='curricula']")).click(); // Clicks Curricula Tab
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]"))
