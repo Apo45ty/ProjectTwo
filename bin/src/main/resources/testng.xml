@@ -2,10 +2,11 @@
 
 <suite name="TestAll">
 
-	<test name="order">
-		<packages>
-			<package name="com.revature.cucumber.*" />
-		</packages>
-	</test>
+	<test name="Run01">
+    <classes>
+      <class name="com.revature.temp.CucumberRunner"/>
+    </classes>
+  </test>
+
 
 </suite>
