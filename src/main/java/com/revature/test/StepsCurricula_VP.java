@@ -20,9 +20,9 @@ public class StepsCurricula_VP {
 	public void launches_Chrome_Browser_and_initiates_login() {
 
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("user-data-dir=");
+//		options.addArguments("user-data-dir=");
 		options.addArguments("--start-maximized");
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		driver = new ChromeDriver(options);
 		driver.get("https://dev.assignforce.revaturelabs.com");
 

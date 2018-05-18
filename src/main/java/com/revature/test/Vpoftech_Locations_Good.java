@@ -22,7 +22,7 @@ public class Vpoftech_Locations_Good {
 	String name = "The City of Evil";
 	String city = "A7x";
 	String building = "Diamonds in the Rough";
-	//VA state is hardcoded as option with id select_option_52
+	// VA state is hardcoded as option with id select_option_52
 
 	@Test(priority = 1)
 	public void vpoftech_opens_browser_and_logs_in() {
@@ -56,13 +56,13 @@ public class Vpoftech_Locations_Good {
 			e1.printStackTrace();
 		}
 	}
-	
+
 	@Test(priority = 3)
 	public void vpoftech_clicks_every_item() {
 		try {
 			// Find and click every item on the list
 			List<WebElement> list;
-			list = chrome.findElements(By.cssSelector(".md-no-style.md-button.md-ink-ripple"));
+			list = chrome.findElements(By.cssSelector("button[ng-click=\"lCtrl.openLocation(location)\"]"));
 			System.out.println("number of elements found: " + list.size());
 			for (WebElement element : list) {
 				try {
@@ -83,11 +83,11 @@ public class Vpoftech_Locations_Good {
 		}
 	}
 
-	@Test(priority = 4)
+	// @Test(priority = 4)
 	public void vpoftech_tests_deleting_a_row() {
 		try {
 			// Test deleting a row
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.SECONDS.sleep(3);
 			chrome.findElement(By.xpath(
 					"//*[@id=\"view\"]/md-card/md-content/md-list/md-list-item[1]/div[1]/div[1]/md-checkbox/div[1]"))
 					.click();
@@ -106,7 +106,7 @@ public class Vpoftech_Locations_Good {
 	public void vpoftech_tests_to_add_a_location() {
 		try {
 			// Test to add a location
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.SECONDS.sleep(3);
 			chrome.findElement(By.xpath("//*[@id=\"locAdd\"]")).click();
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.cssSelector("input[ng-model=\"ldCtrl.location.name\"]")).click();
@@ -131,11 +131,11 @@ public class Vpoftech_Locations_Good {
 
 	@Test(priority = 6)
 	public void vpoftech_tests_to_add_a_building() {
-		JavascriptExecutor jse = (JavascriptExecutor) chrome;	
+		JavascriptExecutor jse = (JavascriptExecutor) chrome;
 		try {
 			// Test to add building
-			TimeUnit.SECONDS.sleep(1);
-			chrome.findElement(By.cssSelector("md-checkbox[aria-label=\"Toggle  A7x, VA\"]")).click();
+			TimeUnit.SECONDS.sleep(3);
+			chrome.findElement(By.cssSelector("md-checkbox[ng-click=\"lCtrl.toggle(location)\"]")).click();
 			TimeUnit.SECONDS.sleep(1);
 			jse.executeScript("window.scrollBy(0,-1000)", "");
 			TimeUnit.SECONDS.sleep(1);
@@ -147,7 +147,7 @@ public class Vpoftech_Locations_Good {
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/div/md-dialog-actions/button[1]")).click();
 			TimeUnit.SECONDS.sleep(1);
-			chrome.findElement(By.cssSelector("md-checkbox[aria-label=\"Toggle  A7x, VA\"]")).click();
+			chrome.findElement(By.cssSelector("md-checkbox[ng-click=\"lCtrl.toggle(location)\"]")).click();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (NoSuchElementException e1) {
@@ -157,21 +157,21 @@ public class Vpoftech_Locations_Good {
 
 	@Test(priority = 7)
 	public void vpoftech_tests_to_add_a_room() {
-		JavascriptExecutor jse = (JavascriptExecutor) chrome;	
+		JavascriptExecutor jse = (JavascriptExecutor) chrome;
 		try {
 			jse.executeScript("window.scrollBy(0,-1000)", "");
 			// Test to add room
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.SECONDS.sleep(3);
 			List<WebElement> list;
-			//Get list of building checkboxes
+			// Get list of building checkboxes
 			list = chrome.findElements(By.cssSelector("md-checkbox[ng-click=\"lCtrl.toggle(building)\"]"));
 			System.out.println("List has: " + list.size());
-			for (WebElement we : list){
+			for (WebElement we : list) {
 				we.click();
 				break;
 			}
-			
-			TimeUnit.SECONDS.sleep(1);
+
+			TimeUnit.SECONDS.sleep(3);
 			chrome.findElement(By.cssSelector("button[ng-click=\"lCtrl.addRoom()\"]")).click();
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.cssSelector("input[ng-model=\"rdCtrl.room.roomName\"]")).click();
@@ -187,31 +187,31 @@ public class Vpoftech_Locations_Good {
 		}
 	}
 
-	@Test(priority = 8)
+//	@Test(priority = 8)
 	public void vpoftech_tests_to_edit_a_selected_item() {
 		try {
 			// Test to edit selected
 			List<WebElement> list;
-			//Get list of building entries
-			TimeUnit.SECONDS.sleep(1);
+			// Get list of building entries
+			TimeUnit.SECONDS.sleep(3);
 			list = chrome.findElements(By.cssSelector("button[ng-click=\"lCtrl.openBuilding(building)\"]"));
 			System.out.println("List has: " + list.size());
-			for (WebElement we : list){
+			for (WebElement we : list) {
 				we.click();
 				break;
 			}
 
-			//Get list of room checkboxes
+			// Get list of room checkboxes
 			TimeUnit.SECONDS.sleep(1);
 			list = chrome.findElements(By.cssSelector("md-checkbox[ng-click=\"lCtrl.toggle(room)\"]"));
 			System.out.println("List has: " + list.size());
-			for (WebElement we : list){
+			for (WebElement we : list) {
 				we.click();
 				break;
 			}
 
-			//Click edit button to edit room
-			TimeUnit.SECONDS.sleep(1);
+			// Click edit button to edit room
+			TimeUnit.SECONDS.sleep(3);
 			chrome.findElement(By.cssSelector("button[ng-click=\"lCtrl.editSelected()\"]")).click();
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.cssSelector("input[ng-model=\"rdCtrl.room.roomName\"]")).click();
@@ -220,19 +220,20 @@ public class Vpoftech_Locations_Good {
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.cssSelector("input[ng-model=\"rdCtrl.room.roomName\"]")).sendKeys("Edited");
 			TimeUnit.SECONDS.sleep(1);
-			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/div/md-dialog-actions/button[1]")).click();;
+			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/div/md-dialog-actions/button[1]")).click();
+			;
 			TimeUnit.SECONDS.sleep(3);
 
-			//Get list of building checkboxes
+			// Get list of building checkboxes
 			list = chrome.findElements(By.cssSelector("md-checkbox[ng-click=\"lCtrl.toggle(building)\"]"));
 			System.out.println("List has: " + list.size());
-			for (WebElement we : list){
+			for (WebElement we : list) {
 				we.click();
 				break;
 			}
 
-			//Click edit button to edit room
-			TimeUnit.SECONDS.sleep(1);
+			// Click edit button to edit room
+			TimeUnit.SECONDS.sleep(3);
 			chrome.findElement(By.cssSelector("button[ng-click=\"lCtrl.editSelected()\"]")).click();
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.cssSelector("input[ng-model=\"bldgCtrl.building.name\"]")).click();
@@ -241,22 +242,24 @@ public class Vpoftech_Locations_Good {
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.cssSelector("input[ng-model=\"bldgCtrl.building.name\"]")).sendKeys("Edited");
 			TimeUnit.SECONDS.sleep(1);
-			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/div/md-dialog-actions/button[1]")).click();;
+			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/div/md-dialog-actions/button[1]")).click();
+			;
 			TimeUnit.SECONDS.sleep(3);
 
-			//Get list of location checkboxes 
+			// Get list of location checkboxes
 			list = chrome.findElements(By.cssSelector("md-checkbox[ng-click=\"lCtrl.toggle(location)\"]"));
+			String att = "A7x";
 			System.out.println("List has: " + list.size());
-			for (WebElement we : list){
+			for (WebElement we : list) {
 				we.click();
 				break;
 			}
 
-			//Click edit button to edit location
-			TimeUnit.SECONDS.sleep(1);
+			// Click edit button to edit location
+			TimeUnit.SECONDS.sleep(3);
 			chrome.findElement(By.cssSelector("button[ng-click=\"lCtrl.editSelected()\"]")).click();
 
-			//Location name
+			// Location name
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.cssSelector("input[ng-model=\"ldCtrl.location.name\"]")).click();
 			TimeUnit.SECONDS.sleep(1);
@@ -265,7 +268,7 @@ public class Vpoftech_Locations_Good {
 			chrome.findElement(By.cssSelector("input[ng-model=\"ldCtrl.location.name\"]")).sendKeys("Edited");
 			TimeUnit.SECONDS.sleep(1);
 
-			//Location city
+			// Location city
 			chrome.findElement(By.cssSelector("input[ng-model=\"ldCtrl.location.city\"]")).click();
 			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.cssSelector("input[ng-model=\"ldCtrl.location.city\"]")).clear();
@@ -273,12 +276,12 @@ public class Vpoftech_Locations_Good {
 			chrome.findElement(By.cssSelector("input[ng-model=\"ldCtrl.location.city\"]")).sendKeys("Edited");
 			TimeUnit.SECONDS.sleep(1);
 
-			//Location state 
+			// Location state
 			chrome.findElement(By.cssSelector("md-select[ng-model=\"ldCtrl.location.state\"]")).click();
-			TimeUnit.SECONDS.sleep(1);			
+			TimeUnit.SECONDS.sleep(1);
 			chrome.findElement(By.id("select_option_99")).click();
-			TimeUnit.SECONDS.sleep(1);	
-			chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/md-dialog-actions/button[1]")).click();	
+			TimeUnit.SECONDS.sleep(1);
+			// chrome.findElement(By.xpath("/html/body/div[3]/md-dialog/form/md-dialog-actions/button[1]")).click();
 			TimeUnit.SECONDS.sleep(3);
 
 		} catch (InterruptedException e) {
