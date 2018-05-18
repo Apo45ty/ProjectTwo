@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 @Listeners(SafeForceResultListener.class)
 public class StepsCurricula {
 
@@ -18,11 +19,11 @@ public class StepsCurricula {
 	@Test(priority = 1)
 	public void launches_Chrome_Browser_and_initiates_login() throws Throwable {
 		String path = System.getProperty("user.home") + File.separator + "AppData\\Local\\Google\\Chrome\\User Data";
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("user-data-dir=" + path);
-        options.addArguments("--start-maximized");
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver(options);
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("user-data-dir=" + path);
+		options.addArguments("--start-maximized");
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+		driver = new ChromeDriver(options);
 		driver.get("https://dev.assignforce.revaturelabs.com");
 		driver.findElement(By.id("username")).sendKeys("test.trainer@revature.com.int1");
 		driver.findElement(By.id("password")).sendKeys("trainer123");

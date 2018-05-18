@@ -1,9 +1,16 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<suite name = "Simple HTML-XML Suite">
-  
-   <test name = "Dev AssignForce Revature Labs | Login Test">
-      <classes>
-         <class name = "TestRunner" />
-      </classes>
-   </test>
+<suite name="Group of group Suite" verbose="1">
+  <test name="Group of group Test">
+    <groups>
+      <define name="include-group">
+        <include name="include-test-one" />
+       </define>
+       <run>
+        <include name="include-group" />
+      </run>
+    </groups>
+    <classes>
+      <class name="com.revature.test.Test_Runner" />
+    </classes>
+  </test>
 </suite>

@@ -19,7 +19,8 @@ import com.revature.model.UpdatedTest;
  * @time time 5:23:54 PM
  */
 public class ResultListener implements ITestListener {
-	private static	UpdatedDBSingletonDAO DAOImpl = UpdatedDBSingletonDAOImpl.getInstance();
+	private static UpdatedDBSingletonDAO DAOImpl = UpdatedDBSingletonDAOImpl.getInstance();
+
 	/**
 	 * 
 	 */
@@ -79,12 +80,12 @@ public class ResultListener implements ITestListener {
 	 */
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		   Timestamp  endofTest = new Timestamp(System.currentTimeMillis());
-		 	Timestamp  startofTest = new Timestamp(result.getStartMillis());
-		 	System.out.println("Start Time of Test " + startofTest.toString());
-		 	System.out.println("End Time of Test " + endofTest.toString());
-		  	UpdatedTest sendit = new UpdatedTest(-12L,result.getName(),"SKIPPED",false,startofTest,endofTest);
-		  	DAOImpl.create(sendit);
+		Timestamp endofTest = new Timestamp(System.currentTimeMillis());
+		Timestamp startofTest = new Timestamp(result.getStartMillis());
+		System.out.println("Start Time of Test " + startofTest.toString());
+		System.out.println("End Time of Test " + endofTest.toString());
+		UpdatedTest sendit = new UpdatedTest(-12L, result.getName(), "SKIPPED", false, startofTest, endofTest);
+		DAOImpl.create(sendit);
 
 	}
 

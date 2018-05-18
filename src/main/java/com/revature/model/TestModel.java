@@ -1,17 +1,10 @@
 package com.revature.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,26 +12,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-@Table(name="TestModel")
+@Table(name = "TestModel")
 public class TestModel {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="groupIdSeq")
-	@SequenceGenerator(initialValue = 1, sequenceName="groupIdSeq", name="groupIdSeq")
-	@Column(name="groupID", nullable=false, unique=true)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupIdSeq")
+	@SequenceGenerator(initialValue = 1, sequenceName = "groupIdSeq", name = "groupIdSeq")
+	@Column(name = "groupID", nullable = false, unique = true)
 	private int groupID;
-	
-	@Column(name="isDeleted")
+
+	@Column(name = "isDeleted")
 	private int isDeleted = 0;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String description;
 
 	public TestModel() {
-		
+
 	}
 
 	public TestModel(int groupID, int isDeleted, String name, String description) {
@@ -91,6 +84,4 @@ public class TestModel {
 				+ description + "]";
 	}
 
-	
-	
 }
