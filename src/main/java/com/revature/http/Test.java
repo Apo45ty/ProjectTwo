@@ -12,13 +12,13 @@ public class Test {
 	public static void main(String[] args) {
 		TestListenerAdapter adapter = new TestListenerAdapter();
 		TestNG testng = new TestNG();
-//		testng.setTestClasses(new Class[] { 
-//				com.revature.test.Trainer_Settings_Steps.class
-//		});	
-	    java.util.List<String> suites = Lists.newArrayList();
-	    System.out.println((new File("src/main/resources/testng.xml")).getAbsolutePath());
-	    suites.add((new File("./src/main/resources/testng.xml")).getAbsolutePath());
-	    testng.setTestSuites(suites);
+		// testng.setTestClasses(new Class[] {
+		// com.revature.test.Trainer_Settings_Steps.class
+		// });
+		java.util.List<String> suites = Lists.newArrayList();
+		System.out.println((new File("src/main/resources/testng.xml")).getAbsolutePath());
+		suites.add((new File("./src/main/resources/testng.xml")).getAbsolutePath());
+		testng.setTestSuites(suites);
 		testng.addListener((ITestNGListener) adapter);
 		testng.setVerbose(-1);
 		testng.setUseDefaultListeners(false);

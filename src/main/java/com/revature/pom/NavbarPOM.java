@@ -75,7 +75,7 @@ public class NavbarPOM {
 		return element;
 	}
 
-	///-------------------- END NAV BAR --------------------///
+	/// -------------------- END NAV BAR --------------------///
 	public static WebElement view(WebDriver wd) {
 		element = wd.findElement(By.id("view"));
 		return element;

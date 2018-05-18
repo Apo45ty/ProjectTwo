@@ -15,40 +15,41 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.eclipse.persistence.jaxb.JAXBContextFactory;
 
 @XmlRootElement
 @Entity
-@Table(name="Test")
+@Table(name = "Test")
 public class Test {
 	static {
-   	 	java.lang.System.setProperty("javax.xml.bind.context.factory", "org.eclipse.persistence.jaxb.JAXBContextFactory");
-    }
-	
+		java.lang.System.setProperty("javax.xml.bind.context.factory",
+				"org.eclipse.persistence.jaxb.JAXBContextFactory");
+	}
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqname")
-	@SequenceGenerator(initialValue=1,sequenceName="seq_name",allocationSize=1,name="seqname")
-	@Column(name="ID",nullable=false,length=40)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqname")
+	@SequenceGenerator(initialValue = 1, sequenceName = "seq_name", allocationSize = 1, name = "seqname")
+	@Column(name = "ID", nullable = false, length = 40)
 	private long id;
-	@Column(name="COMMENTS",length=400)
+	@Column(name = "COMMENTS", length = 400)
 	private String comments;
-	@Column(name="RESULT",length=40)
+	@Column(name = "RESULT", length = 40)
 	private String result;
-	@Column(name="IS_DELETED",length=40)
+	@Column(name = "IS_DELETED", length = 40)
 	private boolean isDeleted = false;
-	@Column(name="TestDate",length=40)
+	@Column(name = "TestDate", length = 40)
 	private Timestamp date;
-	
-	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-    @JoinColumn(name = "tID")
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "tID")
 	private TestType testID;
-	
-	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-    @JoinColumn(name = "sID")
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "sID")
 	private TestSystem systemID;
-	
-	public Test() {}
-	
+
+	public Test() {
+	}
+
 	public Test(long id, String comments, String result, boolean isDeleted, TestType testID, TestSystem systemID) {
 		super();
 		this.id = id;
@@ -92,29 +93,33 @@ public class Test {
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+
 	@XmlElement
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
 	@XmlElement
 	public String getComments() {
 		return comments;
 	}
+
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+
 	@XmlElement
 	public String getResult() {
 		return result;
 	}
+
 	public void setResult(String result) {
 		this.result = result;
 	}
-
 
 	@Override
 	public String toString() {
@@ -122,7 +127,4 @@ public class Test {
 				+ ", isDeleted=" + isDeleted + ", systemID=" + systemID + "]";
 	}
 
-	
-	
-	
 }

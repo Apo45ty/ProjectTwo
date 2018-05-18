@@ -13,7 +13,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
-import org.testng.annotations.Listeners;
 
 //@Listeners(SafeForceResultListener.class)
 public class Vpoftech_Locations_Bad {

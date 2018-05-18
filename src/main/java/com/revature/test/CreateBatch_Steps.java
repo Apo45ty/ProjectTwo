@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
@@ -23,11 +24,10 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.testng.Assert;
 
 /**
- * Tests for the Create Batch portion of the Batch page of AssignForce
- * TODO: Figure out why navigate_to_the_Batch_tab() works only some of the times
+ * Tests for the Create Batch portion of the Batch page of AssignForce TODO:
+ * Figure out why navigate_to_the_Batch_tab() works only some of the times
  * 
  * @author Howard
  * @since May 18, 2018
@@ -38,13 +38,14 @@ public class CreateBatch_Steps {
 	private static WebDriver wd;
 
 	/**
-	 * Background: For some reason, BeforeTest does not always execute every method??
+	 * Background: For some reason, BeforeTest does not always execute every
+	 * method??
 	 */
 	@BeforeTest
 	public void beforeTest() {
-//		go_to_assignforce_in_Chrome();
-//		vp_logs_in();
-//		navigate_to_the_Batch_tab();
+		// go_to_assignforce_in_Chrome();
+		// vp_logs_in();
+		// navigate_to_the_Batch_tab();
 	}
 
 	/**
@@ -218,7 +219,7 @@ public class CreateBatch_Steps {
 				clickWhenReady(el, 5);
 				break;
 			}
-			
+
 			// The other fields are optional, so I will skip them for brevity
 
 		} catch (NoSuchElementException nsee) {

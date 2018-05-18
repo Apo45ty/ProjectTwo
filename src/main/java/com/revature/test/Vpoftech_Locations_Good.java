@@ -14,7 +14,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
-import org.testng.annotations.Listeners;
 
 //@Listeners(SafeForceResultListener.class)
 public class Vpoftech_Locations_Good {
@@ -187,7 +186,7 @@ public class Vpoftech_Locations_Good {
 		}
 	}
 
-//	@Test(priority = 8)
+	// @Test(priority = 8)
 	public void vpoftech_tests_to_edit_a_selected_item() {
 		try {
 			// Test to edit selected

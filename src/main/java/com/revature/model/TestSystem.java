@@ -1,6 +1,5 @@
 package com.revature.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,29 +12,29 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-@Table(name="System")
-public class TestSystem{
+@Table(name = "System")
+public class TestSystem {
 
-    public static final String out = null;
+	public static final String out = null;
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="system_seq")
-	@SequenceGenerator(initialValue=1, sequenceName="system_seq",allocationSize=1,name="system_seq")
-    @Column(name="ID", nullable=false)
-	private long id=0L;
-	
-    @Column(name="CPU", length=140)
-	private String cpu="";
-	
-    @Column(name="OS", length=140)
-	private String os="";
-	
-    @Column(name="RAM", length=140)
-	private String ram="";
-	
-    @Column(name="DiskDrive", length=140)
-    private String diskDrive="";
-    
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "system_seq")
+	@SequenceGenerator(initialValue = 1, sequenceName = "system_seq", allocationSize = 1, name = "system_seq")
+	@Column(name = "ID", nullable = false)
+	private long id = 0L;
+
+	@Column(name = "CPU", length = 140)
+	private String cpu = "";
+
+	@Column(name = "OS", length = 140)
+	private String os = "";
+
+	@Column(name = "RAM", length = 140)
+	private String ram = "";
+
+	@Column(name = "DiskDrive", length = 140)
+	private String diskDrive = "";
+
 	public TestSystem(long id, String cpu, String os, String ram, String diskDrive) {
 		super();
 		this.id = id;
@@ -144,7 +143,5 @@ public class TestSystem{
 	public String toString() {
 		return "System [id=" + id + ", cpu=" + cpu + ", os=" + os + ", ram=" + ram + ", diskDrive=" + diskDrive + "]";
 	}
-    
-    
-}
 
+}

@@ -1,14 +1,18 @@
 package com.revature.test;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 public class StepsCurricula_VP {
 
@@ -18,7 +22,7 @@ public class StepsCurricula_VP {
 	public void launches_Chrome_Browser_and_initiates_login() {
 
 		ChromeOptions options = new ChromeOptions();
-//		options.addArguments("user-data-dir=");
+		// options.addArguments("user-data-dir=");
 		options.addArguments("--start-maximized");
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		driver = new ChromeDriver(options);
@@ -33,7 +37,6 @@ public class StepsCurricula_VP {
 		driver.findElement(By.id("password")).sendKeys(Keys.RETURN);
 	}
 
-
 	@Test(priority = 3)
 	public void delete_curriculum() {
 		try {
@@ -42,10 +45,10 @@ public class StepsCurricula_VP {
 			TimeUnit.SECONDS.sleep(2);
 			TimeUnit.SECONDS.sleep(3);
 
-			WebElement element = driver.findElement(By.cssSelector("button[ng-click=\"cCtrl.removeCurriculum($event,curr)\"]"));
-			Actions actions = new Actions(driver); //Actions class to click same name button
+			WebElement element = driver
+					.findElement(By.cssSelector("button[ng-click=\"cCtrl.removeCurriculum($event,curr)\"]"));
+			Actions actions = new Actions(driver); // Actions class to click same name button
 			actions.moveToElement(element).click().build().perform();
-
 
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(By.xpath("/html/body/div[3]/md-dialog/md-dialog-actions/button[2]")).click();
@@ -59,7 +62,6 @@ public class StepsCurricula_VP {
 
 	}
 
-
 	@Test(priority = 4)
 	public void clicks_on_curricula_tabs_and_navigates() {
 
@@ -69,7 +71,6 @@ public class StepsCurricula_VP {
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[1]/md-toolbar/div/button[1]"))
 					.click(); // clicks plus sign button
-
 
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).click(); // selects input texbox
@@ -113,7 +114,6 @@ public class StepsCurricula_VP {
 	@Test(priority = 6)
 	public void curricula_with_all_skills() {
 
-
 		try {
 			TimeUnit.SECONDS.sleep(4);
 			driver.findElement(By.xpath("//li[@name='curricula']")).click(); // Clicks Curricula Tab
@@ -131,11 +131,11 @@ public class StepsCurricula_VP {
 			driver.findElement(By.cssSelector("md-select[aria-label=\"curriculumSkills\"]")).click(); // clicks skills
 			TimeUnit.SECONDS.sleep(1);
 
-			
 		} catch (InterruptedException e) {
 		}
 
-		List<WebElement> list = driver.findElements(By.cssSelector("md-option[ng-repeat=\"x in skills| orderBy:'name'\"]"));
+		List<WebElement> list = driver
+				.findElements(By.cssSelector("md-option[ng-repeat=\"x in skills| orderBy:'name'\"]"));
 		for (WebElement skills : list) {
 			try {
 				TimeUnit.MILLISECONDS.sleep(40);
@@ -143,23 +143,22 @@ public class StepsCurricula_VP {
 
 			} catch (ElementNotVisibleException e) {
 				e.printStackTrace();
-			}catch(NullPointerException e1) {
+			} catch (NullPointerException e1) {
 				e1.printStackTrace();
-			}catch(InterruptedException e2) {
-				
+			} catch (InterruptedException e2) {
+
 			}
 		}
 		try {
-		TimeUnit.SECONDS.sleep(2);
-		driver.findElement(By.id("select_option_209")).sendKeys(Keys.ESCAPE);
-		TimeUnit.SECONDS.sleep(1);
-		driver.findElement(By.cssSelector("button[ng-click=\"saveCurriculum()\"]")).click(); // clicks save button
+			TimeUnit.SECONDS.sleep(2);
+			driver.findElement(By.id("select_option_209")).sendKeys(Keys.ESCAPE);
+			TimeUnit.SECONDS.sleep(1);
+			driver.findElement(By.cssSelector("button[ng-click=\"saveCurriculum()\"]")).click(); // clicks save button
 		} catch (InterruptedException e) {
-			}
-			
 		}
-		
-		
+
+	}
+
 	@Test(priority = 7)
 	public void create_new_focus() {
 
@@ -168,14 +167,15 @@ public class StepsCurricula_VP {
 			driver.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[2]/md-toolbar/div/button[1]"))
 					.click(); // clicks plus sign button
 
-
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).click(); // selects input texbox
 			TimeUnit.SECONDS.sleep(1);
 			driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).clear(); // clears input textbox
 			TimeUnit.SECONDS.sleep(1);
-			driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]"))
-					.sendKeys("New Focus Test2"); // Adds new curriculum name
+			driver.findElement(By.cssSelector("input[aria-label=\"curriculumName\"]")).sendKeys("New Focus Test2"); // Adds
+																													// new
+																													// curriculum
+																													// name
 			TimeUnit.SECONDS.sleep(1);
 			driver.findElement(By.cssSelector("md-select[aria-label=\"curriculumSkills\"]")).click(); // clicks skills
 			TimeUnit.SECONDS.sleep(2);

@@ -14,10 +14,13 @@ import com.revature.model.UpdatedTest;
  */
 public interface UpdatedDBSingletonDAO {
 	boolean create(UpdatedTest test);
+
 	UpdatedTest read(long id);
+
 	boolean update(UpdatedTest test);
+
 	boolean delete(UpdatedTest test);
-	
+
 	List<UpdatedTest> getAllTest(int page, int LIMITPERPAGE);
-	
+
 }

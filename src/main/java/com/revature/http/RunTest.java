@@ -19,7 +19,7 @@ import org.testng.collections.Lists;
  */
 public class RunTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final int RUNALLTEST=0;
+	public static final int RUNALLTEST = 0;
 	private MyThread t;
 
 	/**
@@ -83,28 +83,28 @@ public class RunTest extends HttpServlet {
 			throws ServletException, IOException {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Request-Method", "*");
-		//try to parse the suite info
+		// try to parse the suite info
 		int suite = RUNALLTEST;
 		try {
 			suite = Integer.parseInt(request.getParameter("suite"));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
-		
+
 		TestListenerAdapter adapter = new TestListenerAdapter();
 		TestNG testng = new TestNG();
-	    List<String> suites = Lists.newArrayList();
-	    System.out.println((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
-	    switch(suite) {
-	    case RUNALLTEST:
-	    default:
-	    	suites.add((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
-		    break;
-	    }
-	    testng.setTestSuites(suites);
+		List<String> suites = Lists.newArrayList();
+		System.out.println((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
+		switch (suite) {
+		case RUNALLTEST:
+		default:
+			suites.add((new File("C:\\selenium\\testng.xml")).getAbsolutePath());
+			break;
+		}
+		testng.setTestSuites(suites);
 		testng.addListener((ITestNGListener) adapter);
 		testng.setVerbose(2);
-//		testng.setUseDefaultListeners(false);
+		// testng.setUseDefaultListeners(false);
 		testng.setPreserveOrder(true);
 		testng.run();
 	}

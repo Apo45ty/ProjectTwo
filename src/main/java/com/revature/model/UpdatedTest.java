@@ -24,19 +24,20 @@ public class UpdatedTest {
 	private long test_id;
 	@Column(name = "TEST_NAME", length = 64)
 	private String test_name;
-	
+
 	// PASSED or FAILED or SKIPPED these are the three options TESTNG Has
 	@Column(name = "TEST_CONTEXT", length = 9)
 	private String test_context; // use ITestResult.getTestContext()
-	
-	@Column(name="IS_DELETED",length=16)
+
+	@Column(name = "IS_DELETED", length = 16)
 	private boolean isDeleted = false;
-	@Column(name="TEST_START_DATE",length=64)
+	@Column(name = "TEST_START_DATE", length = 64)
 	private Timestamp test_start_date;
-	@Column(name="TEST_END_DATE",length=64)
+	@Column(name = "TEST_END_DATE", length = 64)
 	private Timestamp test_end_date;
-	
-	public UpdatedTest() {}
+
+	public UpdatedTest() {
+	}
 
 	/**
 	 * @param test_id
@@ -66,7 +67,8 @@ public class UpdatedTest {
 	}
 
 	/**
-	 * @param test_id the test_id to set
+	 * @param test_id
+	 *            the test_id to set
 	 */
 	public void setTest_id(long test_id) {
 		this.test_id = test_id;
@@ -81,7 +83,8 @@ public class UpdatedTest {
 	}
 
 	/**
-	 * @param test_name the test_name to set
+	 * @param test_name
+	 *            the test_name to set
 	 */
 	public void setTest_name(String test_name) {
 		this.test_name = test_name;
@@ -96,7 +99,8 @@ public class UpdatedTest {
 	}
 
 	/**
-	 * @param test_context the test_context to set
+	 * @param test_context
+	 *            the test_context to set
 	 */
 	public void setTest_context(String test_context) {
 		this.test_context = test_context;
@@ -111,7 +115,8 @@ public class UpdatedTest {
 	}
 
 	/**
-	 * @param isDeleted the isDeleted to set
+	 * @param isDeleted
+	 *            the isDeleted to set
 	 */
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
@@ -126,7 +131,8 @@ public class UpdatedTest {
 	}
 
 	/**
-	 * @param test_start_date the test_start_date to set
+	 * @param test_start_date
+	 *            the test_start_date to set
 	 */
 	public void setTest_start_date(Timestamp test_start_date) {
 		this.test_start_date = test_start_date;
@@ -141,13 +147,16 @@ public class UpdatedTest {
 	}
 
 	/**
-	 * @param test_end_date the test_end_date to set
+	 * @param test_end_date
+	 *            the test_end_date to set
 	 */
 	public void setTest_end_date(Timestamp test_end_date) {
 		this.test_end_date = test_end_date;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -157,7 +166,9 @@ public class UpdatedTest {
 				+ test_end_date + "]";
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -173,7 +184,9 @@ public class UpdatedTest {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -211,5 +224,5 @@ public class UpdatedTest {
 			return false;
 		return true;
 	}
-	
+
 }
