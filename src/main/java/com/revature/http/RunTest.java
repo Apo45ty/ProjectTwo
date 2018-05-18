@@ -47,7 +47,7 @@ public class RunTest extends HttpServlet {
 				if (hasRequest) {
 					TestListenerAdapter adapter = new TestListenerAdapter();
 					TestNG testng = new TestNG();
-					testng.setTestClasses(new Class[] { com.revature.test.Trainer_Locations_Steps.class,
+					testng.setTestClasses(new Class[] { com.revature.test.Trainer_Locations.class,
 							com.revature.test.StepsCurricula_VP.class });
 					testng.addListener((ITestNGListener) adapter);
 					testng.setVerbose(-1);
