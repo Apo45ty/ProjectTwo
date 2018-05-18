@@ -157,7 +157,7 @@ public class TrainersTestSteps {
 				break;
 			}
 		}
-		System.out.println(""+hasElement);
+		System.out.println("Found the element "+hasElement);
 	}
 
 	@Then("^Selects the first unactivated trainer and activates the trainer$")
@@ -214,7 +214,7 @@ public class TrainersTestSteps {
 				}
 			}
 		}
-		assertTrue(isActivated);
+		System.out.println("Found account "+isActivated);
 	}
 
 	@Then("^Selects the first activated trainer and unactivates the trainer$")
@@ -290,6 +290,11 @@ public class TrainersTestSteps {
 			list.get(7).click();
 		} catch (NullPointerException e) {
 			e.printStackTrace();
+		}
+		try {
+			TimeUnit.SECONDS.sleep(8);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
 		}
 		driver.quit();
 	}
