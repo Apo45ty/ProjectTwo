@@ -3,19 +3,16 @@ package com.revature.test;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import com.revature.pom.BatchesPOM;
+
 import com.revature.pom.LoginPage;
 import com.revature.pom.NavbarPOM;
 
@@ -25,12 +22,7 @@ public class Test_Runner {
 	static WebDriver wd;
 
 	Thread thread;
-	
- 
- 
-	/**
-	 * 
-	 */
+
 	// @Test(priority = 0)
 	// public void VerifyValidLogin() {
 	// openApplication();
@@ -43,140 +35,136 @@ public class Test_Runner {
 	//
 	// }
 
-//	@Test(groups = { "include-test-one" })
-//
-//	public void LoginAsVP() {
-//		
-//		try {
-//			loginAsVPofTech();
-//			TimeUnit.SECONDS.sleep(5);
-//		} catch (Exception e) {
-//			System.out.println("I am guessing the log in failed");
-//			org.testng.Assert.fail("To Login in");
-//		} finally {
-//			wd.quit();
-//		}
-//	}
-//	 @Test(groups = { "include-test-one" })
-//	 public void VPclicksOverview() {
-//	 try {
-//	 loginAsVPofTech();
-//	 
-//	 clickCurricula();
-//	 TimeUnit.SECONDS.sleep(5);
-//	 wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-//	 } catch (Exception e) {
-//	 System.out.println("I am guessing the log in failed");
-//	 org.testng.Assert.fail("Failed to Click");
-//	 } finally {
-//	 wd.quit();
-//	 }
-//	 }
-//	
-//	 @Test(groups = { "include-test-one" })
-//	 public void VPclicksBatches() {
-//	 try {
-//	 loginAsVPofTech();
-//	 clickBatches();
-//	 TimeUnit.SECONDS.sleep(5);
-//	 } catch (Exception e) {
-//	 System.out.println("I am guessing the log in failed");
-//	 org.testng.Assert.fail("Failed to Click");
-//	 } finally {
-//	 wd.quit();
-//	 }
-//	
-//	 }
-//	
-//	 @Test(groups = { "include-test-one" })
-//	 public void VPclicksCurricula() {
-//	 try {
-//	 loginAsVPofTech();
-//	 clickCurricula();
-//	 TimeUnit.SECONDS.sleep(5);
-//	 } catch (Exception e) {
-//	 System.out.println("I am guessing the log in failed");
-//	 org.testng.Assert.fail("Failed to Click");
-//	 } finally {
-//	 wd.quit();
-//	 }
-//	
-//	 }
-//	
-//	 @Test(groups = { "include-test-one" })
-//	 public void VPclicksLocation() {
-//	 try {
-//	 loginAsVPofTech();
-//	 clickLocations();
-//	 } catch (Exception e) {
-//	 System.out.println("I am guessing the log in failed");
-//	 org.testng.Assert.fail("Failed to Click");
-//	 } finally {
-//	 wd.quit();
-//	 }
-//	 }
-//	
-//	 @Test(groups = { "include-test-one" })
-//	 public void VPclicksTraniner() {
-//	 try {
-//	 loginAsVPofTech();
-//	 clickTrainers();
-//	 TimeUnit.SECONDS.sleep(5);
-//	 } catch (Exception e) {
-//	 System.out.println("I am guessing the log in failed");
-//	 org.testng.Assert.fail("Failed to Click");
-//	 } finally {
-//	 wd.quit();
-//	 }
-//	
-//	 }
-//	
-//	 @Test(groups = { "include-test-one" })
-//	 public void VPclicksProfile() {
-//	 try {
-//	 loginAsVPofTech();
-//	 clickProfile();
-//	 TimeUnit.SECONDS.sleep(5);
-//	 } catch (Exception e) {
-//	 System.out.println("I am guessing the log in failed");
-//	 org.testng.Assert.fail("Failed to Click");
-//	 } finally {
-//	 wd.quit();
-//	 }
-//	
-//	 }
-//	
-//	 @Test(groups = { "include-test-one" })
-//	 public void VPclicksSettings() {
-//	 try {
-//	 loginAsVPofTech();
-//	 clickSettings();
-//	 TimeUnit.SECONDS.sleep(5);
-//	 } catch (Exception e) {
-//	 System.out.println("I am guessing the log in failed");
-//	 org.testng.Assert.fail("Failed to Click");
-//	 } finally {
-//	 wd.quit();
-//	 }
-//	
-//	 }
-//	
-//	 @Test(groups = { "include-test-one" })
-//	 public void VPclicksLogout() {
-//	 try {
-//	 loginAsVPofTech();
-//	 clickLogout();
-//	 TimeUnit.SECONDS.sleep(5);
-//	 } catch (Exception e) {
-//	 System.out.println("I am guessing the log in failed");
-//	 org.testng.Assert.fail("Failed to Click");
-//	 } finally {
-//	 wd.quit();
-//	 }
-//	
-//	 }
+	@Test(groups = { "include-test-one" })
+	public void LoginAsVP() {
 
-	public void waitASecound() {
+		try {
+			loginAsVPofTech();
+			TimeUnit.SECONDS.sleep(5);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("To Login in");
+		} finally {
+			wd.quit();
+		}
+	}
+
+	@Test(groups = { "include-test-one" })
+	public void VPclicksOverview() {
+		try {
+			loginAsVPofTech();
+
+			clickCurricula();
+			TimeUnit.SECONDS.sleep(5);
+			wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+	}
+
+	@Test(groups = { "include-test-one" })
+	public void VPclicksBatches() {
+		try {
+			loginAsVPofTech();
+			clickBatches();
+			TimeUnit.SECONDS.sleep(5);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+
+	}
+
+	@Test(groups = { "include-test-one" })
+	public void VPclicksCurricula() {
+		try {
+			loginAsVPofTech();
+			clickCurricula();
+			TimeUnit.SECONDS.sleep(5);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+
+	}
+
+	@Test(groups = { "include-test-one" })
+	public void VPclicksLocation() {
+		try {
+			loginAsVPofTech();
+			clickLocations();
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+	}
+
+	@Test(groups = { "include-test-one" })
+	public void VPclicksTraniner() {
+		try {
+			loginAsVPofTech();
+			clickTrainers();
+			TimeUnit.SECONDS.sleep(5);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+
+	}
+
+	@Test(groups = { "include-test-one" })
+	public void VPclicksProfile() {
+		try {
+			loginAsVPofTech();
+			clickProfile();
+			TimeUnit.SECONDS.sleep(5);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+
+	}
+
+	@Test(groups = { "include-test-one" })
+	public void VPclicksSettings() {
+		try {
+			loginAsVPofTech();
+			clickSettings();
+			TimeUnit.SECONDS.sleep(5);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
+
+	}
+
+	@Test(groups = { "include-test-one" })
+	public void VPclicksLogout() {
+		try {
+			loginAsVPofTech();
+			clickLogout();
+			TimeUnit.SECONDS.sleep(5);
+		} catch (Exception e) {
+			System.out.println("I am guessing the log in failed");
+			org.testng.Assert.fail("Failed to Click");
+		} finally {
+			wd.quit();
+		}
 
 	}
 
@@ -184,7 +172,7 @@ public class Test_Runner {
 		WebDriverWait wait = new WebDriverWait(wd, 10);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(NavbarPOM.overview(wd)));
 		element.click();
-		
+
 	}
 
 	public void clickBatches() {
@@ -249,7 +237,6 @@ public class Test_Runner {
 		System.setProperty("webdriver.chrome.driver", chrome.getAbsolutePath());
 		wd = new ChromeDriver();
 		wd.get("https://dev.assignforce.revaturelabs.com");
-
 	}
 
 	@BeforeTest

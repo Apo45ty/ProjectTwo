@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestAll">
+
+	<test name="Run01">
+    <classes>
+      <class name="com.revature.temp.Runner"/>
+    </classes>
+  </test>
+
+
+</suite>

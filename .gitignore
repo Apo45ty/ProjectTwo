@@ -18,6 +18,11 @@
 *.tar.gz
 *.rar
 
+#no
+.classpath
+*.settings
+*.prefs
+
 ProjectTwo/angularproject/my-app/package-lock.json
 /angularproject/my-app/node_modules
 
@@ -26,3 +31,4 @@ hs_err_pid*
 
 target
 test-output
+.classpath
