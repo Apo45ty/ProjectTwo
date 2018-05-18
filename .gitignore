@@ -1,8 +1,17 @@
+# OS
+.DS_Store
+
 # Compiled class file
 *.class
 *.idea
 # Log file
 *.log
+
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
 
 # BlueJ files
 *.ctxt
@@ -19,8 +28,6 @@
 *.rar
 
 #no
-.classpath
-*.settings
 *.prefs
 
 ProjectTwo/angularproject/my-app/package-lock.json
@@ -31,4 +38,61 @@ hs_err_pid*
 
 target
 test-output
+
+# eclipse project file
+.settings/
 .classpath
+.project
+
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+local.properties
+.loadpath
+.recommenders
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
+
+# CDT- autotools 
+.autotools
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# Tern plugin
+.tern-project
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Code Recommenders
+.recommenders/
+
+# Scala IDE specific (Scala & Java development for Eclipse)
+.cache-main
+.scala_dependencies
+.worksheet
