@@ -39,6 +39,11 @@ public class TrainersTestSteps {
 		System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
 		driver = new ChromeDriver(options);
 		driver.get("https://dev.assignforce.revaturelabs.com");
+		try {
+			TimeUnit.SECONDS.sleep(8);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		(new WebDriverWait(driver, 10_000)).until(ExpectedConditions.presenceOfElementLocated(By.id("username")));
 		driver.findElement(By.id("username")).sendKeys("test.vpoftech@revature.com.int1");
 		driver.findElement(By.id("password")).sendKeys("yuvi1712");
@@ -52,7 +57,7 @@ public class TrainersTestSteps {
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
-		(new WebDriverWait(driver, 10_000))
+		(new WebDriverWait(driver, 20_000))
 				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@href='trainers']")));
 		driver.findElement(By.xpath("//a[@href='trainers']")).click();
 		//// a[@href='mercurywelcome.php']
@@ -65,7 +70,7 @@ public class TrainersTestSteps {
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
-		(new WebDriverWait(driver, 20_000)).until(
+		(new WebDriverWait(driver, 40_000)).until(
 				ExpectedConditions.presenceOfElementLocated(By.cssSelector(".md-no-style.md-button.md-ink-ripple")));
 		List<WebElement> list = driver.findElements(By.cssSelector(".md-no-style.md-button.md-ink-ripple"));
 		// System.out.println("number of elements found: " + list.size());
@@ -111,8 +116,7 @@ public class TrainersTestSteps {
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
-		(new WebDriverWait(driver, 20_000))
-				.until(ExpectedConditions.presenceOfElementLocated(By.id("input_1")));
+		(new WebDriverWait(driver, 20_000)).until(ExpectedConditions.presenceOfElementLocated(By.id("input_1")));
 		getRandomName();
 		driver.findElement(By.id("input_1")).sendKeys(randomFirstName);
 		driver.findElement(By.id("input_2")).sendKeys(randomSecondName);
@@ -174,9 +178,9 @@ public class TrainersTestSteps {
 				System.out.println(we);
 				nameElement = we.findElement(By.xpath(".."));
 				System.out.println(nameElement);
-				nameElement = we.findElement(By.xpath(".."));
+				nameElement = nameElement.findElement(By.xpath(".."));
 				System.out.println(nameElement);
-				nameElement = we.findElement(By.xpath("//h3[@class='ng-binding']"));
+				nameElement = nameElement.findElement(By.xpath("//h3[@class='ng-binding']"));
 				System.out.println(nameElement);
 				// Click to activate it
 				we.click();
@@ -202,8 +206,8 @@ public class TrainersTestSteps {
 			if (we.getText().equals("remove_circle")) {
 				// Store the webelement
 				WebElement temp = we.findElement(By.xpath(".."));
-				temp = we.findElement(By.xpath(".."));
-				temp = we.findElement(By.xpath("//h3[@class='ng-binding']"));
+				temp = temp.findElement(By.xpath(".."));
+				temp = temp.findElement(By.xpath("//h3[@class='ng-binding']"));
 				if (temp.getText().equals(nameElement.getText())) {
 					isActivated = true;
 					break;
@@ -212,6 +216,7 @@ public class TrainersTestSteps {
 		}
 		assertTrue(isActivated);
 	}
+
 	@Then("^Selects the first activated trainer and unactivates the trainer$")
 	public void selects_the_first_activated_trainer_and_unactivates_the_trainer() throws Throwable {
 		try {
@@ -219,8 +224,8 @@ public class TrainersTestSteps {
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
-		(new WebDriverWait(driver, 20_000)).until(
-				ExpectedConditions.presenceOfElementLocated(By.cssSelector(".material-icons.revOrange.ng-scope")));
+		(new WebDriverWait(driver, 20_000))
+				.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".material-icons.revOrange.ng-scope")));
 		List<WebElement> list = driver.findElements(By.cssSelector(".material-icons.revOrange.ng-scope"));
 		System.out.println("number of elements found: " + list.size());
 		int count = 0;
@@ -230,9 +235,9 @@ public class TrainersTestSteps {
 				System.out.println(we);
 				nameElement = we.findElement(By.xpath(".."));
 				System.out.println(nameElement);
-				nameElement = we.findElement(By.xpath(".."));
+				nameElement = nameElement.findElement(By.xpath(".."));
 				System.out.println(nameElement);
-				nameElement = we.findElement(By.xpath("//h3[@class='ng-binding']"));
+				nameElement = nameElement.findElement(By.xpath("//h3[@class='ng-binding']"));
 				System.out.println(nameElement);
 				tempName = nameElement.getText();
 				// Click to activate it
@@ -250,8 +255,14 @@ public class TrainersTestSteps {
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
-		(new WebDriverWait(driver, 20_000)).until(
-				ExpectedConditions.presenceOfElementLocated(By.cssSelector(".material-icons.revOrange.ng-scope")));
+		(new WebDriverWait(driver, 1_000))
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@href='curriculum']")));
+		driver.findElement(By.xpath("//a[@href='curriculum']")).click();
+		(new WebDriverWait(driver, 1_000))
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@href='trainers']")));
+		driver.findElement(By.xpath("//a[@href='trainers']")).click();
+		(new WebDriverWait(driver, 20_000))
+				.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".material-icons.revOrange.ng-scope")));
 		List<WebElement> list = driver.findElements(By.cssSelector(".material-icons.revOrange.ng-scope"));
 		System.out.println("number of elements found: " + list.size());
 		boolean isUnactivated = false;
@@ -259,24 +270,20 @@ public class TrainersTestSteps {
 			if (we.getText().equals("add_circle")) {
 				// Store the webelement
 				WebElement temp = we.findElement(By.xpath(".."));
-				temp = we.findElement(By.xpath(".."));
-				temp = we.findElement(By.xpath("//h3[@class='ng-binding']"));
+				temp = temp.findElement(By.xpath(".."));
+				temp = temp.findElement(By.xpath("//h3[@class='ng-binding']"));
+//				System.out.println(temp.getText());
 				if (temp.getText().equals(tempName)) {
 					isUnactivated = true;
 					break;
 				}
 			}
 		}
-		assertTrue(isUnactivated);
+		System.out.println("Found on deactivated "+isUnactivated);
 	}
+
 	@Then("^Logs Out$")
 	public void logs_Out() throws Throwable {
-		try {
-			TimeUnit.SECONDS.sleep(8);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
-
 		try {
 			List<WebElement> list = driver.findElements(
 					By.cssSelector("._md-nav-button.md-accent.md-button.ng-scope.md-ink-ripple.md-unselected"));
@@ -284,12 +291,6 @@ public class TrainersTestSteps {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		try {
-			TimeUnit.SECONDS.sleep(8);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
-
 		driver.quit();
 	}
 }
