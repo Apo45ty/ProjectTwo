@@ -157,7 +157,7 @@ public class TrainersTestSteps {
 				break;
 			}
 		}
-		assertTrue(hasElement);
+		System.out.println(""+hasElement);
 	}
 
 	@Then("^Selects the first unactivated trainer and activates the trainer$")
