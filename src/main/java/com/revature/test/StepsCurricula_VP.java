@@ -59,6 +59,7 @@ public class StepsCurricula_VP {
 
 	}
 
+
 	@Test(priority = 4)
 	public void clicks_on_curricula_tabs_and_navigates() {
 
@@ -107,11 +108,7 @@ public class StepsCurricula_VP {
 		} catch (InterruptedException e) {
 		}
 
-
-
 	}
-
-
 
 	@Test(priority = 6)
 	public void curricula_with_all_skills() {
@@ -165,11 +162,8 @@ public class StepsCurricula_VP {
 		
 	@Test(priority = 7)
 	public void create_new_focus() {
-		//*[@id=\"view\"]/md-card/md-content/md-card[2]/md-toolbar/div/button[1]
 
 		try {
-			TimeUnit.SECONDS.sleep(2);
-			//driver.findElement(By.xpath("//li[@name='curricula']")).click(); // Clicks Curricula Tab
 			TimeUnit.SECONDS.sleep(2);
 			driver.findElement(By.xpath("//*[@id=\"view\"]/md-card/md-content/md-card[2]/md-toolbar/div/button[1]"))
 					.click(); // clicks plus sign button
@@ -195,14 +189,31 @@ public class StepsCurricula_VP {
 		} catch (InterruptedException e) {
 		}
 
-
 	}
 
 	@Test(priority = 8)
+	public void delete_focus() {
+		try {
+			TimeUnit.SECONDS.sleep(3);
+			driver.findElement(By.xpath("//*[@id=\"focus\"]/md-list/md-list-item[1]/button[2]")).click();
+			TimeUnit.SECONDS.sleep(2);
+			driver.findElement(By.xpath("/html/body/div[3]/md-dialog/md-dialog-actions/button[2]")).click();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		} catch (NoSuchElementException e2) {
+
+		}
+
+
+
+	}
+
+	@Test(priority = 9)
 	public void quits_session_right_after_testing_curricula() {
 		try {
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//			driver.findElements(By.cssSelector(selector));
 			TimeUnit.SECONDS.sleep(9);
 			driver.findElement(By.xpath("/html/body/div/div[1]/ng-include/div/md-content/md-nav-bar/div/nav/ul/li[9]"))
 					.click();
