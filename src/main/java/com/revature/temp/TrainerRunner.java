@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeSuite;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-@CucumberOptions(features="C:\\selenium\\TrainersTest.feature")
+@CucumberOptions(features="src\\main\\resources\\TrainersTest.feature")
 public class TrainerRunner extends AbstractTestNGCucumberTests{
 	@BeforeSuite
 	public void beforeSuite() {

@@ -15,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterSuite;
 
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -28,7 +29,7 @@ public class CukesReportStepsDef {
 	String username, password;
 	boolean flag = false;
 
-	@After
+	@AfterSuite
 	public void closeAll() {
 		System.out.println("Closing all webdriver instances...");
 		try {
