@@ -205,9 +205,6 @@ public class StepsCurricula_VP {
 		} catch (NoSuchElementException e2) {
 
 		}
-
-
-
 	}
 
 	@Test(priority = 9)
