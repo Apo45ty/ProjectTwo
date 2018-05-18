@@ -9,8 +9,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import java.util.List;
-import java.io.File;
-import java.util.concurrent.TimeUnit;
 
 public class StepsCurricula_VP {
 
@@ -34,6 +32,7 @@ public class StepsCurricula_VP {
 		driver.findElement(By.id("password")).sendKeys("yuvi1712");
 		driver.findElement(By.id("password")).sendKeys(Keys.RETURN);
 	}
+
 
 	@Test(priority = 3)
 	public void delete_curriculum() {
@@ -206,6 +205,7 @@ public class StepsCurricula_VP {
 		} catch (NoSuchElementException e2) {
 
 		}
+
 	}
 
 	@Test(priority = 9)
@@ -219,5 +219,6 @@ public class StepsCurricula_VP {
 			driver.quit();
 		} catch (InterruptedException e) {
 		}
+
 	}
 }
